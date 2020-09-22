@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'PageController@home');
+Route::get('/search','PageController@search');
