@@ -1,0 +1,17 @@
+.container {
+	margin-top: 40px;
+}
+
+.card {
+	overflow: hidden;
+	transition: all 0.2s;
+}
+
+.card:hover {
+	transform: translateY(-3px);
+}
+
+.card-image {
+	height: 250px;
+	overflow: hidden;
+}
