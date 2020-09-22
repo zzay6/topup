@@ -1,0 +1,8 @@
+.container {
+	margin-top: 30px;
+}
+
+.payment .card-body {
+	display: flex;
+	align-items: center;
+}
