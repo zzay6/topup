@@ -19,7 +19,6 @@ class PageController extends Controller
     	if(empty($req->q)){
     		return view('search', ['result' => Produk::all()]);
     	}
-
     	$result = Produk::where('nama','LIKE','%'.$req->q.'%')->get();
 
     	if( $result->isEmpty() ){
