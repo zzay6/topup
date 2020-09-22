@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\Produk;
+use \App\Models\Items;
 
 class PageController extends Controller
 {
@@ -26,5 +27,12 @@ class PageController extends Controller
     	} else {
     		return view('search', ['result' => $result]);
     	}
+    }
+
+
+    public function show($nama)
+    {
+        $produk = Produk::where('pulsa_op',$nama)->first();
+        return view('view', ['produk' => $produk]);
     }
 }
