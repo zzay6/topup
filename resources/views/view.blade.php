@@ -16,10 +16,11 @@
 					
 					<form>
 						<div class="input-group">
-							<input type="" name="" class="form-control rounded-sm mr-1">
-							<button class="btn btn-primary">Ok</button>
+							<input type="" name="" class="form-control rounded-sm mr-1 form-control-id">
+							<button class="btn btn-primary btn-checkgameid" type="button">Ok</button>
 						</div>
 					</form>
+					<div class="player"></div>
 				
 				</div>
 			</div>
@@ -75,7 +76,30 @@
 	</div>
 </div>
 <script type="text/javascript">
+
+	$('.btn-checkgameid').click(function(){
+			$.ajax({
+					url:'{{ url("/api/checkgameid") }}',
+					type:'post',
+					dataType:'json',
+					data:{
+							'player_id' : $('.form-control-id').val()
+					},
+					success : function(result) {
+							$('.player').html(`
+									<div class="alert alert-info rounded-0 p-2 mt-2" style="width: auto; max-width: 400px;">
+										<small class="text-info">ID pemain   : `+ result.player_id +`</small>
+										<br>
+										<small class="text-info">Nama pemain : `+ result.nickname +`</small>
+									</div>
+							`);
+					}
+			});
+	});
+
+	var paymentChannel;
 	function payment(channel){
+			paymentChannel = channel;
 			$.ajax({
 					url:'{{ url("api/getitems") }}',
 					type:'post',
@@ -101,8 +125,26 @@
 			});
 	}
 
+	var itemSelected;
 	function denomisasi(item, price){
+			itemSelected = item;
 			$('.price').html('Rp'+price);
 	}
+
+	$('.btn-next').click(function(){
+			$.ajax({
+					url:'{{ url("/api/payment/request") }}',
+					type:'post',
+					dataType:'json',
+					data:{
+							'payment' : paymentChannel,
+							'item' : itemSelected,
+							'player_id' : $('.form-control-id').val()
+					},
+					success : function(result) {
+							console.log(result);
+					}
+			});
+	});
 </script>
 @endsection
