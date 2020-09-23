@@ -1,5 +1,9 @@
-.container {
-	margin-top: 30px;
+.container-fluid {
+	margin-top: -15px;
+}
+
+.jumbotron {
+	height: 200px;
 }
 
 .payment .card-body {

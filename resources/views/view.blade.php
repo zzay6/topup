@@ -4,14 +4,15 @@
 <link rel="stylesheet" type="text/css" href="{{ url('/assets/css/view.css') }}">
 @endsection
 @section('content')
-<div class="container">
-	<div class="row">
-		<div class="col-lg-6 px-2">
+<div class="container-fluid px-0">
+	<div class="alert-primary jumbotron"></div>
+	<div class="row w-100 justify-content-center m-auto">
+		<div class="col-lg-5 px-2">
 			<div class="bg-white p-1 py-3 rounded-sm shadow-sm mb-3">
 				<i>
 					<h6 class="text-primary ml-3">Masukan id pemain</h6>
 				</i>
-				<div class="col-9 col-md-8">
+				<div class="col-9 col-md-7">
 					
 					<form>
 						<div class="input-group">
@@ -51,7 +52,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-6 px-2">
+		<div class="col-lg-7 px-2">
 			<div class="bg-white p-2 rounded-sm shadow-sm">
 				<i>
 					<h6 class="text-primary">Pilih denomisasi</h6>
@@ -59,10 +60,7 @@
 				<div class="alert alert-info mt-2">
 					<small>Pilih channel pembayaran untuk menampilkan pilihan denomisasi</small>
 				</div>
-				<div class="input-group">
-					<select class="form-control border-primary text-primary denomisasi">
-						<option>Denomisasi</option>
-					</select>
+				<div class="denomisasi row w-100 m-auto">
 				</div>
 				<div class="my-3">
 					
@@ -88,10 +86,15 @@
 					},
 					success : function(result){
 							$('.denomisasi').html('');
-							$('.denomisasi').html(`<option>Pilih denomisasi</option>`);
 							$.each(result, function(i, data){
 									$('.denomisasi').append(`
-											<option value='`+ data.id +`' onclick='denomisasi("`+ data.id +`,`+ data.pulsa_price +`")'>`+ data.pulsa_nominal +`</option>
+										<div class="col-6 px-0 p-1">
+											<div class="card" onclick="denomisasi('`+ data.id +`','`+ data.pulsa_price +`')">
+												<div class="card-body p-2">
+													<h6 class="text-primary mb-1">`+ data.pulsa_nominal +`</h6>
+													<small class="text-secondary">Rp`+ data.pulsa_price +`</small>
+												</div>
+											</div>
 									`);
 							});
 					}
@@ -99,22 +102,7 @@
 	}
 
 	function denomisasi(item, price){
-			alert(price);	
+			$('.price').html('Rp'+price);
 	}
-
-	$('.denomisasi').click(function(){
-			$.ajax({
-					url:'{{ url("api/getitem") }}',
-					type:'post',
-					dataType:'json',
-					data:{
-							'item' : $('.denomisasi').val()
-					},
-					success : function(result){
-							//console.log(result);
-							//document.querySelector('.price').innerHTML = 'Rp'+result[0].pulsa_price;
-					}
-			});
-	});
 </script>
 @endsection

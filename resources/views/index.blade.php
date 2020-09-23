@@ -14,7 +14,7 @@
 						<img src="{{ url('storage/images') }}/{{ $p->gambar }}" class="w-100">
 					</div>
 					<div class="card-body">
-						<h5 class="card-title text-secondary">{{ $p->nama }}</h5>
+						<h5 class="card-title text-secondary mb-1">{{ $p->nama }}</h5>
 						<small class="text-primary">{{ $p->developer }}</small>
 					</div>
 				</div>
