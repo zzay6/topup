@@ -41,6 +41,13 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-6 px-0 p-1">
+						<div class="card payment" onclick="payment('alfamart')">
+							<div class="card-body">
+								<h6 class="text-primary mb-0 card-title">Alfamart</h6>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -49,16 +56,22 @@
 				<i>
 					<h6 class="text-primary">Pilih denomisasi</h6>
 				</i>
+				<div class="alert alert-info mt-2">
+					<small>Pilih channel pembayaran untuk menampilkan pilihan denomisasi</small>
+				</div>
 				<div class="input-group">
 					<select class="form-control border-primary text-primary denomisasi">
 						<option>Denomisasi</option>
 					</select>
 				</div>
-				<div class="alert alert-info mt-2">
-					Pilih channel pembayaran untuk menampilkan pilihan denomisasi
+				<div class="my-3">
+					
+					<span class="d-flex" style="align-items: flex-end; height: 25px;">
+						<small class="text-secondary">Total harga</small>
+						<h6 class="text-primary price d-inline mb-0 ml-2" style="font-size: 20px;"></h6>
+					</span>
 				</div>
 				<button class="btn btn-primary w-100 btn-next">Lanjut</button>
-				<div class="ordered mt-3"></div>
 			</div>
 		</div>
 	</div>
@@ -75,13 +88,18 @@
 					},
 					success : function(result){
 							$('.denomisasi').html('');
+							$('.denomisasi').html(`<option>Pilih denomisasi</option>`);
 							$.each(result, function(i, data){
 									$('.denomisasi').append(`
-											<option value='`+ data.id +`' onclick='denomisasi("`+ data.id +`")'>`+ data.pulsa_nominal +`</option>
+											<option value='`+ data.id +`' onclick='denomisasi("`+ data.id +`,`+ data.pulsa_price +`")'>`+ data.pulsa_nominal +`</option>
 									`);
 							});
 					}
 			});
+	}
+
+	function denomisasi(item, price){
+			alert(price);	
 	}
 
 	$('.denomisasi').click(function(){
@@ -93,25 +111,10 @@
 							'item' : $('.denomisasi').val()
 					},
 					success : function(result){
-							console.log(result);
-							document.querySelector('.nominal').innerHTML = result.pulsa_nominal;
+							//console.log(result);
+							//document.querySelector('.price').innerHTML = 'Rp'+result[0].pulsa_price;
 					}
 			});
-	});
-
-	$('.btn-next').click(function(){
-			$('.ordered').html(`
-					<div class="bg-light p-2 border">
-						<div class="mb-3">
-							<small class="text-secondary">Nama pemain</small>
-							<h6 class="text-secondary nickname"></h6>
-						</div>
-						<div class="mb-3">
-							<small class="text-secondary">Denomisasi</small>
-							<h6 class="text-secondary nominal"></h6>
-						</div>
-					</div>
-			`);
 	});
 </script>
 @endsection
