@@ -7,7 +7,7 @@
 <div class="container-fluid px-0">
 	<div class="alert-primary jumbotron"></div>
 	<div class="row w-100 justify-content-center m-auto">
-		<div class="col-lg-5 px-2">
+		<div class="col-lg-5 col-xl-4 px-2">
 			<div class="bg-white p-1 py-3 rounded-sm shadow-sm mb-3">
 				<i>
 					<h6 class="text-primary ml-3">Masukan id pemain</h6>
@@ -29,31 +29,18 @@
 					<h6 class="text-primary">Pilih channel pembayaran</h6>
 				</i>
 				<div class="row">
-					<div class="col-6 px-0 p-1">
+					<div class="col-12 px-0 p-1">
 						<div class="card payment" onclick="payment('voucher')">
 							<div class="card-body">
 								<h6 class="text-primary mb-0 card-title">Voucher</h6>
 							</div>
 						</div>
 					</div>
-					<div class="col-6 px-0 p-1">
-						<div class="card payment" onclick="payment('indomaret')">
-							<div class="card-body">
-								<h6 class="text-primary mb-0 card-title">Indomaret</h6>
-							</div>
-						</div>
-					</div>
-					<div class="col-6 px-0 p-1">
-						<div class="card payment" onclick="payment('alfamart')">
-							<div class="card-body">
-								<h6 class="text-primary mb-0 card-title">Alfamart</h6>
-							</div>
-						</div>
-					</div>
 				</div>
+				<small class="text-secondary">Channel pembayaran saat ini hanya tersedia metode voucher</small>
 			</div>
 		</div>
-		<div class="col-lg-7 px-2">
+		<div class="col-lg-7 col-xl-6 px-2">
 			<div class="bg-white p-2 rounded-sm shadow-sm">
 				<i>
 					<h6 class="text-primary">Pilih denomisasi</h6>
@@ -62,6 +49,12 @@
 					<small>Pilih channel pembayaran untuk menampilkan pilihan denomisasi</small>
 				</div>
 				<div class="denomisasi row w-100 m-auto">
+				</div>
+				<div class="form-group px-1 border-top mt-3 pt-2">
+					<i>
+						<h6 class="text-secondary pl-1">Alamat email</h6>
+					</i>
+					<input type="email" name="email" class="form-control form-control-email" placeholder="Email aktif">
 				</div>
 				<div class="my-3">
 					
@@ -90,7 +83,7 @@
 									<div class="alert alert-info rounded-0 p-2 mt-2" style="width: auto; max-width: 400px;">
 										<small class="text-info">ID pemain   : `+ result.player_id +`</small>
 										<br>
-										<small class="text-info">Nama pemain : `+ result.nickname +`</small>
+										<small class="text-info">Nama pemain : <span class="nickname">`+ result.nickname +`</span></small>
 									</div>
 							`);
 					}
@@ -139,10 +132,13 @@
 					data:{
 							'payment' : paymentChannel,
 							'item' : itemSelected,
-							'player_id' : $('.form-control-id').val()
+							'player_id' : $('.form-control-id').val(),
+							'player_zona' : $('.form-control-zona').val(),
+							'nickname' : $('.nickname').html(),
+							'email' : $('.form-control-email').val()
 					},
 					success : function(result) {
-							console.log(result);
+							window.location.href = result.url;
 					}
 			});
 	});

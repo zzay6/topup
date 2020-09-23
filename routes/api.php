@@ -23,3 +23,4 @@ Route::post('/getitems', 'ProductController@getItems');
 Route::post('/getitem', 'ProductController@getItem');
 Route::post('/checkgameid','RestapiController@checkGameId');
 Route::post('/payment/request','PaymentController@paymentRequest');
+Route::post('/payment/payment','PaymentController@payment');

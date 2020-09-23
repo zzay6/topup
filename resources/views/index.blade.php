@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','TopupYuk')
 @section('config')
 <link rel="stylesheet" type="text/css" href="{{ url('/assets/css/index.css') }}">
 @endsection

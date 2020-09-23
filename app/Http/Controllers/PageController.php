@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Models\Produk;
 use \App\Models\Items;
+use App\Models\Transactions;
 
 class PageController extends Controller
 {
@@ -34,5 +35,16 @@ class PageController extends Controller
     {
         $produk = Produk::where('pulsa_op',$nama)->first();
         return view('view', ['produk' => $produk]);
+    }
+
+
+    public function payment($type, $order_id)
+    {
+        $data = Transactions::where(['order_id' => $order_id, 'status' => 'pendding'])->firstOrFail();
+
+
+        if($type = 'voucher'){
+            return view('payment.voucher', ['data' => $data]);
+        }
     }
 }
