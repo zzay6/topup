@@ -61,7 +61,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-secondary Coda-400" href="{{ url('/transaksi') }}">
+					<a class="nav-link text-secondary Coda-400" href="{{ url('/transaction') }}">
 						<div class="icon"><i class="fas fa-clock"></i></div>
 						<span>Riwayat</span>
 					</a>

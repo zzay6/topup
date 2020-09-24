@@ -7,6 +7,7 @@ use App\Models\Transactions;
 use App\Models\Produk;
 use App\Models\Items;
 use App\Models\Voucher;
+use Auth;
 
 class PaymentController extends Controller
 {
@@ -18,10 +19,16 @@ class PaymentController extends Controller
     	$transaction = Transactions::max('id');
 
     	$transactionId = 'TY'.sprintf('%08s', $transaction + 1);
+
+        if(Auth::user()){
+            $email = Auth::user()->email;
+        } else {
+            $email = 'zacky29gaming@gmail.com';
+        }
     	
     	Transactions::create([
     		'order_id' => $transactionId,
-    		'email' => $req->email,
+    		'email' => $email
     		'provider' => $product->nama,
     		'player_id' => $req->player_id,
     		'player_zona' => $req->player_zona,

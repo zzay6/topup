@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Models\Produk;
 use \App\Models\Items;
 use App\Models\Transactions;
+use Auth;
 
 class PageController extends Controller
 {
@@ -45,6 +46,17 @@ class PageController extends Controller
 
         if($type = 'voucher'){
             return view('payment.voucher', ['data' => $data]);
+        }
+    }
+
+
+    public function transaction()
+    {
+        if(Auth::user()){
+            $transaction = Transactions::where('email',Auth::user()->email)->get();
+            return view('transaction', ['data' => $transaction]);
+        } else {
+            return view('transaction');
         }
     }
 }

@@ -50,12 +50,6 @@
 				</div>
 				<div class="denomisasi row w-100 m-auto">
 				</div>
-				<div class="form-group px-1 border-top mt-3 pt-2">
-					<i>
-						<h6 class="text-secondary pl-1">Alamat email</h6>
-					</i>
-					<input type="email" name="email" class="form-control form-control-email" placeholder="Email aktif">
-				</div>
 				<div class="my-3">
 					
 					<span class="d-flex" style="align-items: flex-end; height: 25px;">
@@ -134,8 +128,7 @@
 							'item' : itemSelected,
 							'player_id' : $('.form-control-id').val(),
 							'player_zona' : $('.form-control-zona').val(),
-							'nickname' : $('.nickname').html(),
-							'email' : $('.form-control-email').val()
+							'nickname' : $('.nickname').html()
 					},
 					success : function(result) {
 							window.location.href = result.url;
