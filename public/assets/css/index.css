@@ -1,7 +1,3 @@
-.container {
-	margin-top: 40px;
-}
-
 .card {
 	overflow: hidden;
 	transition: all 0.2s;
@@ -14,4 +10,28 @@
 .card-image {
 	height: 250px;
 	overflow: hidden;
+}
+
+.card-title {
+	font-size: 0.97em;
+}
+
+.card-subtitle {
+	font-size: 0.8em;
+}
+
+
+
+@media(max-width: 578px){
+	.card-title {
+		font-size: 0.9em;
+	}
+
+	.card-image {
+		height: 50vw;
+	}
+
+	.card {
+		height: 70vw;
+	}
 }

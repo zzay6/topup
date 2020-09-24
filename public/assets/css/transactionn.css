@@ -1,0 +1,18 @@
+.container-fluid {
+	margin-top: 0px;
+}
+
+.transaction .card-header {
+	justify-content: space-between;
+}
+
+.transactions-detail {
+	justify-content: space-between;
+}
+
+.d-grid {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 70vh;
+}

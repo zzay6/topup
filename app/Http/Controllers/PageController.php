@@ -53,8 +53,10 @@ class PageController extends Controller
     public function transaction()
     {
         if(Auth::user()){
-            $transaction = Transactions::where('email',Auth::user()->email)->get();
-            return view('transaction', ['data' => $transaction]);
+            $transaction = Transactions::where('email',Auth::user()->email);
+            $success = Transactions::where(['email' =>  Auth::user()->email,'status' => 'success'])->count();
+
+            return view('transaction', ['data' => $transaction->get(),'dataNum' => $transaction->count(), 'success' => $success]);
         } else {
             return view('transaction');
         }

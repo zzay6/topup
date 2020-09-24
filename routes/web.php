@@ -20,4 +20,5 @@ Route::get('/', 'PageController@home');
 Route::get('/search','PageController@search');
 Route::get('/games/{nama}','PageController@show');
 Route::get('/payment/{type}/{order_id}','PageController@payment');
+Route::post('/transaction/delete/{id}','TransactionController@delete');
 Route::get('/transaction','PageController@transaction');
