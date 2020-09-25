@@ -61,4 +61,13 @@ class PageController extends Controller
             return view('transaction');
         }
     }
+
+
+    public function account()
+    {
+        $transactions = Transactions::where(['email' => Auth::user()->email])->count();
+        $success = Transactions::where(['email' => Auth::user()->email,'status' => 'success'])->count();
+        $failed = Transactions::where(['email' => Auth::user()->email,'status' => 'failed'])->count();
+        return view('account', ['transactions' => $transactions,'success' => $success,'failed' => $failed]);
+    }
 }

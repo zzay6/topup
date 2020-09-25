@@ -22,3 +22,7 @@ Route::get('/games/{nama}','PageController@show');
 Route::get('/payment/{type}/{order_id}','PageController@payment');
 Route::post('/transaction/delete/{id}','TransactionController@delete');
 Route::get('/transaction','PageController@transaction');
+
+Route::group(['middleware' => 'auth'], function(){
+	Route::get('/account','PageController@account');
+});
