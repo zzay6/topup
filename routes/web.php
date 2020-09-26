@@ -24,5 +24,6 @@ Route::post('/transaction/delete/{id}','TransactionController@delete');
 Route::get('/transaction','PageController@transaction');
 
 Route::group(['middleware' => 'auth'], function(){
+	Route::post('/account','Auth\AccountController@update');
 	Route::get('/account','PageController@account');
 });

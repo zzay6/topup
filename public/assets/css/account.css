@@ -1,10 +1,21 @@
-.rounded-circle {
+.profile-image-large {
 	height: 150px;
 	width: 150px;
 	display: grid;
 	place-content: center;
 }
 
-.rounded-circle h1 {
+.profile-image-large h1 {
 	font-size: 50px;
+}
+
+.profile-image-small {
+	width: 110px!important;
+	height: 110px!important;
+	display: grid;
+	place-content: center;
+}
+
+.profile-image-small h1 {
+	font-size: 30px;
 }
