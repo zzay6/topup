@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Auth::routes();
-
+Route::post('/login','AuthController@login');
+Route::get('/login','PageController@login')->name('login');
+Route::post('/logout','AuthController@logout');
 Route::get('/', 'PageController@home');
 Route::get('/search','PageController@search');
 Route::get('/games/{nama}','PageController@show');

@@ -50,6 +50,7 @@
 				</div>
 				<div class="denomisasi row w-100 m-auto">
 				</div>
+				<input class="form-control form-control-email" name="email">
 				<div class="my-3">
 					
 					<span class="d-flex" style="align-items: flex-end; height: 25px;">
@@ -124,6 +125,7 @@
 					type:'post',
 					dataType:'json',
 					data:{
+							'email' : $('.form-control-email').val(),
 							'payment' : paymentChannel,
 							'item' : itemSelected,
 							'player_id' : $('.form-control-id').val(),
