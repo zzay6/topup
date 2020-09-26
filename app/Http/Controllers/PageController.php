@@ -41,7 +41,10 @@ class PageController extends Controller
 
     public function payment($type, $order_id)
     {
-        $data = Transactions::where(['order_id' => $order_id, 'status' => 'pendding'])->firstOrFail();
+        $data = Transactions::where([
+            'order_id' => $order_id,
+            'status' => 'pendding'
+        ])->firstOrFail();
 
 
         if($type = 'voucher'){
@@ -67,7 +70,13 @@ class PageController extends Controller
     {
         $transactions = Transactions::where(['email' => Auth::user()->email])->count();
         $success = Transactions::where(['email' => Auth::user()->email,'status' => 'success'])->count();
+        $pendding = Transactions::where(['email' => Auth::user()->email, 'status' => 'pendding'])->count();
         $failed = Transactions::where(['email' => Auth::user()->email,'status' => 'failed'])->count();
-        return view('account', ['transactions' => $transactions,'success' => $success,'failed' => $failed]);
+        return view('account', [
+            'transactions' => $transactions,
+            'success' => $success,
+            'pendding' => $pendding,
+            'failed' => $failed
+        ]);
     }
 }

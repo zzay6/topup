@@ -12,7 +12,8 @@ use Auth;
 class PaymentController extends Controller
 {
 	// Handle payment request from user
-    public function paymentRequest(Request $req){
+    public function paymentRequest(Request $req)
+    {
     	$item = Items::where('id',$req->item)->first();
     	$product = Produk::where('pulsa_op',$item->pulsa_op)->first();
 
@@ -28,7 +29,7 @@ class PaymentController extends Controller
     	
     	Transactions::create([
     		'order_id' => $transactionId,
-    		'email' => $email
+    		'email' => $email,
     		'provider' => $product->nama,
     		'player_id' => $req->player_id,
     		'player_zona' => $req->player_zona,
@@ -49,6 +50,10 @@ class PaymentController extends Controller
 
     public function payment(Request $req)
     {
+        if(empty($req->voucher)) {
+            return false;
+        }
+
     	$voucher = Voucher::where('voucher',$req->voucher);
     	$transaction = Transactions::where('order_id',$req->order_id);
 
@@ -61,32 +66,42 @@ class PaymentController extends Controller
     		return response($response);
     	} else {
 
-    		$transactionGet = $transaction->first();
-    		$voucherGet = $voucher->first();
-    		
-    		$balance = $voucherGet->saldo - $transactionGet->harga;
+            if($voucher->first()->saldo < $transaction->first()->harga){
+                $response = json_encode([
+                    'status' => 'Gagal',
+                    'message' => 'Saldo voucher tidak mencukupi'
+                ]);
 
-    		$voucher->update([
-    			'saldo' => $balance
-    		]);
+                return response($response);
+            } else {
 
-    		$transaction->update([
-    			'status' => 'success'
-    		]);
+        		$transactionGet = $transaction->first();
+        		$voucherGet = $voucher->first();
+        		
+        		$balance = $voucherGet->saldo - $transactionGet->harga;
 
-    		$response = [
-        	   	'status' => 'Berhasil',
-        	   	'data' => [
-                    'provider' => $transactionGet->provider,
-        	    	'item' => $transactionGet->nominal,
-        	    	'harga' => $transactionGet->harga,
-        	    	'nickname' => $transactionGet->nickname,
-        	    	'saldo_voucher' => $balance
-        	    ],
-        	    'message' => 'Transaksi berhasil'
-        	];
+        		$voucher->update([
+        			'saldo' => $balance
+        		]);
 
-    		return response(json_encode($response));
+        		$transaction->update([
+        			'status' => 'success'
+        		]);
+
+        		$response = [
+            	   	'status' => 'Berhasil',
+            	   	'data' => [
+                        'provider' => $transactionGet->provider,
+            	    	'item' => $transactionGet->nominal,
+            	    	'harga' => $transactionGet->harga,
+            	    	'nickname' => $transactionGet->nickname,
+            	    	'saldo_voucher' => $balance
+            	    ],
+            	    'message' => 'Transaksi berhasil'
+            	];
+
+        		return response(json_encode($response));
+            }
 
     	}
     }
