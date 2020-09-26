@@ -26,9 +26,12 @@ class PaymentController extends Controller
         } else {
             $email = 'zacky29gaming@gmail.com';
         }
-    	
+
+
+
     	Transactions::create([
     		'order_id' => $transactionId,
+            'auth' => NULL,
     		'email' => $email,
     		'provider' => $product->nama,
     		'player_id' => $req->player_id,

@@ -131,7 +131,8 @@
 							'nickname' : $('.nickname').html()
 					},
 					success : function(result) {
-							window.location.href = result.url;
+							console.log(result);
+							// window.location.href = result.url;
 					}
 			});
 	});
