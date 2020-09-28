@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 use \App\Models\Produk;
 use \App\Models\Items;
 use App\Models\Transactions;
+use Illuminate\Support\Facades\Cookie;
 use Auth;
+use App\User;
 
 class PageController extends Controller
 {
-    public function register()
+    public function register(Request $req)
     {
-        return Auth::user()->id;
-        // return view('auth.register');
+        return view('auth.register');
     }
 
 

@@ -16,6 +16,7 @@ class CreateTransaksiTable extends Migration
         Schema::create('transaksi', function (Blueprint $table) {
             $table->increments('id');
             $table->string('order_id');
+            $table->string('auth')->nullable();
             $table->string('email');
             $table->string('provider');
             $table->string('player_id');

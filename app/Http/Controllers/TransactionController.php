@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
-use App\Models\Transactions;
+use \App\Models\Transactions;
+use \App\Models\Items;
+use \App\Models\Produk;
+use \App\User;
 
 class TransactionController extends Controller
 {
@@ -17,9 +20,16 @@ class TransactionController extends Controller
 
     	$transactionId = 'XX'.sprintf('%08s', $transaction + 1);
 
+        if (isset($_COOKIE['tpynvam'])) {
+            $auth = User::where('id',$_COOKIE['tpyidzcy'])->first('id')->id;
+        } else {
+            $auth = null;
+        }
+
 
     	Transactions::create([
     		'order_id' => $transactionId,
+            'auth' => $auth,
     		'email' => $req->email,
     		'provider' => $product->nama,
     		'player_id' => $req->player_id,

@@ -24,6 +24,8 @@ class AuthController extends Controller
     public function login(Request $req)
     {
     	if(Auth::attempt($req->only('email','password'))){
+            setcookie('tpyidzcy',Auth::user()->id);
+            setcookie('tpynvam', hash('sha256',Auth::user()->email));
     		return redirect('/');
         }
     }
@@ -32,6 +34,8 @@ class AuthController extends Controller
     public function logout(Request $req)
     {
     	Auth::logout();
+        setcookie('tpyidzcy','');
+        setcookie('tpynvam','');
         return redirect('/');
     }
 }
