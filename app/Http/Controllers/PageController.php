@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Models\Produk;
-use \App\Models\Items;
+use App\Models\Produk;
+use App\Models\Items;
 use App\Models\Transactions;
+use App\User;
 use Illuminate\Support\Facades\Cookie;
 use Auth;
-use App\User;
 
 class PageController extends Controller
 {
@@ -70,7 +70,10 @@ class PageController extends Controller
 
     public function transaction()
     {
-        return view('transaction');
+
+        $last = Transactions::where('auth',Auth::user()->id)->orderBy('id','desc')->take(3)->get();
+        $trans = Transactions::where('auth',Auth::user()->id)->get();
+        return view('transaction', compact(['last','trans']));
     }
 
 
