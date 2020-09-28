@@ -11,43 +11,6 @@ use App\Models\Voucher;
 
 class PaymentController extends Controller
 {
-	// Handle payment request from user
-    public function paymentRequest(Request $req)
-    {
-    	$item = Items::where('id',$req->item)->first();
-    	$product = Produk::where('pulsa_op',$item->pulsa_op)->first();
-
-    	$transaction = Transactions::max('id');
-
-    	$transactionId = 'XX'.sprintf('%08s', $transaction + 1);
-
-
-        $auth = Auth::id();
-
-
-
-    	Transactions::create([
-    		'order_id' => $transactionId,
-            'auth' => $auth,
-    		'email' => $req->email,
-    		'provider' => $product->nama,
-    		'player_id' => $req->player_id,
-    		'player_zona' => $req->player_zona,
-    		'nickname' => $req->nickname,
-    		'pulsa_code' => $item->pulsa_code,
-    		'nominal' => $item->pulsa_nominal,
-    		'harga' => $item->pulsa_price,
-    		'pembayaran' => $req->payment,
-    		'status' => 'pendding'
-    	]);
-
-    	$url = [
-    		'url' => url('/payment/voucher').'/'.$transactionId
-    	];
-    	return response($url);
-    }
-
-
     public function payment(Request $req)
     {
         if(empty($req->voucher)) {

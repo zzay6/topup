@@ -17,7 +17,6 @@ class CreateTransaksiTable extends Migration
             $table->increments('id');
             $table->string('order_id');
             $table->string('email');
-            $table->integer('auth')->nullable();
             $table->string('provider');
             $table->string('player_id');
             $table->string('player_zona')->nullable();

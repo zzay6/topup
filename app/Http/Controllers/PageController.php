@@ -12,7 +12,8 @@ class PageController extends Controller
 {
     public function register()
     {
-        return view('auth.register');
+        return Auth::user()->id;
+        // return view('auth.register');
     }
 
 
@@ -25,6 +26,7 @@ class PageController extends Controller
     public function home()
     {
         $produk = Produk::all();
+
         return view('index', compact('produk'));
     }
 
@@ -67,14 +69,7 @@ class PageController extends Controller
 
     public function transaction()
     {
-        if(Auth::user()){
-            $transaction = Transactions::where('email',Auth::user()->email);
-            $success = Transactions::where(['email' =>  Auth::user()->email,'status' => 'success'])->count();
-
-            return view('transaction', ['data' => $transaction->get(),'dataNum' => $transaction->count(), 'success' => $success]);
-        } else {
-            return view('transaction');
-        }
+        return view('transaction');
     }
 
 
