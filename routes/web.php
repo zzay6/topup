@@ -24,7 +24,7 @@ Route::get('/games/{nama}','PageController@show');
 Route::get('/payment/{type}/{order_id}','PageController@payment');
 
 Route::group(['middleware' => 'auth'], function(){
-	Route::post('/logout','AuthController@logout');
+	Route::post('/logout','AuthController@logout')->name('logout');
 	Route::post('/transaction/delete/{id}','TransactionController@delete');
 	Route::get('/transaction','PageController@transaction');
 	Route::post('/account','Auth\AccountController@update');

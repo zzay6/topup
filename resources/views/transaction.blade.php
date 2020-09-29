@@ -41,10 +41,10 @@
 	<div class="mt-4">
 		<div class="bg-white shadow-sm rounded-sm p-3">
 			<h6 class="text-primary" style="font-size: 15px; font-weight: 400;">Transaksi terakhir</h6>
-			<div class="row mb-4">
+			<div class="row mb-4 w-100 m-auto">
 				@foreach($last as $l)
 				<div class="col-4 px-0 p-1">
-					<div class="p-3 rounded-sm border border-light">
+					<div class="p-3 rounded-sm border border">
 						<h6 class="text-dark">{{ $l->nominal }} {{ $l->provider }}</h6>
 					</div>
 				</div>
@@ -52,7 +52,7 @@
 			</div>
 
 
-			<h6 class="text-primary" style="font-size: 15px; font-weight: 400;">Semua Transaksi</h6>
+			<h6 class="text-primary mt-3" style="font-size: 15px; font-weight: 400;">Semua Transaksi</h6>
 			<div>
 				@foreach($trans as $t)
 				<div class="border p-3 rounded-sm mt-2">

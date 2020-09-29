@@ -47,7 +47,7 @@
 
 
 		<!-- Navbar -->
-		<nav class="navbar navbar-expand-lg navbar-light w-100 py-1 shadow-sm">
+		<nav class="navbar navbar-expand-lg navbar-light w-100 py-2 shadow-sm">
 			<div>
 				<a class="btn border border-0 mr-2 btn-search text-primary p-0 pb-1" onclick="btn_search()"><i class="fas fa-search"></i></a>
 				<a class="navbar-brand text-primary NanumGothic-700" href="{{ url('/') }}">TopupYuk</a>
@@ -74,20 +74,30 @@
 				</li>
 			</ul>
 			<div class="d-flex">
-				@guest
-				<span class="border rounded-sm p-1 user-profile bg-white justify-content-center">
-					<a href="{{ url('/login') }}" class="text-secondary pr-2">Masuk</a> | <a href="{{ url('/register') }}" class="text-secondary pl-2">Daftar</a>
-				</span>
-				@else
-				<span class="border rounded-sm p-1 user-profile bg-white justify-content-center">
-					<a class="text-secondary">{{ Auth::user()->name }} | <form action="{{ url('/logout') }}" method="post" class="d-inline">
-						@csrf
-						<button class="d-inline bg-white p-0 text-secondary text-center border-0">keluar</button>
-						</form>
-					</a>
-				</span>
-				@endguest
-				<div class="list-toggle rounded ml-2 sidebar-toggle">
+			@guest
+        <li class="nav-item mr-2">
+          <a class="nav-link btn btn-primary" href="{{ route('login') }}">{{ __('Masuk') }}</a>
+        </li>
+        @if (Route::has('register'))
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary" href="{{ route('register') }}">{{ __('Daftar') }}</a>
+        </li>
+        @endif
+      @else
+        <li class="nav-item dropdown ml-2">
+          <a id="navbarDropdown" class="nav-link dropdown-toggle btn btn-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+          	{{ substr(Auth::user()->name, 0, 5) }}
+          	<span class="caret"></span>
+          </a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              	@csrf
+              </form>
+          </div>
+        </li>
+      @endguest
+				<div class="list-toggle rounded ml-3 sidebar-toggle">
 					<span class="bg-primary toggle"></span>
 					<span class="bg-primary toggle"></span>
 					<span class="bg-primary toggle"></span>
