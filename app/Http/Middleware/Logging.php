@@ -22,7 +22,8 @@ class Logging
         Logs::create([
             'url' => $url,
             'method' => $method,
-            'for' => 'Route'
+            'visitor' => $request->ip(),
+            'status' => 200
         ]);
 
         return $next($request);

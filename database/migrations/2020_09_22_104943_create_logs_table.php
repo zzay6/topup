@@ -17,7 +17,8 @@ class CreateLogsTable extends Migration
             $table->id();
             $table->string('url');
             $table->string('method');
-            $table->string('for');
+            $table->ipAddress('visitor')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }

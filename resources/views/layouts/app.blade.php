@@ -75,27 +75,28 @@
 			</ul>
 			<div class="d-flex">
 			@guest
-        <li class="nav-item mr-2">
-          <a class="nav-link btn btn-primary" href="{{ route('login') }}">{{ __('Masuk') }}</a>
-        </li>
-        @if (Route::has('register'))
-        <li class="nav-item">
-          <a class="nav-link btn btn-primary" href="{{ route('register') }}">{{ __('Daftar') }}</a>
-        </li>
-        @endif
+				<div class="user-profile mr-4">
+	        <li class="nav-item mr-2">
+	          <a class="nav-link btn btn-primary" href="{{ route('login') }}">{{ __('Masuk') }}</a>
+	        </li>
+	        @if (Route::has('register'))
+	        <li class="nav-item">
+	          <a class="nav-link btn btn-primary" href="{{ route('register') }}">{{ __('Daftar') }}</a>
+	        </li>
+	        @endif
+				</div>
       @else
-        <li class="nav-item dropdown ml-2">
-          <a id="navbarDropdown" class="nav-link dropdown-toggle btn btn-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-          	{{ substr(Auth::user()->name, 0, 5) }}
-          	<span class="caret"></span>
-          </a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              	@csrf
-              </form>
-          </div>
-        </li>
+      	<div class="user-profile mr-4">
+	        <li class="nav-item mr-2">
+	          <a class="nav-link btn btn-primary">{{ substr(Auth::user()->name, 0, 5) }}</a>
+	        </li>
+	        <li class="nav-item">
+	        	<form class="d-inline" action="{{ route('logout') }}" method="post">
+	        		@csrf
+	          	<button class="nav-link btn btn-danger">{{ __('Keluar') }}</button>
+	        	</form>
+	        </li>
+      	</div>
       @endguest
 				<div class="list-toggle rounded ml-3 sidebar-toggle">
 					<span class="bg-primary toggle"></span>
@@ -110,7 +111,7 @@
 
 
 
-		<div class="p-2 sidebar-menu bg-white shadow">
+		<div class="p-2 sidebar-menu bg-primary">
 			<div class="cross-toggle rounded ml-2 bg-danger sidebar-toggle">
 				<span class="bg-white toggle"></span>
 				<span class="bg-white toggle"></span>
