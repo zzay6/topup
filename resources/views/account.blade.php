@@ -12,7 +12,7 @@
 				<div class="rounded-circle profile-image-large bg-primary m-auto">
 					<h1 class="text-white mb-0">{{ substr(Auth::user()->name, 0, 1) }}</h1>
 				</div>
-				<h5 class="text-secondary text-center mt-3">{{ Auth::user()->id }}</h5>
+				<h5 class="text-secondary text-center mt-3">{{ Auth::user()->name }}</h5>
 				<div class="row mx-5">
 					<div class="col-6 col-md-3 px-2 text-center m-auto">
 						<h3 class="text-warning mb-1 my-2">{{ $transactions }}</h3>
