@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Dashboard');
+@section('title','Dashboard')
 @section('content')
 <div class="row w-100 m-auto">
 	<div class="col-xl-6 px-2">
@@ -61,7 +61,7 @@
 					<h6 class="card-title mb-0" style="color: rgb(40, 220, 100);">
 						Jumlah pegawai
 					</h6>
-					<h5 class="mb-0 mt-2">1 Pegawai</h5>
+					<h5 class="mb-0 mt-2">{{ $pegawai }} Pegawai</h5>
 				</div>
 			</div>
 			<div class="card-footer border-top-0">

@@ -1,0 +1,31 @@
+.modal {
+	position: fixed;
+	top: -100%;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s;
+}
+
+.blur {
+	position: fixed;
+	top: -100%;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: #000;
+	opacity: 0.13;
+}
+
+.modal-content {
+	width: 90%;
+	max-width: 500px;
+	background: #fff;
+	opacity: 100%!important;
+}
+
+.modal.popup, .blur.popup {
+	top: 0;
+}

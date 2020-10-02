@@ -28,12 +28,17 @@
 		<link rel="stylesheet" href="{{ url('/assets/bootstrap/bootstrap.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url('/assets/css/carousel.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url('/assets/css/main.css') }}">
+		@yield('config')
 
 		<link rel="icon" href="{{ url('/assets/images/pubgmobile.jpg') }}">
 
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<title>@yield('title') - TopupYuk</title>
 </head>
+
+<script src="{{ url('/assets/js/fontawesome.js') }}"></script>
+<script src="{{ url('/assets/js/jquery-3.4.1.js') }}"></script>
+
 <body class="bg-light">
 
 
@@ -85,7 +90,9 @@
 	</div>
 
 
-
-	<script type="text/javascript" src="script.js"></script>
+	<!-- Optional JavaScript -->
+	<script src="{{ url('/assets/js/popper.min.js') }}"></script>
+	<script src="{{ url('/assets/js/bootstrap.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url('assets/js/main.js') }}"></script>
 </body>
 </html>
