@@ -65,7 +65,7 @@
 				</div>
 			</div>
 			<div class="card-footer border-top-0">
-				<a href="" class="text-white">
+				<a href="{{ url('admin/pegawai') }}" class="text-white">
 					<small>Lihat pegawai</small>
 				</a>
 			</div>
