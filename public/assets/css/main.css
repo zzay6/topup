@@ -1,0 +1,95 @@
+.navbar {
+	position: fixed;
+	top: 0;
+	z-index: 2;
+	left: 0;
+}
+
+.navbar-brand {
+	font-size: 20px;
+}
+
+.sidebar {
+	width: 200px;
+	height: 100vh;
+	position: fixed;
+	left: 0;
+	top: 50px;
+	overflow: auto;
+	transition: all 0.2s;
+	z-index: 1;
+	border-right: 2px solid #fff;
+}
+
+.sidebar-menu {
+	overflow: auto;
+}
+
+.sidebar-title {
+	font-size: 16px;
+	color: #000ddd;
+}
+
+.sidebar-item {
+	font-size: 20px;
+	text-decoration: none!important;
+}
+
+.sidebar-item h6 {
+	text-indent: 10px;
+}
+
+.sidebar-footer {
+	width: 200px;
+	position: fixed;
+	bottom: 0;
+}
+
+.part {
+	margin-top: 0px;
+}
+
+.jumbotron {
+	background: linear-gradient(to bottom right, #007bff, #000ccc);
+	height: 360px;
+}
+
+.content-body {
+	position: relative;
+	top: -200px;
+}
+
+
+@media(max-width: 768px){
+	.sidebar {
+		left: -200px;
+	}
+
+	.sidebar.slide {
+		left: 0;
+	}
+
+	form {
+		display: none;
+	}
+}
+
+
+
+@media(min-width: 768px){
+	.content {
+		display: grid;
+		grid-template-columns: 200px 1fr;
+	}
+
+	.sidebar-toggle {
+		display: none;
+	}
+}
+
+
+@media(min-width: 992px){
+	.part {
+		margin-left: auto;
+	}
+}

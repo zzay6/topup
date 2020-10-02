@@ -31,6 +31,4 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/account','PageController@account');
 });
 
-Route::group(['middleware' => ['auth','staff']], function(){
-	Route::get('/admin/profile','PageController@profile');
-});
+Route::get('/admin/dashboard','Admin\PageController@dashboard');
