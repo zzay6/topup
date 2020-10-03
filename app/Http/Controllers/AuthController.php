@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use \App\User;
+use App\Models\Aktifity;
 
 class AuthController extends Controller
 {
@@ -15,6 +16,12 @@ class AuthController extends Controller
             'email' => $req->email,
             'level' => 'User',
             'password' => bcrypt($req->password)
+        ]);
+
+        Aktifity::create([
+            'subjek' => 'Pengguna baru',
+            'object' => $req->email,
+            'content' => 'Telah mendaftar'
         ]);
 
         return redirect('/login');

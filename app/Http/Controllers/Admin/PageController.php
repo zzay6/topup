@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Pegawai;
+use App\Models\Aktifity;
 use App\User;
 
 class PageController extends Controller
@@ -15,9 +16,10 @@ class PageController extends Controller
     	$user = User::count();
     	$pegawai = Pegawai::count();
     	$product = Produk::count();
+        $aktifity = Aktifity::all();
 
 
-    	return view('admin.dashboard', compact(['user','product','pegawai']));
+    	return view('admin.dashboard', compact(['user','product','pegawai','aktifity']));
     }
 
     public function pegawai()

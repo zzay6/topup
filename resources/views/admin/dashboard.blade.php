@@ -9,27 +9,22 @@
 			</div>
 			<div class="card-body px-4">
 
+
+				@foreach($aktifity as $a)
 				<div class="row w-100 m-auto">
 					<div class="d-flex" style="align-items: center;">
+						@if($a->subjek == 'Pengguna baru')
 						<div class="rounded-circle bg-primary mr-3" style="width: 10px; height: 10px;"></div>
-							</div>
-						<div class="text-secondary">
-							pengguna baru, <span class="text-warning">amel@gmail.com</span> Telah mendaftar
-						</div>
+						@else if($a->subjek == 'Pengguna masuk')
+						<div class="rounded-circle bg-warning mr-3" style="width: 10px; height: 10px;"></div>
+						@endif
 					</div>
-
-					<div class="mb-2"></div>
-
-					<div class="row w-100 m-auto">
-						<div class="d-flex" style="align-items: center;">
-							<div class="rounded-circle bg-success mr-3" style="width: 10px; height: 10px;"></div>
-						</div>
-						<div class="text-secondary">
-							Transaksi selesai, <span class="text-warning">TY000001</span> Transaksi berhasil
-						</div>
+					<div class="text-secondary">
+						{{ $a->subjek }}, <span class="text-warning">{{ $a->object }}</span> {{ $a->content }}
 					</div>
-									
-					<div class="mb-2"></div>
+				</div>
+				<div class="mb-2"></div>
+				@endforeach
 									
 				</div>
 			</div>
