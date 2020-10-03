@@ -21,6 +21,7 @@
 					</div>
 					<div class="text-secondary">
 						{{ $a->subjek }}, <span class="text-warning">{{ $a->object }}</span> {{ $a->content }}
+						<small class="text-secondary" style="font-size: 11px;">{{ $a->created_at }}</small>
 					</div>
 				</div>
 				<div class="mb-2"></div>

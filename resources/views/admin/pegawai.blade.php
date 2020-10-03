@@ -69,7 +69,7 @@
 					</thead>
 					<tbody>
 
-						@forelse($pegawai as $p)
+						@foreach($pegawai as $p)
 						<tr class="text-primary">
 							<td>{{ $p->id }}</td>
 							<td>{{ $p->name }}</td>
@@ -93,13 +93,7 @@
 								</form>
 							</td>
 						</tr>
-						@empty
-
-						<div class="alert aert-warning">
-							<strong>Data tidak di temukan</strong>
-						</div>
-
-						@endforelse
+						@endforeach
 
 
 					</tbody>
@@ -140,7 +134,7 @@
 													<a href="" class="badge badge-warning text-white p-2">Edit</a>
 													<form class="d-inline" action="{{ url('admin/pegawai/delete') }}" method="post">
 														@csrf
-														<input type="hidden" name="pegawai" value="{{ $p->id }}" readonly>
+														<input type="hidden" name="pegawai" value="`+ data.id +`" readonly>
 														<button class="badge badge-danger border-0 p-2">Hapus</button>
 													</form>
 												</td>
