@@ -24,3 +24,4 @@ Route::post('/getitem', 'ProductController@getItem');
 Route::post('/checkgameid','RestapiController@checkGameId');
 Route::post('/payment/request','TransactionController@create');
 Route::post('/payment/payment','PaymentController@payment');
+Route::post('/pegawai/get','Admin\PegawaiController@pegawaiGet');

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row w-100 m-auto">
 	<div class="col-xl-6 px-2">
-		<div class="card shadow-sm rounded-sm mb-4 border-0" style="height: 250px; overflow: auto;">
+		<div class="card shadow rounded-sm mb-4 border-0" style="height: 250px; overflow: auto;">
 			<div class="card-header">
 				<h6 class="text-primary mb-0">Riwayat aktifitas</h6>
 			</div>
@@ -38,7 +38,7 @@
 					
 	<div class="row w-100 m-auto">
 		<div class="col-md-6 col-lg-4 col-xl-3 px-0 p-2">
-			<div class="card bg-warning text-white">
+			<div class="card bg-warning text-white shadow">
 				<div class="card-body">
 					<div class="">
 						<h6 class="card-title mb-0" style="color: rgb(250, 240, 100);">
@@ -55,7 +55,7 @@
 		</div>
 	</div>
 	<div class="col-md-6 col-lg-4 col-xl-3 px-0 p-2">
-		<div class="card bg-success text-white">
+		<div class="card bg-success text-white shadow">
 			<div class="card-body">
 				<div>
 					<h6 class="card-title mb-0" style="color: rgb(40, 220, 100);">
@@ -74,7 +74,7 @@
 						
 
 	<div class="col-md-6 col-lg-4 col-xl-3 px-0 p-2">
-		<div class="card bg-primary text-white">
+		<div class="card bg-primary text-white shadow">
 			<div class="card-body">
 				<div>
 					<h6 class="card-title mb-0" style="color: rgb(0, 223, 255);">
@@ -91,7 +91,7 @@
 		</div>
 	</div>
 	<div class="col-md-6 col-lg-4 col-xl-3 px-0 p-2">
-		<div class="card bg-danger text-white">
+		<div class="card bg-danger text-white shadow">
 			<div class="card-body">
 				<div>
 					<h6 class="card-title mb-0" style="color: rgb(290, 83, 129);">

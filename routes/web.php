@@ -33,3 +33,4 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/admin/dashboard','Admin\PageController@dashboard');
 Route::get('/admin/pegawai','Admin\PageController@pegawai');
+Route::post('/admin/pegawai/{commands}','Admin\PegawaiController@pegawaiPost');
