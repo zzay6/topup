@@ -7,6 +7,7 @@ use Auth;
 use App\Models\Transactions;
 use App\Models\Produk;
 use App\Models\Items;
+use App\Models\Aktifity;
 use App\Models\Voucher;
 
 class PaymentController extends Controller
@@ -50,6 +51,12 @@ class PaymentController extends Controller
         		$transaction->update([
         			'status' => 'success'
         		]);
+
+                Aktifity::create([
+                    'subjek' => 'Transaksi berhasil',
+                    'object' => $transactionGet->order_id,
+                    'content' => 'Transaksi selesai'
+                ]);
 
         		$response = [
             	   	'status' => 'Berhasil',

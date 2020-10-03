@@ -133,8 +133,7 @@
 							'nickname' : $('.nickname').html()
 					},
 					success : function(result) {
-							console.log(result);
-							// window.location.href = result.url;
+							window.location.href = result.url;
 					}
 			});
 	});

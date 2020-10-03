@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use \App\Models\Transactions;
 use \App\Models\Items;
 use \App\Models\Produk;
+use \App\Models\Aktifity;
 use \App\User;
 
 class TransactionController extends Controller
@@ -41,6 +42,12 @@ class TransactionController extends Controller
     		'pembayaran' => $req->payment,
     		'status' => 'pendding'
     	]);
+
+        Aktifity::create([
+            'subjek' => 'Transaksi baru',
+            'object' => $transactionId,
+            'content' => 'Telah dibuat'
+        ]);
 
     	$url = [
     		'url' => url('/payment/voucher').'/'.$transactionId

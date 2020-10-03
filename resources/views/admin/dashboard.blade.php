@@ -3,25 +3,28 @@
 @section('content')
 <div class="row w-100 m-auto">
 	<div class="col-xl-6 px-2">
-		<div class="card shadow rounded-sm mb-4 border-0" style="height: 250px; overflow: auto;">
-			<div class="card-header">
+		<div class="card shadow rounded-sm mb-4 border-0">
+			<div class="card-header d-flex" style="align-items: center;">
 				<h6 class="text-primary mb-0">Riwayat aktifitas</h6>
+				<a href="" class="ml-auto"><small>Lihat selengkapnya</small></a>
 			</div>
-			<div class="card-body px-4">
+			<div class="card-body px-4" style="height: 250px; overflow: auto;">
 
 
 				@foreach($aktifity as $a)
-				<div class="row w-100 m-auto">
-					<div class="d-flex" style="align-items: center;">
+				<div class="d-flex" style="justify-content">
+					<div class="d-flex mr-3" style="align-items: center;">
 						@if($a->subjek == 'Pengguna baru')
-						<div class="rounded-circle bg-primary mr-3" style="width: 10px; height: 10px;"></div>
-						@else if($a->subjek == 'Pengguna masuk')
-						<div class="rounded-circle bg-warning mr-3" style="width: 10px; height: 10px;"></div>
+						<div class="rounded-circle bg-primary" style="width: 10px; height: 10px;"></div>
+						@elseif($a->subjek == 'Transaksi baru')
+						<div class="rounded-circle bg-warning" style="width: 10px; height: 10px;"></div>
+						@elseif($a->subjek == 'Transaksi berhasil')
+						<div class="rounded-circle bg-success" style="width: 10px; height: 10px;"></div>
 						@endif
 					</div>
 					<div class="text-secondary">
 						{{ $a->subjek }}, <span class="text-warning">{{ $a->object }}</span> {{ $a->content }}
-						<small class="text-secondary" style="font-size: 11px;">{{ $a->created_at }}</small>
+						<small class="text-secondary" style="font-size: 11px;">pada : {{ $a->created_at }}</small>
 					</div>
 				</div>
 				<div class="mb-2"></div>
