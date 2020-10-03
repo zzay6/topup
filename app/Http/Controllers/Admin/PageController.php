@@ -14,7 +14,7 @@ class PageController extends Controller
     public function dashboard()
     {
     	$user = User::count();
-    	$pegawai = Pegawai::count();
+    	$pegawai = Pegawai::where('status','Confirmed')->count();
     	$product = Produk::count();
         $aktifity = Aktifity::all();
 
