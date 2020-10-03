@@ -6,7 +6,7 @@
 @section('content')
 <div class="px-2">
 	<div class="bg-white shadow rounded-sm px-0" style="overflow: hidden;">
-		<div class="d-flex alert-primary border-bottom px-3 py-2" style="align-items: center;">
+		<div class="d-flex border-bottom px-3 py-2" style="align-items: center;">
 			<h6 class="mb-0">
 				<i>Daftar pegawai</i>
 			</h6>
@@ -46,17 +46,12 @@
 
 		<div class="mt-2 p-3">
 			<div class="d-flex">
-				
-				<select class="text-lg">
-					<option>Semua</option>
-					<option>Aktif</option>
-					<option>Menunggu</option>
-				</select>
 
-				<div class="input-group ml-auto rounded-sm" style="width: 250px; overflow: hidden;">
-					<input type="text" name="key" class="form-control form-control-sm border-right-0 key" placeholder="Cari pegawai">
+
+				<div class="input-group ml-auto" style="width: 250px;">
+					<input type="text" name="key" class="form-control form-control-sm key rounded-sm" placeholder="Cari pegawai">
 					<div class="input-group-prepend">
-						<span class="btn btn-primary text-white py-0 d-flex" style=" align-items: center;">Cari</span>
+						<span class="btn btn-primary text-white py-0 d-flex rounded-sm ml-2" style="align-items: center; z-index: 0">Cari</span>
 					</div>
 				</div>
 			</div>
@@ -82,7 +77,15 @@
 							<td>{{ $p->roll }}</td>
 							<td>{{ $p->status }}</td>
 							<td>
-								<a href="" class="badge badge-warning text-white p-2">Edit</a>
+								@if($p->status == 'Pendding')
+								<form class="d-inline" action="{{ url('admin/pegawai/accept') }}" method="post">
+									@csrf
+									<input type="hidden" name="pegawai" value="{{ $p->id }}" readonly>
+									<button class="badge badge-warning text-white border-0 p-2">Terima</button>
+								</form>
+								@else
+								<a href="" class="badge badge-warning text-white border-0 p-2">Lihat</a>
+								@endif
 								<form class="d-inline" action="{{ url('admin/pegawai/delete') }}" method="post">
 									@csrf
 									<input type="hidden" name="pegawai" value="{{ $p->id }}" readonly>

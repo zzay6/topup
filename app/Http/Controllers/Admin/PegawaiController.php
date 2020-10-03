@@ -19,6 +19,10 @@ class PegawaiController extends Controller
     		]);
     	} else if ($commands === 'delete') {
     		Pegawai::where('id',$req->pegawai)->delete();
+    	} else if ($commands === 'accept') {
+    		pegawai::where('id',$req->pegawai)->update([
+                'status' => 'Confirmed'
+            ]);
     	}
 
 
@@ -28,7 +32,11 @@ class PegawaiController extends Controller
 
     public function pegawaiGet(Request $req)
     {
-    	$pegawai = Pegawai::where('name','LIKE','%'.$req->key.'%')->orderBy('id','desc')->get();
+    	if ($req->key == '') {
+    		$pegawai = Pegawai::all();
+    	} else {
+    		$pegawai = Pegawai::where('name','LIKE','%'.$req->key.'%')->orderBy('id','desc')->get();
+    	}
     	return response($pegawai);
     }
 }
