@@ -8,6 +8,7 @@ use \App\Models\Transactions;
 use \App\Models\Items;
 use \App\Models\Produk;
 use \App\Models\Aktifity;
+use App\Models\Cookie;
 use \App\User;
 
 class TransactionController extends Controller
@@ -21,8 +22,12 @@ class TransactionController extends Controller
 
     	$transactionId = 'XX'.sprintf('%08s', $transaction + 1);
 
-        if (isset($_COOKIE['tpynvam'])) {
-            $auth = User::where('id',$_COOKIE['tpyidzcy'])->first('id')->id;
+        if (isset($_COOKIE['zvcaytpy'])) {
+            $auth = Cookie::where([
+                'cookie' => $_COOKIE['zvcaytpy']
+            ])->first('email')->email;
+
+            $auth = User::where('email',$auth)->first('id')->id;
         } else {
             $auth = null;
         }
