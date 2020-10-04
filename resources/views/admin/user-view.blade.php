@@ -62,7 +62,11 @@
 						</tr>
 					</tbody>
 				</table>
+				@if($user->status === 'Active')
 				<a style="cursor: pointer;" class="badge badge-danger border-0 p-2 btn-modal-2 mt-2 ml-auto">Non aktifkan</a>
+				@else
+				<a style="cursor: pointer;" class="badge badge-success border-0 p-2 btn-modal-2 mt-2 ml-auto">Aktifkan</a>
+				@endif
 				<div class="modal modal-2 d-flex">
 					<form class="modal-content border-0 shadow" action="" method="post">
 						@csrf
@@ -83,7 +87,11 @@
 						</div>
 						<div class="modal-footer">
 							<a class="btn btn-secondary btn-modal-2">Batal</a>
+							@if($user->status == 'Active')
 							<button class="btn btn-danger text-white px-4">Non aktifkan</button>
+							@else
+							<button class="btn btn-success text-white px-4">Aktifkan</button>
+							@endif
 						</div>
 					</form>
 				</div>

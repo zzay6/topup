@@ -24,6 +24,11 @@
 					</span>
 				</div>
 				<div class="ml-auto">
+					@if($u->status == 'Active')
+					<a class="badge badge-success mr-2">{{ $u->status }}</a>
+					@else
+					<a class="badge badge-danger mr-2">{{ $u->status }}</a>
+					@endif
 					<form class="d-inline" method="post" action="{{ url('admin/user') }}/{{ $u->hash }}">
 						@csrf
 						<button class="badge border-0 badge-warning text-white p-2 px-5">Lihat</button>

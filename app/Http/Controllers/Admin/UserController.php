@@ -20,7 +20,18 @@ class UserController extends Controller
 
     public function delete($user)
     {
-    	User::where('hash',$user)->delete();
+    	$data = User::where('hash',$user);
+        if($data->first('status')->status === 'Active'){
+            $data->update([
+                'status' => 'non Active'
+            ]);
+        } else {
+            $data->update([
+                'status' => 'Active'
+            ]);
+        }
+
+
     	return redirect('/admin/user');
     }
 }
