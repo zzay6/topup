@@ -27,4 +27,10 @@ class PageController extends Controller
     	$pegawai = Pegawai::orderBy('id','desc')->get();
     	return view('admin.pegawai', compact(['pegawai']));
     }
+
+
+    public function user()
+    {
+        return view('admin.user');
+    }
 }

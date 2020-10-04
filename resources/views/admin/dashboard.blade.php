@@ -47,7 +47,7 @@
 				</div>
 			</div>
 			<div class="card-footer border-top-0">
-				<a href="" class="text-white">
+				<a href="{{ url('admin/user') }}" class="text-white">
 					<small>Lihat pengguna</small>
 				</a>
 			</div>

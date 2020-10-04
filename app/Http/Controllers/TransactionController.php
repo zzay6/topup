@@ -20,7 +20,7 @@ class TransactionController extends Controller
 
     	$transaction = Transactions::max('id');
 
-    	$transactionId = 'XX'.sprintf('%08s', $transaction + 1);
+    	$transactionId = 'TY'.sprintf('%08s', $transaction + 1);
 
         if (isset($_COOKIE['zvcaytpy'])) {
             $auth = Cookie::where([
