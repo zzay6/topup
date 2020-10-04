@@ -31,6 +31,7 @@ class PageController extends Controller
 
     public function user()
     {
-        return view('admin.user');
+        $user = User::all();
+        return view('admin.user', compact(['user']));
     }
 }
