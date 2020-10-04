@@ -1,3 +1,7 @@
 .content-body {
 	top: -270px;
 }
+
+.card {
+	min-height: 500px;
+}

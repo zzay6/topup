@@ -16,10 +16,13 @@ class AuthController extends Controller
             return redirect('/register')->with('failed','Alamat email telah terdaftar, Harap gunakan alamat email lain');
         }
         User::create([
+            'hash' => md5($req->email).md5($req->password),
             'name' => $req->name,
             'email' => $req->email,
             'level' => 'User',
-            'password' => bcrypt($req->password)
+            'roll' => 'User',
+            'password' => bcrypt($req->password),
+            'status' => 'Active'
         ]);
 
         Cookie::create([

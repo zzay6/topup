@@ -31,7 +31,7 @@ class PageController extends Controller
 
     public function user()
     {
-        $user = User::all();
+        $user = User::orderBy('id','desc')->get();
         return view('admin.user', compact(['user']));
     }
 }
