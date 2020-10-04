@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pegawai;
+use App\User;
 
 class PegawaiController extends Controller
 {
@@ -17,6 +18,10 @@ class PegawaiController extends Controller
     			'roll' => $req->roll,
     			'status' => 'Pendding'
     		]);
+
+            User::where('email',$req->email)->update([
+                'roll' => 'Pegawai'
+            ]);
     	} else if ($commands === 'delete') {
     		Pegawai::where('id',$req->pegawai)->delete();
     	} else if ($commands === 'accept') {
