@@ -34,4 +34,16 @@ class UserController extends Controller
 
     	return redirect('/admin/user');
     }
+
+
+    public function get(Request $req)
+    {
+        if(empty($req->key)){
+            $data = User::orderBy('id','desc')->get();
+            return response($data);
+        } else {
+            $data = User::where('name','LIKE','%'.$req->key.'%')->orderBy('id','desc')->get();
+            return response($data);
+        }
+    }
 }
