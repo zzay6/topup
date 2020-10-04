@@ -71,7 +71,15 @@
 							<h6 class="text-primary mb-0">Peringatan</h6>
 						</div>	
 						<div class="modal-body">
-							
+							<span>Penting</span>
+							<ul>
+								<li>
+									Dengan anda menonaktifkan akun, anda akan bertanggung jawab atas ini,
+								</li>
+								<li>
+									Akun akan di pertahanka
+								</li>
+							</ul>
 						</div>
 						<div class="modal-footer">
 							<a class="btn btn-secondary btn-modal-2">Batal</a>
