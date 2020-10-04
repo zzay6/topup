@@ -9,9 +9,12 @@
 		<div class="d-flex mb-3" style="justify-content: space-between; align-items: center;">
 			<div>
 			</div>
-			<a class="btn btn-warning text-white btn-modal">Kirim email</a>
+			<div>
+				<a class="btn btn-success text-white">Transaksi</a>
+				<a class="btn btn-warning text-white btn-modal-1">Kirim email</a>
+			</div>
 		</div>
-		<div class="modal d-flex">
+		<div class="modal modal-1 d-flex">
 			<form class="modal-content border-0 shadow" action="{{ url('admin/pegawai/add') }}" method="post">
 				@csrf
 				<div class="modal-header bg-white">
@@ -28,7 +31,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<a class="btn btn-secondary btn-modal">Batal</a>
+					<a class="btn btn-secondary btn-modal-1">Batal</a>
 					<button class="btn btn-warning text-white px-4">Kirim</button>
 				</div>
 			</form>
@@ -59,14 +62,36 @@
 						</tr>
 					</tbody>
 				</table>
+				<a style="cursor: pointer;" class="badge badge-danger border-0 p-2 btn-modal-2 mt-2 ml-auto">Non aktifkan</a>
+				<div class="modal modal-2 d-flex">
+					<form class="modal-content border-0 shadow" action="" method="post">
+						@csrf
+						@method('delete')
+						<div class="modal-header bg-white">
+							<h6 class="text-primary mb-0">Peringatan</h6>
+						</div>	
+						<div class="modal-body">
+							
+						</div>
+						<div class="modal-footer">
+							<a class="btn btn-secondary btn-modal-2">Batal</a>
+							<button class="btn btn-danger text-white px-4">Non aktifkan</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<div class="blur"></div>
 <script type="text/javascript">
-	$('.btn-modal').click(function() {
+	$('.btn-modal-1').click(function() {
+			$('.modal-1').toggleClass('popup');
+	});
+
+	$('.btn-modal-2').click(function() {
 			$('.blur').toggleClass('popup');
-			$('.modal').toggleClass('popup');
+			$('.modal-2').toggleClass('popup');
 	});
 </script>
 @endsection
@@ -94,6 +119,29 @@
 
 textarea {
 	outline: 0;
+}
+
+.blur {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: -100%;
+	left: 0;
+	background: #000;
+	opacity: 0.2;
+	z-index: 1;
+}
+
+.modal-2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-2 .modal-content {
+	width: 90%;
+	max-width: 500px;
+	height: auto;
 }
 </style>
 @endsection
