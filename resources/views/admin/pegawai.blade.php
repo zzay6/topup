@@ -48,12 +48,13 @@
 			<div class="d-flex">
 
 
-				<div class="input-group ml-auto" style="width: 250px;">
+				<div class="input-group" style="width: 250px;">
 					<input type="text" name="key" class="form-control form-control-sm key rounded-sm" placeholder="Cari pegawai">
 					<div class="input-group-prepend">
 						<span class="btn btn-primary text-white py-0 d-flex rounded-sm ml-2" style="align-items: center; z-index: 0">Cari</span>
 					</div>
 				</div>
+				<span class="loader d-none ml-3 text-primary">Loading</span>
 			</div>
 
 			<div style="overflow: auto; width: 100%; max-height: 300px;">
@@ -112,6 +113,7 @@
 
 
 	$('.btn-primary').click(function() {
+			$('.loader').removeClass('d-none');
 			$.ajax({
 					url:'{{ url("api/pegawai/get") }}',
 					type:'post',
@@ -120,6 +122,7 @@
 							'key' : $('.key').val()
 					},
 					success: function(result) {
+							$('.loader').addClass('d-none');
 							$('tbody').html('');
 							let pegawai = result;
 							$.each(pegawai, function(index, data) {

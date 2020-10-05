@@ -14,12 +14,18 @@ class PageController extends Controller
 {
     public function register(Request $req)
     {
+        if(Auth::check()){
+            return redirect('/');
+        }
         return view('auth.register');
     }
 
 
     public function login()
     {
+        if(Auth::check()){
+            return redirect('/');
+        }
         return view('auth.login');
     } 
 
