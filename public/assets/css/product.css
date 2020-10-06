@@ -1,0 +1,12 @@
+.thumbnail {
+	height: 100px;
+	width: 100px;
+	overflow: hidden;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+}
+
+.thumbnail img {
+	width: 100%;
+}

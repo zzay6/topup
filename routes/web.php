@@ -37,3 +37,4 @@ Route::post('/admin/pegawai/{commands}','Admin\PegawaiController@pegawaiPost');
 Route::get('/admin/user','Admin\PageController@user');
 Route::delete('/admin/user/{user}','Admin\UserController@delete');
 Route::post('/admin/user/{user}','Admin\UserController@view');
+Route::get('/admin/product','Admin\PageController@product');

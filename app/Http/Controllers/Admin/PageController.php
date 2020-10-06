@@ -34,4 +34,11 @@ class PageController extends Controller
         $user = User::orderBy('id','desc')->get();
         return view('admin.user', compact(['user']));
     }
+
+
+    public function product()
+    {
+        $product = Produk::orderBy('id','desc')->get();
+        return view('admin.product', compact(['product']));
+    }
 }
