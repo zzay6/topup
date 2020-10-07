@@ -10,3 +10,30 @@
 .thumbnail img {
 	width: 100%;
 }
+
+.blur {
+	background: #000;
+	opacity: 0.2;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1;
+}
+
+.modal {
+	position: fixed;
+	top: -100%;
+	left: 0;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal.popup {
+	top: 0;
+}
+
+.modal-content {
+	max-width: 600px;
+}

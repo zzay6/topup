@@ -34,4 +34,9 @@ class ProductController extends Controller
     {
         return Produk::where('nama','LIKE','%'.$req->key.'%')->orderBy('id','desc')->get();
     }
+
+    public function add(Request $req)
+    {
+        # code...
+    }
 }

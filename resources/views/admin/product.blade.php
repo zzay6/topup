@@ -19,7 +19,26 @@
 				<span class="loader d-none ml-3 text-primary">Loading</span>
 			</div>
 			<div>
-				<button class="btn btn-success py-1">Tambahkan produk</button>
+				<button class="btn btn-success btn-modal py-1">Tambahkan produk</button>
+				<div class="modal d-flex">
+					<div class="modal-content border-0">
+						<form action="" method="post">
+							@csrf	
+							<div class="modal-header">
+								<h6 class="text-primary">Tambah produk</h6>
+							</div>
+							<div class="modal-body">
+								<div class="input-group">
+									<input type="text" name="product_name" class="form-control" placeholder="Nama produk">
+								</div>
+							</div>
+							<div class="modal-footer border-top-0"> 
+								<span class="btn btn-secondary btn-modal">Batal</span>
+								<button class="btn btn-success">Tambahkan</button>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -53,6 +72,7 @@
 		</div>
 	</div>
 </div>
+<div class="blur d-none"></div>
 <script type="text/javascript">
 	$('.btn-primary').click(function() {
 			$('.loader').removeClass('d-none');
@@ -90,7 +110,12 @@
 							});
 					}
 			});
-	})
+	});
+
+	$('.btn-modal').click(function(){
+			$('.modal').toggleClass('popup');
+			$('.blur').toggleClass('d-none');
+	});
 </script>
 @endsection
 @section('config')
