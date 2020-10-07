@@ -1,23 +1,28 @@
 @extends('layouts.main')
 @section('title','Pengguna')
 @section('content')
-<div class="card border-0 shadow">
+<div class="card border-0 shadow-sm">
 	<div class="card-header">
 		<h6 class="text-primary mb-0">
 			<i>Daftar pengguna</i>
 		</h6>
 	</div>
 	<div class="card-body">
-		<div class="d-flex">
-			
-		<div class="input-group mb-3" style="width: 250px;">
-			<input class="form-control form-control-sm rounded-sm search-input" placeholder="Cari pengguna">
-			<div class="input-group-prepend">
-				<a class="btn btn-primary p-0 d-flex rounded-sm ml-1 px-2" style="align-items: center; z-index: 0;">Cari</a>
+		<div class="d-flex" style="justify-content: space-between;">
+			<div class="d-flex">	
+				<div class="input-group mb-3" style="width: 250px;">
+					<input class="form-control form-control-sm rounded-sm search-input" placeholder="Cari pengguna">
+					<div class="input-group-prepend">
+						<a class="btn btn-primary p-0 d-flex rounded-sm ml-1 px-2" style="align-items: center; z-index: 0;">Cari</a>
+					</div>
+				</div>
+				<span class="loader d-none ml-3 text-primary">Loading</span>
+			</div>
+			<div>
+				<button class="btn btn-success py-1">Tambahkan produk</button>
 			</div>
 		</div>
-		<span class="loader d-none ml-3 text-primary">Loading</span>
-		</div>
+
 		<div class="bg-secondary rounded-sm mb-3 text-white p-2">
 			<span class="px-2">#</span>
 			<span class="pl-4">Gambar</span>
@@ -36,6 +41,10 @@
 						<span class="text-dark" style="font-size: 18px; font-weight: 500;">{{ $p->nama }}</span>
 						<br>
 						<small class="text-secondary">Dibuat pada : {{ $p->created_at }}</small>
+						<br>
+						<div>
+							<a href="{{ url('admin/product') }}/{{ $p->id }}" class="badge badge-info py-1 px-3 border-0 text-white">Lihat</a>
+						</div>
 					</div>
 				</div>
 			</div>

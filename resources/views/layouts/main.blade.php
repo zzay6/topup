@@ -43,19 +43,6 @@
 
 
 	<div class="container-fluid px-0">
-		<nav class="navbar navbar-expand-dark bg-white w-100 shadow-sm">
-			<h6 class="navbar-brand mb-0 text-primary">TopupYuk</h6>
-			<div class="ml-auto">
-				<form action="" method="get" class="">
-					<input type="text" name="name" class="form-control form-control-sm" placeholder="Cari sesuatu">
-				</form>
-				<div class="navbar-nav d-flex" style="justify-content: flex-end;">
-					<span class="rounded btn btn-white py-0 sidebar-toggle">
-						<h2 class="text-primary">=</h2>
-					</span>
-				</div>
-			</div>
-		</nav>
 		<div class="content">
 			
 			<div class="sidebar bg-white shadow-lg">
@@ -73,6 +60,19 @@
 			</div>
 			<div></div>
 			<div class="w-100 part">
+				<nav class="navbar navbar-expand-dark bg-primary shadow-sm">
+					<h6 class="navbar-brand mb-0 text-white">TopupYuk</h6>
+					<div class="ml-auto">
+						<form action="" method="get" class="">
+							<input type="text" name="name" class="form-control form-control-sm" placeholder="Cari sesuatu">
+						</form>
+						<div class="navbar-nav d-flex" style="justify-content: flex-end;">
+							<span class="rounded btn btn-white py-0 sidebar-toggle">
+								<h2 class="text-primary">=</h2>
+							</span>
+						</div>
+					</div>
+				</nav>
 
 				<div class="jumbotron rounded-0">
 				</div>
