@@ -26,3 +26,4 @@ Route::post('/payment/request','TransactionController@create');
 Route::post('/payment/payment','PaymentController@payment');
 Route::post('/pegawai/get','Admin\PegawaiController@pegawaiGet');
 Route::post('/user/get','Admin\UserController@get');
+Route::post('/product/get','ProductController@product');

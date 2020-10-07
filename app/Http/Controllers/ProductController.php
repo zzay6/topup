@@ -28,4 +28,10 @@ class ProductController extends Controller
     {
     	return response(Items::where('id',$req->item)->get());
     }
+
+
+    public function product(Request $req)
+    {
+        return Produk::where('nama','LIKE','%'.$req->key.'%')->orderBy('id','desc')->get();
+    }
 }

@@ -57,7 +57,7 @@
 	$('.btn-primary').click(function() {
 			$('.loader').removeClass('d-none');
 			$.ajax({
-					url:'{{ url("api/user/get") }}',
+					url:'{{ url("api/product/get") }}',
 					type:'post',
 					dataType:'json',
 					data:{
@@ -65,23 +65,24 @@
 					},
 					success : function(result) {
 							$('.loader').addClass('d-none');
-							let user = result;
+							let product = result;
 							$('.result').html('');
-							$.each(user, function(no, data){
+							$.each(product, function(no, data){
 									$('.result').append	(`
-										<div class="border p-2 rounded-sm mb-2">
-											<div class="d-flex" style="justify-content: space-between; align-items: center;">
-												<input type="checkbox" class="mr-3" value="`+ data.hash +`">
-												<div class="">
-													<span class="text-primary">
-														`+ data.name +`
-													</span>
-												</div>
-												<div class="ml-auto">
-													<form class="d-inline" method="post" action="{{ url('admin/user') }}/`+ data.hash +`">
-														@csrf
-														<button class="badge border-0 badge-warning text-white p-2 px-5">Lihat</button>
-													</form>
+										<div class="border rounded-sm p-2 mb-2 d-flex">
+											<h4 class="text-primary d-flex mb-0 px-2 mr-2 border-right" style="align-items: center;">`+ no +`</h4>
+											<div class="thumbnail rounded">
+												<img src="{{ url('/storage/images') }}/`+ data.gambar +`" class="">
+											</div>
+											<div class="d-flex pl-3" style="align-items: center;">
+												<div>
+													<span class="text-dark" style="font-size: 18px; font-weight: 500;">`+ data.nama +`</span>
+													<br>
+													<small class="text-secondary">Dibuat pada : `+ data.created_at +`</small>
+													<br>
+													<div>
+														<a href="{{ url('admin/product') }}/`+ data.id +`" class="badge badge-info py-1 px-3 border-0 text-white">Lihat</a>
+													</div>
 												</div>
 											</div>
 										</div>
