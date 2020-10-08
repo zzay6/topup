@@ -35,11 +35,8 @@
 }
 
 .modal-content {
+	width: 100vw;
 	max-width: 600px;
-	max-height: 100vh;
-}
-
-.modal-scroll {
-	height: 200px;
+	height: 100vh;
 	overflow: auto;
 }

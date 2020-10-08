@@ -28,16 +28,28 @@
 								<h6 class="text-primary">Tambah produk</h6>
 							</div>
 							<div class="modal-body">
+								<small class="text-secondary">Gambar produk</small>
+								<div class="input-group mb-3">
+									<input type="file" name="product_image">
+								</div>
+								<div class="d-none border image-preview"></div>
 								<small class="text-secondary">Nama produk</small>
 								<div class="input-group mb-3">
 									<input type="text" name="product_name" class="form-control" placeholder="Nama produk">
 								</div>
+								<small class="text-secondary">Produk kode</small>
+								<div class="input-group mb-3">
+									<input type="text" name="product_code" class="form-control" placeholder="Kode produk">
+								</div>
 								<small class="text-secondary">Variasi</small>
-								<div class="input-group mb-2">
-									<input type="text" name="item_name" class="form-control form-control-sm item-name" placeholder="Nama item">
+								<div class="input-group mb-2" id="item-list">
+									<input type="text" class="form-control form-control-sm item-name" placeholder="Nama item">
+								</div>
+								<div class="input-group mb-2" id="item-list">
+									<input type="text" class="form-control form-control-sm item-code" placeholder="Kode item">
 								</div>
 								<div class="input-group">
-									<input type="text" name="item_price" class="form-control form-control-sm rounded-sm item-price" placeholder="Harga item">
+									<input type="text" class="form-control form-control-sm rounded-sm item-price" placeholder="Harga item">
 									<div class="input-group-prepend">
 										<span class="btn btn-primary py-0 rounded-sm btn-add-item ml-2">Tambah</span>
 									</div>
@@ -47,7 +59,7 @@
 									<div class="items-list"></div>
 								</div>
 							</div>
-							<div class="modal-footer border-top-0"> 
+							<div class="modal-footer border-top-0 d-block bg-white"> 
 								<span class="btn btn-secondary btn-modal">Batal</span>
 								<button class="btn btn-success">Tambahkan</button>
 							</div>
@@ -132,19 +144,40 @@
 			$('.blur').toggleClass('d-none');
 	});
 
+	var no = 0;
+
 	$('.btn-add-item').click(function() {
 			let name = $('.item-name').val();
+			let code = $('.item-code').val();
 			let price = $('.item-price').val();
 
+			var list = no++;
+
 			$('.items-list').append(`
-					<div class="mb-3">
-						<input value="`+ name +`">
+					<div class="mb-3 list border p-2 d-flex" id="list`+ list +`">
+					 	<div>
+							<input value="`+ name +`" class="border-0 border-bottom" name="item_name[]">
+							<br>
+							<input value="`+ code +`" class="border-0 border-bottom" name="item_code[]">
+							<br>
+							<input value="`+ price +`" class="border-0 border-bottom" name="item_price[]">
+						</div>
+						<div class="d-flex" style="align-items: flex-end;">
+							<button class="remove-list remove-list-`+ list +`" type="button" onclick="removeList('`+ list +`')">Hapus</button>
+						</div>
 					</div>
+					
 			`);
 
-			$('.item-name').val('');
-			$('.item-price').val('');
+
 	});
+	
+	function removeList(lists) {
+			let list = document.getElementById('list'+lists);
+			let itemsList = document.querySelector('.item-list');
+			list.remove();
+	}
+
 </script>
 @endsection
 @section('config')
