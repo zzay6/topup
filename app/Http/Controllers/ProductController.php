@@ -37,6 +37,6 @@ class ProductController extends Controller
 
     public function add(Request $req)
     {
-        # code...
+        return $req;
     }
 }

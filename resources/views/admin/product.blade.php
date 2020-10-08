@@ -13,7 +13,7 @@
 				<div class="input-group mb-3" style="width: 250px;">
 					<input class="form-control form-control-sm rounded-sm search-input" placeholder="Cari pengguna">
 					<div class="input-group-prepend">
-						<a class="btn btn-primary p-0 d-flex rounded-sm ml-1 px-2" style="align-items: center; z-index: 0;">Cari</a>
+						<a class="btn btn-primary btn-search p-0 d-flex rounded-sm ml-1 px-2" style="align-items: center; z-index: 0;">Cari</a>
 					</div>
 				</div>
 				<span class="loader d-none ml-3 text-primary">Loading</span>
@@ -28,8 +28,23 @@
 								<h6 class="text-primary">Tambah produk</h6>
 							</div>
 							<div class="modal-body">
-								<div class="input-group">
+								<small class="text-secondary">Nama produk</small>
+								<div class="input-group mb-3">
 									<input type="text" name="product_name" class="form-control" placeholder="Nama produk">
+								</div>
+								<small class="text-secondary">Variasi</small>
+								<div class="input-group mb-2">
+									<input type="text" name="item_name" class="form-control form-control-sm item-name" placeholder="Nama item">
+								</div>
+								<div class="input-group">
+									<input type="text" name="item_price" class="form-control form-control-sm rounded-sm item-price" placeholder="Harga item">
+									<div class="input-group-prepend">
+										<span class="btn btn-primary py-0 rounded-sm btn-add-item ml-2">Tambah</span>
+									</div>
+								</div>
+								<hr>
+								<div class="modal-scroll">
+									<div class="items-list"></div>
 								</div>
 							</div>
 							<div class="modal-footer border-top-0"> 
@@ -74,7 +89,7 @@
 </div>
 <div class="blur d-none"></div>
 <script type="text/javascript">
-	$('.btn-primary').click(function() {
+	$('.btn-search').click(function() {
 			$('.loader').removeClass('d-none');
 			$.ajax({
 					url:'{{ url("api/product/get") }}',
@@ -115,6 +130,20 @@
 	$('.btn-modal').click(function(){
 			$('.modal').toggleClass('popup');
 			$('.blur').toggleClass('d-none');
+	});
+
+	$('.btn-add-item').click(function() {
+			let name = $('.item-name').val();
+			let price = $('.item-price').val();
+
+			$('.items-list').append(`
+					<div class="mb-3">
+						<input value="`+ name +`">
+					</div>
+			`);
+
+			$('.item-name').val('');
+			$('.item-price').val('');
 	});
 </script>
 @endsection
