@@ -41,6 +41,10 @@
 								<div class="input-group mb-3">
 									<input type="text" name="product_code" class="form-control" placeholder="Kode produk">
 								</div>
+								<small class="text-secondary">Developer</small>
+								<div class="input-group mb-3">
+									<input type="text" name="developer" class="form-control" placeholder="Developer">
+								</div>
 								<small class="text-secondary">Variasi</small>
 								<div class="input-group mb-2" id="item-list">
 									<input type="text" class="form-control form-control-sm item-name" placeholder="Nama item">

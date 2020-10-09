@@ -37,6 +37,15 @@ class ProductController extends Controller
 
     public function add(Request $req)
     {
-        return $req;
+        foreach ($req->item_name as $i => $x) {
+            Items::create([
+                'pulsa_op' => $req->product_code,
+                'pulsa_code' => $req->item_code[$i],
+                'pulsa_price'=> $req->item_price[$i],
+                'pulsa_nominal' => $x
+            ]);
+        }
+
+        return "Berhasil";
     }
 }
