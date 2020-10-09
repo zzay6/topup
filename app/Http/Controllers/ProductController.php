@@ -46,6 +46,12 @@ class ProductController extends Controller
             ]);
         }
 
-        return "Berhasil";
+        return view('admin.product');
+    }
+
+
+    public function view($product, $aim)
+    {
+        return Produk::where('pulsa_op',$product)->first();
     }
 }

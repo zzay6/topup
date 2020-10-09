@@ -93,7 +93,7 @@
 						<small class="text-secondary">Dibuat pada : {{ $p->created_at }}</small>
 						<br>
 						<div>
-							<a href="{{ url('admin/product') }}/{{ $p->id }}" class="badge badge-info py-1 px-3 border-0 text-white">Lihat</a>
+							<a href="{{ url('admin/product') }}/{{ $p->pulsa_op }}/view" class="badge badge-info py-1 px-3 border-0 text-white">Lihat</a>
 						</div>
 					</div>
 				</div>
