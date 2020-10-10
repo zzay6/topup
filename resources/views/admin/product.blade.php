@@ -22,7 +22,7 @@
 				<button class="btn btn-success btn-modal py-1">Tambahkan produk</button>
 				<div class="modal d-flex">
 					<div class="modal-content border-0">
-						<form action="" method="post">
+						<form action="" method="post" enctype="multipart/form-data">
 							@csrf	
 							<div class="modal-header">
 								<h6 class="text-primary">Tambah produk</h6>
@@ -72,6 +72,12 @@
 				</div>
 			</div>
 		</div>
+		@if(session('gagal'))
+		<div class="alert alert-danger">
+			<strong>Gagal!, </strong>
+			<span>{{ session('gagal') }}</span>
+		</div>
+		@endif
 
 		<div class="bg-secondary rounded-sm mb-3 text-white p-2">
 			<span class="px-2">#</span>
@@ -84,7 +90,7 @@
 			<div class="border rounded-sm p-2 mb-2 d-flex">
 				<h4 class="text-primary d-flex mb-0 px-2 mr-2 border-right" style="align-items: center;">{{ $p->id }}</h4>
 				<div class="thumbnail rounded">
-					<img src="{{ url('/storage/images') }}/{{ $p->gambar }}" class="">
+					<img src="{{ url('/storage/images/products') }}/{{ $p->gambar }}" class="">
 				</div>
 				<div class="d-flex pl-3" style="align-items: center;">
 					<div>
@@ -94,6 +100,11 @@
 						<br>
 						<div>
 							<a href="{{ url('admin/product') }}/{{ $p->pulsa_op }}/view" class="badge badge-info py-1 px-3 border-0 text-white">Lihat</a>
+							<form action="{{ url('admin/product') }}/{{ $p->pulsa_op }}/delete" method="post">
+								@csrf
+								@method('delete')
+								<button class="badge badge-danger border-0 py-1 px-3 border-0 text-white">Hapus</button>
+							</form>
 						</div>
 					</div>
 				</div>

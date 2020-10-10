@@ -12,7 +12,7 @@
 			<a href="{{ url('games') }}/{{ $p->pulsa_op }}">
 				<div class="card rounded-sm shadow-sm border-0">
 					<div class="card-image">
-						<img src="{{ url('storage/images') }}/{{ $p->gambar }}" class="w-100">
+						<img src="{{ url('storage/images/products') }}/{{ $p->gambar }}" class="w-100">
 					</div>
 					<div class="card-body">
 						<h5 class="card-title text-secondary mb-1">{{ $p->nama }}</h5>
