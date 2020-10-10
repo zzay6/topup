@@ -22,12 +22,17 @@
 	z-index: 1;
 }
 
+form {
+	display: block;
+}
+
 .modal {
 	position: fixed;
 	top: -100%;
 	left: 0;
 	justify-content: center;
 	align-items: center;
+	display: flex;
 }
 
 .modal.popup {

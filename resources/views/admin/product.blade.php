@@ -20,8 +20,8 @@
 			</div>
 			<div>
 				<button class="btn btn-success btn-modal py-1">Tambahkan produk</button>
-				<div class="modal d-flex">
-					<div class="modal-content border-0">
+				<div class="modal">
+					<div class="modal-content border-0 rounded-0">
 						<form action="" method="post" enctype="multipart/form-data">
 							@csrf	
 							<div class="modal-header">
@@ -79,7 +79,7 @@
 		</div>
 		@endif
 
-		<div class="bg-secondary rounded-sm mb-3 text-white p-2">
+		<div class="bg-secondary rounded-sm mb-2 text-white p-2">
 			<span class="px-2">#</span>
 			<span class="pl-4">Gambar</span>
 			<span></span>
@@ -100,7 +100,7 @@
 						<br>
 						<div>
 							<a href="{{ url('admin/product') }}/{{ $p->pulsa_op }}/view" class="badge badge-info py-1 px-3 border-0 text-white">Lihat</a>
-							<form action="{{ url('admin/product') }}/{{ $p->pulsa_op }}/delete" method="post">
+							<form action="{{ url('admin/product') }}/{{ $p->pulsa_op }}/delete" method="post" class="d-inline">
 								@csrf
 								@method('delete')
 								<button class="badge badge-danger border-0 py-1 px-3 border-0 text-white">Hapus</button>

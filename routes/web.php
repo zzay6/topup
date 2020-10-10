@@ -40,4 +40,4 @@ Route::post('/admin/user/{user}','Admin\UserController@view');
 Route::get('/admin/product','Admin\PageController@product');
 Route::post('/admin/product','ProductController@add');
 Route::delete('/admin/product/{product}/delete','ProductController@delete');
-Route::get('/admin/product/{product}/view','ProductController@view');
+Route::get('/admin/product/{id}/view','ProductController@view');

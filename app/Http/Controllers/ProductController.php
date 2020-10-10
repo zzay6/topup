@@ -6,6 +6,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Http\Request;
 use \App\Models\Produk;
 use \App\Models\Items;
+use \App\Models\Logs;
 
 class ProductController extends Controller
 {
@@ -69,9 +70,14 @@ class ProductController extends Controller
     }
 
 
-    public function view($product, $aim)
+    public function view($id)
     {
-        return Produk::where('pulsa_op',$product)->first();
+        $url = url('').'/games/'.$id;
+        
+        $product = Produk::where('pulsa_op',$id)->first();
+        $visitor = Logs::where('url',$url)->count();
+
+        return view('admin.product-view', compact(['product','visitor']));
     }
 
 
