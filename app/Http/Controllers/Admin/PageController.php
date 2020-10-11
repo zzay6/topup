@@ -16,8 +16,7 @@ class PageController extends Controller
     	$user = User::count();
     	$pegawai = Pegawai::where('status','Confirmed')->count();
     	$product = Produk::count();
-        $aktifity = Aktifity::all();
-
+        $aktifity = Aktifity::orderBy('id','desc')->get();
 
     	return view('admin.dashboard', compact(['user','product','pegawai','aktifity']));
     }
