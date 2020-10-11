@@ -63,12 +63,9 @@
 				<nav class="navbar navbar-expand-dark bg-primary shadow-sm">
 					<h6 class="navbar-brand mb-0 text-white">TopupYuk</h6>
 					<div class="ml-auto">
-						<form action="" method="get" class="">
-							<input type="text" name="name" class="form-control form-control-sm" placeholder="Cari sesuatu">
-						</form>
 						<div class="navbar-nav d-flex" style="justify-content: flex-end;">
 							<span class="rounded btn btn-white py-0 sidebar-toggle">
-								<h2 class="text-primary">=</h2>
+								<h2 class="text-white">=</h2>
 							</span>
 						</div>
 					</div>

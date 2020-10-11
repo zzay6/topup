@@ -40,6 +40,17 @@ class ProductController extends Controller
     public function add(Request $req)
     {
 
+        $req->validate([
+            'product_name' => 'required',
+            'product_image' => 'required',
+            'product_code' => 'required',
+            'developer' => 'required',
+            'item_name' => 'required',
+            'item_code' => 'required',
+            'item_price' => 'required'
+        ]);
+
+
         $img = $req->product_image;
         $ext = ['PNG','JPG','JPEG','jpeg','jpg','png'];
 
@@ -48,7 +59,7 @@ class ProductController extends Controller
         }
 
         $imgName = hash('sha256', uniqid()).'.'.$img->extension();
-        $img->storeAs('images/products',$imgName);
+        $img->storeAs('public/images/products',$imgName);
 
         Produk::create([
             'gambar' => $imgName,
@@ -66,7 +77,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return view('admin.product');
+        return redirect('admin/product')->with('success','Produk berhasil ditambahkan');
     }
 
 

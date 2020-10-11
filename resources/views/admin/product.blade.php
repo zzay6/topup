@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Pengguna')
+@section('title','Produk')
 @section('content')
 <div class="card border-0 shadow-sm">
 	<div class="card-header">
@@ -8,7 +8,7 @@
 		</h6>
 	</div>
 	<div class="card-body">
-		<div class="d-flex" style="justify-content: space-between;">
+		<div class="form-group">
 			<div class="d-flex">	
 				<div class="input-group mb-3" style="width: 250px;">
 					<input class="form-control form-control-sm rounded-sm search-input" placeholder="Cari pengguna">
@@ -30,30 +30,30 @@
 							<div class="modal-body">
 								<small class="text-secondary">Gambar produk</small>
 								<div class="input-group mb-3">
-									<input type="file" name="product_image">
+									<input type="file" name="product_image" class="@error('product_image') is-invalid @enderror">
 								</div>
 								<div class="d-none border image-preview"></div>
 								<small class="text-secondary">Nama produk</small>
 								<div class="input-group mb-3">
-									<input type="text" name="product_name" class="form-control" placeholder="Nama produk">
+									<input type="text" name="product_name" class="form-control text-primary @error('product_name') is-invalid @enderror" placeholder="Nama produk" value="{{ old('product_name') }}">
 								</div>
 								<small class="text-secondary">Produk kode</small>
 								<div class="input-group mb-3">
-									<input type="text" name="product_code" class="form-control" placeholder="Kode produk">
+									<input type="text" name="product_code" class="form-control text-primary @error('product_code') is-invalid @enderror" placeholder="Kode produk" value="{{ old('product_code') }}">
 								</div>
 								<small class="text-secondary">Developer</small>
 								<div class="input-group mb-3">
-									<input type="text" name="developer" class="form-control" placeholder="Developer">
+									<input type="text" name="developer" class="form-control text-primary @error('developer') is-invalid @enderror" placeholder="Developer" value="{{ old('developer') }}">
 								</div>
 								<small class="text-secondary">Variasi</small>
 								<div class="input-group mb-2" id="item-list">
-									<input type="text" class="form-control form-control-sm item-name" placeholder="Nama item">
+									<input type="text" class="form-control form-control-sm item-name text-primary" placeholder="Nama item">
 								</div>
 								<div class="input-group mb-2" id="item-list">
-									<input type="text" class="form-control form-control-sm item-code" placeholder="Kode item">
+									<input type="text" class="form-control form-control-sm item-code text-primary" placeholder="Kode item">
 								</div>
 								<div class="input-group">
-									<input type="text" class="form-control form-control-sm rounded-sm item-price" placeholder="Harga item">
+									<input type="text" class="form-control form-control-sm rounded-sm item-price text-primary" placeholder="Harga item">
 									<div class="input-group-prepend">
 										<span class="btn btn-primary py-0 rounded-sm btn-add-item ml-2">Tambah</span>
 									</div>
@@ -79,6 +79,13 @@
 		</div>
 		@endif
 
+		@if(session('success'))
+		<div class="alert alert-success">
+			<strong>Berhasil!, </strong>
+			<span>{{ session('success') }}</span>
+		</div>
+		@endif
+
 		<div class="bg-secondary rounded-sm mb-2 text-white p-2">
 			<span class="px-2">#</span>
 			<span class="pl-4">Gambar</span>
@@ -88,7 +95,7 @@
 			
 			@foreach($product as $p)
 			<div class="border rounded-sm p-2 mb-2 d-flex">
-				<h4 class="text-primary d-flex mb-0 px-2 mr-2 border-right" style="align-items: center;">{{ $p->id }}</h4>
+				<h5 class="text-primary d-flex mb-0 px-2 mr-2 border-right" style="align-items: center;">{{ $p->id }}</h5>
 				<div class="thumbnail rounded">
 					<img src="{{ url('/storage/images/products') }}/{{ $p->gambar }}" class="">
 				</div>
@@ -134,7 +141,7 @@
 										<div class="border rounded-sm p-2 mb-2 d-flex">
 											<h4 class="text-primary d-flex mb-0 px-2 mr-2 border-right" style="align-items: center;">`+ no +`</h4>
 											<div class="thumbnail rounded">
-												<img src="{{ url('/storage/images') }}/`+ data.gambar +`" class="">
+												<img src="{{ url('/storage/images/products') }}/`+ data.gambar +`" class="">
 											</div>
 											<div class="d-flex pl-3" style="align-items: center;">
 												<div>
@@ -170,7 +177,7 @@
 
 			$('.items-list').append(`
 					<div class="mb-3 list border p-2 d-flex" id="list`+ list +`">
-					 	<div>
+						<div>
 							<input value="`+ name +`" class="border-0 border-bottom" name="item_name[]">
 							<br>
 							<input value="`+ code +`" class="border-0 border-bottom" name="item_code[]">
@@ -192,6 +199,31 @@
 			let itemsList = document.querySelector('.item-list');
 			list.remove();
 	}
+
+	@error('product_name')
+	$('.modal').toggleClass('popup');
+	$('.blur').toggleClass('d-none');
+	@enderror
+	@error('product_code')
+	$('.modal').toggleClass('popup');
+	$('.blur').toggleClass('d-none');
+	@enderror
+	@error('developer')
+	$('.modal').toggleClass('popup');
+	$('.blur').toggleClass('d-none');
+	@enderror
+	@error('item_name')
+	$('.modal').toggleClass('popup');
+	$('.blur').toggleClass('d-none');
+	@enderror
+	@error('item_price')
+	$('.modal').toggleClass('popup');
+	$('.blur').toggleClass('d-none');
+	@enderror
+	@error('item_code')
+	$('.modal').toggleClass('popup');
+	$('.blur').toggleClass('d-none');
+	@enderror
 
 </script>
 @endsection

@@ -13,7 +13,7 @@
 	top: 0;
 	overflow: auto;
 	transition: all 0.2s;
-	z-index: 1;
+	z-index: 3;
 	border-right: 2px solid #fff;
 }
 
@@ -53,6 +53,20 @@
 .content-body {
 	position: relative;
 	top: -200px;
+}
+
+@media(max-width: 578px){
+	.navbar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 2;
+	}
+
+	.part {
+		margin-top: 60px;
+	}
 }
 
 
