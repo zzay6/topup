@@ -25,6 +25,7 @@
 
 
 		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="{{ url('/assets/fontawesome/css/all.css') }}">
 		<link rel="stylesheet" href="{{ url('/assets/bootstrap/bootstrap.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url('/assets/css/carousel.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url('/assets/css/main.css') }}">
@@ -36,7 +37,6 @@
 		<title>@yield('title') - TopupYuk</title>
 </head>
 
-<script src="{{ url('/assets/js/fontawesome.js') }}"></script>
 <script src="{{ url('/assets/js/jquery-3.4.1.js') }}"></script>
 
 <body class="bg-light">
@@ -46,15 +46,14 @@
 		<div class="content">
 			
 			<div class="sidebar bg-white shadow-lg">
-				<div class="sidebar-menu pt-3">
-					<a class="sidebar-item" href="{{ url('/admin/dashboard') }}">	
-						<h6 class="text-secondary py-2 pl-3">Dashboard</h6>
+				<div class="sidebar-menu pt-5">
+					<a class="sidebar-item text-secondary pl-3 mb-4" href="{{ url('/admin/dashboard') }}">	
+						<i class="fas fa-home sidebar-icon"></i>
+						<span class="sidebar-title pl-3">Dashboard</span>
 					</a>
-					<a class="sidebar-item" href="{{ url('/admin/profile') }}">	
-						<h6 class="text-secondary py-2 pl-3">Profile</h6>
-					</a>
-					<a class="sidebar-item" href="">	
-						<h6 class="text-secondary py-2 pl-3">Aktifitas</h6>
+					<a class="sidebar-item text-secondary pl-3 mb-4" href="{{ url('/admin/dashboard') }}">	
+						<i class="fas fa-home sidebar-icon"></i>
+						<span class="sidebar-title pl-3">Laporan</span>
 					</a>
 				</div>
 			</div>

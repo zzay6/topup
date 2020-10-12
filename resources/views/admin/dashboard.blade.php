@@ -1,5 +1,16 @@
 @extends('layouts.main')
 @section('title','Dashboard')
+@section('config')
+<style type="text/css">
+	
+.card-icon {
+	font-size: 40px;
+	display: flex;
+	align-items: center;
+}
+
+</style>
+@endsection
 @section('content')
 <div class="row w-100 m-auto">
 	<div class="col-xl-6 px-2">
@@ -39,13 +50,14 @@
 	<div class="row w-100 m-auto">
 		<div class="col-md-6 col-lg-4 col-xl-3 px-0 p-2">
 			<div class="card bg-warning text-white shadow">
-				<div class="card-body">
+				<div class="card-body d-flex">
 					<div class="">
 						<h6 class="card-title mb-0" style="color: rgb(250, 240, 100);">
 							Jumlah pengguna
 						</h6>
 					<h5 class="mb-0 mt-2">{{ $user }} Pengguna</h5>
 				</div>
+				<i class="fas fa-user card-icon m-auto"></i>
 			</div>
 			<div class="card-footer border-top-0">
 				<a href="{{ url('admin/user') }}" class="text-white">
