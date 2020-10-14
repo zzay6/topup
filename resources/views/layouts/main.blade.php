@@ -43,32 +43,134 @@
 
 
 	<div class="container-fluid px-0">
+
+		<nav class="navbar navbar-expand-dark bg-white w-100 shadow">
+			<h6 class="navbar-brand mb-0 text-primary">Website name</h6>
+			<div class="ml-auto">
+				<div class="navbar-nav d-flex" style="justify-content: flex-end;">
+					<span class="rounded btn btn-white py-0 sidebar-toggle">
+						<i class="text-primary fas fa-bars" style="font-size: 20px;"></i>
+					</span>
+				</div>
+			</div>
+		</nav>
+
+
 		<div class="content">
 			
 			<div class="sidebar bg-white shadow-lg">
-				<div class="sidebar-menu pt-5">
-					<a class="sidebar-item text-secondary pl-3 mb-4" href="{{ url('/admin/dashboard') }}">	
-						<i class="fas fa-home sidebar-icon"></i>
-						<span class="sidebar-title pl-3">Dashboard</span>
-					</a>
-					<a class="sidebar-item text-secondary pl-3 mb-4" href="{{ url('/admin/dashboard') }}">	
-						<i class="fas fa-home sidebar-icon"></i>
-						<span class="sidebar-title pl-3">Laporan</span>
-					</a>
+				<div class="sidebar-menu px-3">
+			
+					<h6 class="text-secondary mb-3" style="opacity: 0.7;">Menu</h6>
+
+					<div class="accordion mb-4" id="accordionExample">
+					  <h2 class="mb-0">
+					   <button class="btn btn-block text-left text-secondary dropdown-toggle p-0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+					   		<span>
+					      	<i class="far fa-file sidebar-icon"></i>
+									<a class="sidebar-title d-inline text-secondary">Halaman</a>
+					   		</span>
+					    </button>
+					  </h2>
+					 	<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+					    <div class="border-left my-2 mb-4 ml-2">	
+								<a class="sidebar-item" href="{{ url('admin/dashboard') }}">
+									<span class="text-secondary py-2 pl-3">Dashboard</span>
+								</a>
+								<a class="sidebar-item" href="profile.html">	
+									<span class="text-secondary py-2 pl-3">Umpan balik</span>
+								</a>
+								<a class="sidebar-item" href="">	
+									<span class="text-secondary py-2 pl-3">Jadwal</span>
+								</a>
+							</div>
+					  </div>
+					
+
+					  <br>
+
+
+					  <h2 class="mb-0">
+					   <button class="btn btn-block text-left text-secondary dropdown-toggle p-0" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					   		<span>
+					      	<i class="fas fa-user sidebar-icon"></i>
+									<a class="sidebar-title d-inline text-secondary">Pribadi</a>
+					   		</span>
+					    </button>
+					  </h2>
+					 	<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+					    <div class="border-left my-2 mb-4 ml-2">	
+								<a class="sidebar-item" href="index.html">
+									<span class="text-secondary py-2 pl-3">Profile</span>
+								</a>
+								<a class="sidebar-item" href="profile.html">	
+									<span class="text-secondary py-2 pl-3">Notifikasi</span>
+								</a>
+								<a class="sidebar-item" href="">	
+									<span class="text-secondary py-2 pl-3">Aktifitas</span>
+								</a>
+							</div>
+					  </div>
+
+					  <br>
+
+
+					  <h2 class="mb-0">
+					   <button class="btn btn-block text-left text-secondary dropdown-toggle p-0" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					   		<span>
+					      	<i class="fas fa-database sidebar-icon"></i>
+									<a class="sidebar-title d-inline text-secondary">Database</a>
+					   		</span>
+					    </button>
+					  </h2>
+					 	<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+					    <div class="border-left my-2 mb-4 ml-2">	
+								<a class="sidebar-item" href="index.html">
+									<span class="text-secondary py-2 pl-3">Produk</span>
+								</a>
+								<a class="sidebar-item" href="profile.html">	
+									<span class="text-secondary py-2 pl-3">Pengguna</span>
+								</a>
+								<a class="sidebar-item" href="">	
+									<span class="text-secondary py-2 pl-3">Transaksi</span>
+								</a>
+							</div>
+					  </div>
+
+
+
+					  <br>
+
+
+					  <h2 class="mb-0">
+					   <button class="btn btn-block text-left text-secondary dropdown-toggle p-0" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+					   		<span>
+					      	<i class="fas fa-chart-bar sidebar-icon"></i>
+									<a class="sidebar-title d-inline text-secondary">Website</a>
+					   		</span>
+					    </button>
+					  </h2>
+					 	<div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+					    <div class="border-left my-2 mb-4 ml-2">	
+								<a class="sidebar-item" href="index.html">
+									<span class="text-secondary py-2 pl-3">Aktifitas</span>
+								</a>
+								<a class="sidebar-item" href="profile.html">	
+									<span class="text-secondary py-2 pl-3">Log table</span>
+								</a>
+								<a class="sidebar-item" href="">	
+									<span class="text-secondary py-2 pl-3">Transaksi</span>
+								</a>
+							</div>
+					  </div>
+
+
+					</div>
 				</div>
 			</div>
 			<div></div>
 			<div class="w-100 part">
-				<nav class="navbar navbar-expand-dark bg-primary shadow-sm">
-					<h6 class="navbar-brand mb-0 text-white">TopupYuk</h6>
-					<div class="ml-auto">
-						<div class="navbar-nav d-flex" style="justify-content: flex-end;">
-							<span class="rounded btn btn-white py-0 sidebar-toggle">
-								<h2 class="text-white">=</h2>
-							</span>
-						</div>
-					</div>
-				</nav>
+				
 
 				<div class="jumbotron rounded-0">
 				</div>

@@ -1,45 +1,74 @@
+::-webkit-scrollbar {
+	width: 7px;
+	background: none;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #999;
+	border-radius: 7px;
+}
+
+.navbar {
+	position: fixed;
+	top: 0;
+	z-index: 2;
+	left: 0;
+}
+
 .navbar-brand {
 	font-size: 20px;
 }
 
 .sidebar {
-	width: 200px;
+	width: 240px;
 	height: 100vh;
 	position: fixed;
 	left: 0;
 	top: 0;
 	overflow: auto;
 	transition: all 0.2s;
-	z-index: 3;
+	z-index: 1;
 	border-right: 2px solid #fff;
 }
 
 .sidebar-menu {
+	padding-top: 90px;
 	overflow: auto;
-}
-
-.sidebar-icon {
-	font-size: 27px;
 }
 
 .sidebar-title {
 	font-size: 16px;
-	font-family: sans-serif;
-	font-weight: 600;
+	color: #000ddd;
 }
 
-.sidebar-item:hover .sidebar-title {
-	color: #007bff!important;
-}
-
-.sidebar-item:hover .sidebar-icon {
-	color: #007bff!important;
-}
-
-.sidebar-item {
+.sidebar-item, .sidebar-title {
+	font-size: 13px;
 	text-decoration: none!important;
 	display: flex;
+	opacity: 0.7;
+	font-weight: 500;
+	font-family: sans-serif;
 	align-items: center;
+}
+
+.sidebar-title {
+	font-size: 16px;
+	padding-left: 10px;
+}
+
+.sidebar .dropdown-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.sidebar-icon {
+	font-size: 20px;
+	opacity: 0.7;
+}
+
+.sidebar-item h6 {
+	text-indent: 10px;
 }
 
 .sidebar-footer {
@@ -53,33 +82,19 @@
 }
 
 .jumbotron {
-	background: linear-gradient(to bottom right, #007bff, #000ccc);
-	height: 300px;
+	background: linear-gradient(to bottom right, #007bff, #000bbb);
+	height: 360px;
 }
 
 .content-body {
 	position: relative;
-	top: -270px;
-}
-
-@media(max-width: 578px){
-	.navbar {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		z-index: 2;
-	}
-
-	.part {
-		margin-top: 60px;
-	}
+	top: -200px;
 }
 
 
 @media(max-width: 768px){
 	.sidebar {
-		left: -200px;
+		left: -240px;
 	}
 
 	.sidebar.slide {
@@ -96,7 +111,7 @@
 @media(min-width: 768px){
 	.content {
 		display: grid;
-		grid-template-columns: 200px 1fr;
+		grid-template-columns: 240px 1fr;
 	}
 
 	.sidebar-toggle {

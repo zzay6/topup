@@ -4,7 +4,7 @@
 <style type="text/css">
 	
 .card-icon {
-	font-size: 40px;
+	font-size: 50px;
 	display: flex;
 	align-items: center;
 }
@@ -48,76 +48,69 @@
 				
 	<h5 class="text-primary ml-2">Website</h5>	
 	<div class="row w-100 m-auto">
-		<div class="col-md-6 col-lg-4 col-xl-3 px-0 p-2">
+		<div class="col-md-6 col-xl-4 px-0 p-2">
 			<div class="card bg-warning text-white shadow">
-				<div class="card-body d-flex">
+				<div class="card-body d-flex px-4" style="justify-content: space-between; align-items: center;">
 					<div class="">
-						<h6 class="card-title mb-0" style="color: rgb(250, 240, 100);">
-							Jumlah pengguna
-						</h6>
-					<h5 class="mb-0 mt-2">{{ $user }} Pengguna</h5>
+						<h6 class="card-title mb-0" style="color: rgb(250, 240, 100);">Jumlah pengguna</h6>
+						<h5 class="mb-0 mt-2">{{ $user }} Pengguna</h5>
+					</div>
+					<i class="fas fa-users card-icon"></i>
 				</div>
-				<i class="fas fa-user card-icon m-auto"></i>
+				<div class="card-footer border-top-0">
+					<a href="{{ url('admin/user') }}" class="text-white">
+						<small>Lihat pengguna</small>
+					</a>
+				</div>
 			</div>
+		</div>
+		<div class="col-md-6 col-xl-4 px-0 p-2">
+			<div class="card bg-success text-white shadow">
+				<div class="card-body d-flex px-4" style="justify-content: space-between; align-items: center;">
+					<div>
+						<h6 class="card-title mb-0" style="color: rgb(40, 220, 100);">Jumlah pegawai</h6>
+						<h5 class="mb-0 mt-2">{{ $pegawai }} Pegawai</h5>
+					</div>
+					<i class="card-icon fas fa-headset"></i>
+				</div>
+				<div class="card-footer border-top-0">
+					<a href="{{ url('admin/pegawai') }}" class="text-white">
+						<small>Lihat pegawai</small>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-xl-4 px-0 p-2">
+			<div class="card bg-primary text-white shadow">
+				<div class="card-body d-flex px-4" style="justify-content: space-between; align-items: center;">
+					<div>
+						<h6 class="card-title mb-0" style="color: rgb(0, 223, 255);">Jumlah produk</h6>
+						<h5 class="mb-0 mt-2">{{ $product }} Produk</h5>
+					</div>
+					<i class="card-icon fas fa-box"></i>
+				</div>
+				<div class="card-footer border-top-0">
+					<a href="{{ url('admin/product') }}" class="text-white">
+						<small>Lihat produk</small>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-xl-4 px-0 p-2">
+			<div class="card bg-danger text-white shadow">
+				<div class="card-body d-flex px-4" style="justify-content: space-between; align-items: center;">
+					<div>
+						<h6 class="card-title mb-0" style="color: rgb(290, 83, 129);">Pendapatan(Bulan ini)</h6>
+						<h5 class="mb-0 mt-2">Rp1000,000</h5>
+					</div>
+					<i class="card-icon fas fa-dollar-sign"></i>
+				</div>
 			<div class="card-footer border-top-0">
-				<a href="{{ url('admin/user') }}" class="text-white">
-					<small>Lihat pengguna</small>
+				<a href="" class="text-white">
+					<small>Lihat riwayat</small>
 				</a>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6 col-lg-4 col-xl-3 px-0 p-2">
-		<div class="card bg-success text-white shadow">
-			<div class="card-body">
-				<div>
-					<h6 class="card-title mb-0" style="color: rgb(40, 220, 100);">
-						Jumlah pegawai
-					</h6>
-					<h5 class="mb-0 mt-2">{{ $pegawai }} Pegawai</h5>
-				</div>
-			</div>
-			<div class="card-footer border-top-0">
-				<a href="{{ url('admin/pegawai') }}" class="text-white">
-					<small>Lihat pegawai</small>
-				</a>
-			</div>
-		</div>
-	</div>
-						
-
-	<div class="col-md-6 col-lg-4 col-xl-3 px-0 p-2">
-		<div class="card bg-primary text-white shadow">
-			<div class="card-body">
-				<div>
-					<h6 class="card-title mb-0" style="color: rgb(0, 223, 255);">
-						Jumlah produk
-					</h6>
-					<h5 class="mb-0 mt-2">{{ $product }} Produk</h5>
-				</div>
-			</div>
-			<div class="card-footer border-top-0">
-				<a href="{{ url('admin/product') }}" class="text-white">
-					<small>Lihat produk</small>
-				</a>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-6 col-lg-4 col-xl-3 px-0 p-2">
-		<div class="card bg-danger text-white shadow">
-			<div class="card-body">
-				<div>
-					<h6 class="card-title mb-0" style="color: rgb(290, 83, 129);">
-						Saldo
-					</h6>
-				<h5 class="mb-0 mt-2">Rp1000,000</h5>
-			</div>
-		</div>
-		<div class="card-footer border-top-0">
-			<a href="" class="text-white">
-				<small>Lihat riwayat</small>
-			</a>
-		</div>
-	</div>
-</div>
 </div>
 @endsection
