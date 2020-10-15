@@ -13,10 +13,6 @@
 	overflow-x: auto;
 }
 
-.datatable {
-	scrollx: true;
-}
-
 
 </style>
 @endsection
@@ -131,31 +127,34 @@
 				<i class="text-primary">Transaksi</i>
 			</div>
 
-			<div class="card-body table-data w-100">
-				<table class="datatable table border nowrap">
-					<thead class="bg-light">
-						<th>Order ID</th>
-						<th>Games</th>
-						<th>Items</th>
-						<th>Harga Total</th>
-						<th>Pembayaran</th>
-						<th>Dibuat</th>
-						<th>Status</th>
-					</thead>
-					<tbody>
-						@foreach($transactions as $t)
-						<tr>
-							<td>{{ $t->order_id }}</td>
-							<td>{{ $t->provider }}</td>
-							<td>{{ $t->nominal }}</td>
-							<td>{{ $t->harga }}</td>
-							<td>{{ $t->pembayaran }}</td>
-							<td>{{ $t->created_at }}</td>
-							<td>{{ $t->status }}</td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
+			<div class="p-3">
+
+				<div class="card-body table-data w- p-0">
+					<table class="datatable table border nowrap">
+						<thead class="bg-light">
+							<th>Order ID</th>
+							<th>Games</th>
+							<th>Items</th>
+							<th>Harga Total</th>
+							<th>Pembayaran</th>
+							<th>Dibuat</th>
+							<th>Status</th>
+						</thead>
+						<tbody>
+							@foreach($transactions as $t)
+							<tr>
+								<td class="p-3">{{ $t->order_id }}</td>
+								<td class="p-3">{{ $t->provider }}</td>
+								<td class="p-3">{{ $t->nominal }}</td>
+								<td class="p-3">{{ $t->harga }}</td>
+								<td class="p-3">{{ $t->pembayaran }}</td>
+								<td class="p-3">{{ $t->created_at }}</td>
+								<td class="p-3">{{ $t->status }}</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
 			</div>
 
 		</div>

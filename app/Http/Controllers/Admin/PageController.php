@@ -46,6 +46,7 @@ class PageController extends Controller
     public function product()
     {
         $product = Produk::orderBy('id','desc')->get();
+
         return view('admin.product', compact(['product']));
     }
 }

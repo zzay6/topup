@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use \App\Models\Produk;
 use \App\Models\Items;
 use \App\Models\Logs;
+use \App\Models\Transactions;
 
 class ProductController extends Controller
 {
@@ -83,12 +84,19 @@ class ProductController extends Controller
 
     public function view($id)
     {
-        $url = url('').'/games/'.$id;
+        $url = url('games/'.$id);
         
         $product = Produk::where('pulsa_op',$id)->first();
         $visitor = Logs::where('url',$url)->count();
+        $productName = $product->nama;
+        $selled = Transactions::where([
+            'provider' => $productName,
+            'status' => 'success'
+        ])->count();
 
-        return view('admin.product-view', compact(['product','visitor']));
+        $items = Items::where('pulsa_op',$id)->get();
+
+        return view('admin.product-view', compact(['product','visitor','selled','items']));
     }
 
 

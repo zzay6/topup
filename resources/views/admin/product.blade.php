@@ -87,7 +87,6 @@
 		@endif
 
 		<div class="bg-secondary rounded-sm mb-2 text-white p-2">
-			<span class="px-2">#</span>
 			<span class="pl-4">Gambar</span>
 			<span></span>
 		</div>
@@ -95,7 +94,6 @@
 			
 			@foreach($product as $p)
 			<div class="border rounded-sm p-2 mb-2 d-flex">
-				<h5 class="text-primary d-flex mb-0 px-2 mr-2 border-right" style="align-items: center;">{{ $p->id }}</h5>
 				<div class="thumbnail rounded">
 					<img src="{{ url('/storage/images/products') }}/{{ $p->gambar }}" class="">
 				</div>
