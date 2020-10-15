@@ -31,14 +31,16 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/account','PageController@account');
 });
 
-Route::redirect('/admin','admin/dashboard');
-Route::get('/admin/dashboard','Admin\PageController@dashboard');
-Route::get('/admin/pegawai','Admin\PageController@pegawai');
-Route::post('/admin/pegawai/{commands}','Admin\PegawaiController@pegawaiPost');
-Route::get('/admin/user','Admin\PageController@user');
-Route::delete('/admin/user/{user}','Admin\UserController@delete');
-Route::post('/admin/user/{user}','Admin\UserController@view');
-Route::get('/admin/product','Admin\PageController@product');
-Route::post('/admin/product','ProductController@add');
-Route::delete('/admin/product/{product}/delete','ProductController@delete');
-Route::get('/admin/product/{id}/view','ProductController@view');
+Route::group(['middleware' => ['auth','admin']], function(){
+	Route::redirect('/admin','admin/dashboard');
+	Route::get('/admin/dashboard','Admin\PageController@dashboard');
+	Route::get('/admin/pegawai','Admin\PageController@pegawai');
+	Route::post('/admin/pegawai/{commands}','Admin\PegawaiController@pegawaiPost');
+	Route::get('/admin/user','Admin\PageController@user');
+	Route::delete('/admin/user/{user}','Admin\UserController@delete');
+	Route::post('/admin/user/{user}','Admin\UserController@view');
+	Route::get('/admin/product','Admin\PageController@product');
+	Route::post('/admin/product','ProductController@add');
+	Route::delete('/admin/product/{product}/delete','ProductController@delete');
+	Route::get('/admin/product/{id}/view','ProductController@view');
+});

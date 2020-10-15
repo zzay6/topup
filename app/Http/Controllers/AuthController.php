@@ -48,6 +48,8 @@ class AuthController extends Controller
             setcookie('zvcaytpy', $cookie->cookie, time()+3600);
     		return redirect('/');
         }
+
+        return redirect('/login')->with('failed','Email ata password salah, harap coba lagi');
     }
 
 

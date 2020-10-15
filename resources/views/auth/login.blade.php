@@ -4,8 +4,12 @@
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-md-7">
-            <div class="card border-0 shadow-sm">
-                <div class="card-header bg-primary text-white">{{ __('Login') }}</div>
+            @if(session('failed'))
+                <div class="alert alert-danger">Login gagal, {{ session('failed') }}</div>
+            @endif
+        </div>
+        <div class="col-md-7">
+            <div class="card border-0 shadow-sm pb-3 pt-4">
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
