@@ -27,7 +27,7 @@
 		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="{{ url('/assets/fontawesome/css/all.css') }}">
 		<link rel="stylesheet" href="{{ url('/assets/bootstrap/bootstrap.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ url('/assets/css/carousel.css') }}">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="{{ url('/assets/css/main.css') }}">
 		@yield('config')
 
@@ -38,8 +38,15 @@
 </head>
 
 <script src="{{ url('/assets/js/jquery-3.4.1.js') }}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
 <body class="bg-light">
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			 $('.datatable').DataTable();
+		});
+	</script>
 
 
 	<div class="container-fluid px-0">
@@ -125,13 +132,13 @@
 					  </h2>
 					 	<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
 					    <div class="border-left my-2 mb-4 ml-2">	
-								<a class="sidebar-item" href="index.html">
+								<a class="sidebar-item" href="{{ url('admin/product') }}">
 									<span class="text-secondary py-2 pl-3">Produk</span>
 								</a>
-								<a class="sidebar-item" href="profile.html">	
+								<a class="sidebar-item" href="{{ url('admin/user') }}">	
 									<span class="text-secondary py-2 pl-3">Pengguna</span>
 								</a>
-								<a class="sidebar-item" href="">	
+								<a class="sidebar-item" href="{{ url('admin/product') }}">	
 									<span class="text-secondary py-2 pl-3">Transaksi</span>
 								</a>
 							</div>
@@ -177,7 +184,7 @@
 
 				<h4 class="text-white pl-4" style="position: relative; top: -300px;">@yield('title')</h4>
 
-				<div class="content-body px-3">
+				<div class="content-body px-4">
 
 					@yield('content')
 

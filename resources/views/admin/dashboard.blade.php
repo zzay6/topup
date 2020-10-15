@@ -9,11 +9,20 @@
 	align-items: center;
 }
 
+.table-data {
+	overflow-x: auto;
+}
+
+.datatable {
+	scrollx: true;
+}
+
+
 </style>
 @endsection
 @section('content')
 <div class="row w-100 m-auto">
-	<div class="col-xl-6 px-2">
+	<div class="col-lg-6 col-xl-4 px-2">
 		<div class="card shadow rounded-sm mb-4 border-0">
 			<div class="card-header d-flex" style="align-items: center;">
 				<h6 class="text-primary mb-0">Riwayat aktifitas</h6>
@@ -113,4 +122,47 @@
 		</div>
 	</div>
 </div>
+
+<div class="row w-100 m-auto pt-5">
+	<div class="col px-1">
+		
+		<div class="card shadow">
+			<div class="card-header">
+				<i class="text-primary">Transaksi</i>
+			</div>
+
+			<div class="card-body table-data w-100">
+				<table class="datatable table border nowrap">
+					<thead class="bg-light">
+						<th>Order ID</th>
+						<th>Games</th>
+						<th>Items</th>
+						<th>Harga Total</th>
+						<th>Pembayaran</th>
+						<th>Dibuat</th>
+						<th>Status</th>
+					</thead>
+					<tbody>
+						@foreach($transactions as $t)
+						<tr>
+							<td>{{ $t->order_id }}</td>
+							<td>{{ $t->provider }}</td>
+							<td>{{ $t->nominal }}</td>
+							<td>{{ $t->harga }}</td>
+							<td>{{ $t->pembayaran }}</td>
+							<td>{{ $t->created_at }}</td>
+							<td>{{ $t->status }}</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<script type="text/javascript">
+	$('.table-data input').addClass('form-control');
+</script>
 @endsection

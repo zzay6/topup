@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Pegawai;
 use App\Models\Aktifity;
+use App\Models\Transactions;
 use App\User;
 
 class PageController extends Controller
@@ -17,8 +18,15 @@ class PageController extends Controller
     	$pegawai = Pegawai::where('status','Confirmed')->count();
     	$product = Produk::count();
         $aktifity = Aktifity::orderBy('id','desc')->get();
+        $transactions = Transactions::all();
 
-    	return view('admin.dashboard', compact(['user','product','pegawai','aktifity']));
+    	return view('admin.dashboard', compact([
+            'user',
+            'product',
+            'pegawai',
+            'aktifity',
+            'transactions'
+        ]));
     }
 
     public function pegawai()
