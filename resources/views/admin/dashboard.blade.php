@@ -39,7 +39,7 @@
 						@endif
 					</div>
 					<div class="text-secondary">
-						{{ $a->subjek }}, <span class="text-warning">{{ $a->object }}</span> {{ $a->content }}
+						{{ $a->subjek }}, <b class="text-warning">{{ $a->object }}</b> {{ $a->content }}
 						<small class="text-secondary" style="font-size: 11px;">pada : {{ $a->created_at }}</small>
 					</div>
 				</div>

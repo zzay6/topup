@@ -162,11 +162,11 @@
 					  </h2>
 					 	<div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
 					    <div class="border-left my-2 mb-4 ml-2">	
-								<a class="sidebar-item" href="index.html">
+								<a class="sidebar-item" href="{{ url('admin/logging/aktivity') }}">
 									<span class="text-secondary py-2 pl-3">Aktifitas</span>
 								</a>
-								<a class="sidebar-item" href="profile.html">	
-									<span class="text-secondary py-2 pl-3">Log table</span>
+								<a class="sidebar-item" href="{{ url('admin/logging/http') }}">	
+									<span class="text-secondary py-2 pl-3">Permintaan Http</span>
 								</a>
 								<a class="sidebar-item" href="">	
 									<span class="text-secondary py-2 pl-3">Transaksi</span>
