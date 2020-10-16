@@ -93,7 +93,6 @@ class ProductController extends Controller
             'provider' => $productName,
             'status' => 'success'
         ])->count();
-
         $items = Items::where('pulsa_op',$id)->get();
 
         return view('admin.product-view', compact(['product','visitor','selled','items']));
@@ -104,5 +103,32 @@ class ProductController extends Controller
     {
         Produk::where('pulsa_op',$product)->delete();
         return redirect('admin/product');
+    }
+
+
+    public function updateitem(Request $req, $id)
+    {
+
+        Items::where([
+            'id' => $id
+        ])->update([
+            'pulsa_code' => $req->item_code,
+            'pulsa_price' => $req->item_price,
+            'pulsa_nominal' => $req->item_nominal
+        ]);
+
+        return redirect(url()->previous());
+    }
+
+
+    public function deleteitem(Request $req)
+    {
+        Items::where([
+            'id' => $req->item
+        ])->delete();
+
+        return response(json_encode([
+            'status' => 'Item berhasil di hapus'
+        ]));
     }
 }

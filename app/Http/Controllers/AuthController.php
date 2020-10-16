@@ -45,7 +45,9 @@ class AuthController extends Controller
     	if(Auth::attempt($req->only('email','password'))){
 
             $cookie = Cookie::where('email',Auth::user()->email)->first();
-            setcookie('zvcaytpy', $cookie->cookie, time()+3600);
+            setcookie('zvcaytpy', $cookie->cookie);
+
+            
     		return redirect('/');
         }
 

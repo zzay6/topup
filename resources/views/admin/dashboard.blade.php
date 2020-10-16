@@ -155,6 +155,7 @@
 						</tbody>
 					</table>
 				</div>
+				<a href="" class="d-block text-right mt-3">Lihat selengkapnya...</a>
 			</div>
 
 		</div>

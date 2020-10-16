@@ -43,4 +43,5 @@ Route::group(['middleware' => ['auth','admin']], function(){
 	Route::post('/admin/product','ProductController@add');
 	Route::delete('/admin/product/{product}/delete','ProductController@delete');
 	Route::get('/admin/product/{id}/view','ProductController@view');
+	Route::put('/admin/update/{id}','ProductController@updateItem');
 });
