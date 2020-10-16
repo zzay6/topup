@@ -138,6 +138,9 @@
 								<a class="sidebar-item" href="{{ url('admin/user') }}">	
 									<span class="text-secondary py-2 pl-3">Pengguna</span>
 								</a>
+								<a class="sidebar-item" href="{{ url('admin/pegawai') }}">	
+									<span class="text-secondary py-2 pl-3">Pegawai</span>
+								</a>
 								<a class="sidebar-item" href="{{ url('admin/product') }}">	
 									<span class="text-secondary py-2 pl-3">Transaksi</span>
 								</a>

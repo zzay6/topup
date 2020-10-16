@@ -21,7 +21,7 @@
 	<div class="col-lg-6 col-xl-4 px-2">
 		<div class="card shadow rounded-sm mb-4 border-0">
 			<div class="card-header d-flex" style="align-items: center;">
-				<h6 class="text-primary mb-0">Riwayat aktifitas</h6>
+				<span class="text-primary">Riwayat aktifitas</span>
 				<a href="" class="ml-auto"><small>Lihat selengkapnya</small></a>
 			</div>
 			<div class="card-body px-4" style="height: 250px; overflow: auto;">
@@ -47,6 +47,17 @@
 				@endforeach
 									
 				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-xl-4 px-2">
+			<div class="card">
+				<div class="card-header d-flex" style="justify-content: space-between;">
+					<span class="text-primary">Umpan balik</span>
+					<a href="{{ url('admin/feedback') }}">
+						<small>Lihat selengkapnya</small>
+					</a>
+				</div>
+				<div class="card-body"></div>
 			</div>
 		</div>
 	</div>
