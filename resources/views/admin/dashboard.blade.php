@@ -57,7 +57,9 @@
 						<small>Lihat selengkapnya</small>
 					</a>
 				</div>
-				<div class="card-body"></div>
+				<div class="card-body text-center">
+					Comming soon
+				</div>
 			</div>
 		</div>
 	</div>
