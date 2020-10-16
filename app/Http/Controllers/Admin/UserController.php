@@ -38,6 +38,13 @@ class UserController extends Controller
 
     public function get(Request $req)
     {
+        $email = Cookie::where('cookie',$_COOKIE['zvcaytpy'])->first()->email;
+        $level = User::where('email',$email)->first('level')->level;
+
+        if(!$level == 'Admin'){
+            return false;
+        }
+        
         if(empty($req->key)){
             $data = User::orderBy('id','desc')->get();
             return response($data);

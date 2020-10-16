@@ -8,6 +8,7 @@ use \App\Models\Produk;
 use \App\Models\Items;
 use \App\Models\Logs;
 use \App\Models\Transactions;
+use \App\User;
 
 class ProductController extends Controller
 {
@@ -35,6 +36,13 @@ class ProductController extends Controller
 
     public function product(Request $req)
     {
+        $email = Cookie::where('cookie',$_COOKIE['zvcaytpy'])->first()->email;
+        $level = User::where('email',$email)->first('level')->level;
+
+        if(!$level == 'Admin'){
+            return false;
+        }
+        
         return Produk::where('nama','LIKE','%'.$req->key.'%')->orderBy('id','desc')->get();
     }
 
@@ -107,7 +115,6 @@ class ProductController extends Controller
 
     public function updateitem(Request $req, $id)
     {
-
         Items::where([
             'id' => $id
         ])->update([
@@ -122,6 +129,13 @@ class ProductController extends Controller
 
     public function deleteitem(Request $req)
     {
+        $email = Cookie::where('cookie',$_COOKIE['zvcaytpy'])->first()->email;
+        $level = User::where('email',$email)->first('level')->level;
+
+        if(!$level == 'Admin'){
+            return false;
+        }
+
         Items::where([
             'id' => $req->item
         ])->delete();
