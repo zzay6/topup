@@ -52,7 +52,7 @@
 	<div class="container-fluid px-0">
 
 		<nav class="navbar navbar-expand-dark bg-white w-100 shadow">
-			<h6 class="navbar-brand mb-0 text-primary">Website name</h6>
+			<h6 class="navbar-brand mb-0 text-primary">TopupYuk</h6>
 			<div class="ml-auto">
 				<div class="navbar-nav d-flex" style="justify-content: flex-end;">
 					<span class="rounded btn btn-white py-0 sidebar-toggle">

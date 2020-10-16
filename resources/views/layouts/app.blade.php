@@ -25,6 +25,7 @@
 
 
 		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="{{ url('/assets/fontawesome/css/all.css') }}">
 		<link rel="stylesheet" href="{{ url('/assets/bootstrap/bootstrap.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url('/assets/css/carousel.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ url('/assets/css/app.css') }}">
@@ -35,7 +36,7 @@
 		<title>@yield('title')</title>
 	</head>
 
-	<script src="{{ url('/assets/js/fontawesome.js') }}"></script>
+	<script src="{{ url('/asset/fontawesome/js/all.js') }}"></script>
 	<script src="{{ url('/assets/js/jquery-3.4.1.js') }}"></script>
 	@yield('config')
 

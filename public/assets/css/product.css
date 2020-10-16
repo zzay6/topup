@@ -11,17 +11,6 @@
 	width: 100%;
 }
 
-.blur {
-	background: #000;
-	opacity: 0.2;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	z-index: 1;
-}
-
 form {
 	display: block;
 }
@@ -31,25 +20,10 @@ form {
 	justify-content: space-between;
 }
 
-.modal {
-	position: fixed;
-	top: -100%;
-	left: 0;
-	justify-content: center;
-	align-items: center;
-	display: flex;
-}
-
-.modal.popup {
-	top: 0;
-}
-
 .modal-content {
-	width: 100vw;
-	max-width: 600px;
-	height: 100vh;
-	overflow: auto;
+	width: 90%;
 }
+
 
 
 @media(max-width: 578px){

@@ -45,10 +45,7 @@ class ProductController extends Controller
             'product_name' => 'required',
             'product_image' => 'required',
             'product_code' => 'required',
-            'developer' => 'required',
-            'item_name' => 'required',
-            'item_code' => 'required',
-            'item_price' => 'required'
+            'developer' => 'required'
         ]);
 
 
@@ -69,13 +66,15 @@ class ProductController extends Controller
             'pulsa_op' => $req->product_code
         ]);
 
-        foreach ($req->item_name as $i => $x) {
-            Items::create([
-                'pulsa_op' => $req->product_code,
-                'pulsa_code' => $req->item_code[$i],
-                'pulsa_price'=> $req->item_price[$i],
-                'pulsa_nominal' => $x
-            ]);
+        if (!empty($req->item_name)) {
+            foreach ($req->item_name as $i => $x) {
+                Items::create([
+                    'pulsa_op' => $req->product_code,
+                    'pulsa_code' => $req->item_code[$i],
+                    'pulsa_price'=> $req->item_price[$i],
+                    'pulsa_nominal' => $x
+                ]);
+            }
         }
 
         return redirect('admin/product')->with('success','Produk berhasil ditambahkan');

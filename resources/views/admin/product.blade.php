@@ -10,7 +10,7 @@
 	<div class="card-body">
 		<div class="form-group">
 			<div class="d-flex">	
-				<div class="input-group mb-3" style="width: 250px;">
+				<div class="input-group mb-2" style="width: 250px;">
 					<input class="form-control form-control-sm rounded-sm search-input" placeholder="Cari pengguna">
 					<div class="input-group-prepend">
 						<a class="btn btn-primary btn-search p-0 d-flex rounded-sm ml-1 px-2" style="align-items: center; z-index: 0;">Cari</a>
@@ -19,56 +19,57 @@
 				<span class="loader d-none ml-3 text-primary">Loading</span>
 			</div>
 			<div>
-				<button class="btn btn-success btn-modal py-1">Tambahkan produk</button>
-				<div class="modal">
-					<div class="modal-content border-0 rounded-0">
-						<form action="" method="post" enctype="multipart/form-data">
-							@csrf	
-							<div class="modal-header">
-								<h6 class="text-primary">Tambah produk</h6>
-							</div>
-							<div class="modal-body">
-								<small class="text-secondary">Gambar produk</small>
-								<div class="input-group mb-3">
-									<input type="file" name="product_image" class="@error('product_image') is-invalid @enderror">
-								</div>
-								<div class="d-none border image-preview"></div>
-								<small class="text-secondary">Nama produk</small>
-								<div class="input-group mb-3">
-									<input type="text" name="product_name" class="form-control text-primary @error('product_name') is-invalid @enderror" placeholder="Nama produk" value="{{ old('product_name') }}">
-								</div>
-								<small class="text-secondary">Produk kode</small>
-								<div class="input-group mb-3">
-									<input type="text" name="product_code" class="form-control text-primary @error('product_code') is-invalid @enderror" placeholder="Kode produk" value="{{ old('product_code') }}">
-								</div>
-								<small class="text-secondary">Developer</small>
-								<div class="input-group mb-3">
-									<input type="text" name="developer" class="form-control text-primary @error('developer') is-invalid @enderror" placeholder="Developer" value="{{ old('developer') }}">
-								</div>
-								<small class="text-secondary">Variasi</small>
-								<div class="input-group mb-2" id="item-list">
-									<input type="text" class="form-control form-control-sm item-name text-primary" placeholder="Nama item">
-								</div>
-								<div class="input-group mb-2" id="item-list">
-									<input type="text" class="form-control form-control-sm item-code text-primary" placeholder="Kode item">
-								</div>
-								<div class="input-group">
-									<input type="text" class="form-control form-control-sm rounded-sm item-price text-primary" placeholder="Harga item">
-									<div class="input-group-prepend">
-										<span class="btn btn-primary py-0 rounded-sm btn-add-item ml-2">Tambah</span>
-									</div>
-								</div>
-								<hr>
-								<div class="modal-scroll">
-									<div class="items-list"></div>
-								</div>
-							</div>
-							<div class="modal-footer border-top-0 d-block bg-white"> 
-								<span class="btn btn-secondary btn-modal">Batal</span>
-								<button class="btn btn-success">Tambahkan</button>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+				  Tambah produk
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="staticBackdrop">
+				  	<div class="modal-dialog modal-dialog-scrollable">
+						<form action="" method="post" enctype="multipart/form-data" class="w-100">
+						    <div class="modal-content m-auto">
+							    <div class="modal-header">
+							      	<h6 class="modal-title" id="staticBackdropLabel">
+							      		<i class="text-primary">Tambah produk</i>
+							      	</h6>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          	<span aria-hidden="true">&times;</span>
+							        </button>
+							    </div>
+						     	<div class="modal-body">
+						     		@csrf
+
+								    <label for="exampleFormControlInput1">Gambar</label>
+								    <input type="file" name="product_image" class="mb-3">
+
+								    <label for="exampleFormControlInput1">Nama produk</label>
+								    <input type="text" name="product_name" class="form-control mb-3 @error('product_name') is-invalid @enderror" placeholder="Nama Produk" value="{{ old('product_name') }}">
+
+								    <label for="exampleFormControlInput1">Developer</label>
+								    <input type="text" name="developer" class="form-control mb-3 @error('developer') is-invalid @enderror" placeholder="Nama Produk" value="{{ old('product_name') }}">
+
+
+								    <label for="exampleFormControlInput1">Kode Produk</label>
+								    <input type="text" name="product_code" class="form-control mb-3 @error('product_code') is-invalid @enderror" placeholder="Kode Produk" value="{{ old('product_code') }}">
+
+								    <hr>
+
+								    <small class="text-secondary">Variasi</small>
+								    <input type="text" class="form-control form-control-sm item-name mb-3 " placeholder="Nama item">
+								    <input type="text" class="form-control form-control-sm item-code mb-3 " placeholder="Kode item">
+								    <input type="text" class="form-control form-control-sm item-price mb-3 " placeholder="Harga item">
+								    <span class="btn btn-primary btn-add-item py-1">Tambah</span>
+
+								    <div class="items-list"></div>
+
+						      	</div>
+							    <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							        <button class="btn btn-primary">Unggah</button>
+							    </div>
 							</div>
 						</form>
-					</div>
+				  	</div>
 				</div>
 			</div>
 		</div>
@@ -86,30 +87,28 @@
 		</div>
 		@endif
 
-		<div class="bg-secondary rounded-sm mb-2 text-white p-2">
-			<span class="pl-4">Gambar</span>
-			<span></span>
-		</div>
-		<div class="result">
+		<div class="result row w-100 m-auto">
 			
 			@foreach($product as $p)
-			<div class="border rounded-sm p-2 mb-2 d-flex">
-				<div class="thumbnail rounded">
-					<img src="{{ url('/storage/images/products') }}/{{ $p->gambar }}" class="">
-				</div>
-				<div class="d-flex pl-3" style="align-items: center;">
-					<div>
-						<span class="text-dark" style="font-size: 18px; font-weight: 500;">{{ $p->nama }}</span>
-						<br>
-						<small class="text-secondary">Dibuat pada : {{ $p->created_at }}</small>
-						<br>
+			<div class="col-lg-6 px-0 p-1">
+				<div class="border rounded-sm p-2 d-flex">
+					<div class="thumbnail rounded">
+						<img src="{{ url('/storage/images/products') }}/{{ $p->gambar }}" class="">
+					</div>
+					<div class="d-flex pl-3" style="align-items: center;">
 						<div>
-							<a href="{{ url('admin/product') }}/{{ $p->pulsa_op }}/view" class="badge badge-info py-1 px-3 border-0 text-white">Lihat</a>
-							<form action="{{ url('admin/product') }}/{{ $p->pulsa_op }}/delete" method="post" class="d-inline">
-								@csrf
-								@method('delete')
-								<button class="badge badge-danger border-0 py-1 px-3 border-0 text-white">Hapus</button>
-							</form>
+							<span class="text-dark" style="font-size: 18px; font-weight: 500;">{{ $p->nama }}</span>
+							<br>
+							<small class="text-secondary">Dibuat pada : {{ $p->created_at }}</small>
+							<br>
+							<div>
+								<a href="{{ url('admin/product') }}/{{ $p->pulsa_op }}/view" class="badge badge-info py-1 px-3 border-0 text-white">Lihat</a>
+								<form action="{{ url('admin/product') }}/{{ $p->pulsa_op }}/delete" method="post" class="d-inline">
+									@csrf
+									@method('delete')
+									<button class="badge badge-danger border-0 py-1 px-3 border-0 text-white">Hapus</button>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -119,7 +118,6 @@
 		</div>
 	</div>
 </div>
-<div class="blur d-none"></div>
 <script type="text/javascript">
 	$('.btn-search').click(function() {
 			$('.loader').removeClass('d-none');
@@ -159,10 +157,6 @@
 			});
 	});
 
-	$('.btn-modal').click(function(){
-			$('.modal').toggleClass('popup');
-			$('.blur').toggleClass('d-none');
-	});
 
 	var no = 0;
 
