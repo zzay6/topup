@@ -48,7 +48,11 @@ class AuthController extends Controller
             setcookie('zvcaytpy', $cookie->cookie);
 
             
-    		return redirect('/');
+    		if(Auth::user()->level == 'Admin'){
+                return redirect('admin');
+            }
+
+            return redirect('/');
         }
 
         return redirect('/login')->with('failed','Email ata password salah, harap coba lagi');
