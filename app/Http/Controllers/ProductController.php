@@ -36,8 +36,6 @@ class ProductController extends Controller
 
     public function product(Request $req)
     {
-        $email = Cookie::where('cookie',$_COOKIE['zvcaytpy'])->first()->email;
-        $level = User::where('email',$email)->first('level')->level;
 
         if(!$level == 'Admin'){
             return false;
@@ -129,9 +127,6 @@ class ProductController extends Controller
 
     public function deleteitem(Request $req)
     {
-        $email = Cookie::where('cookie',$_COOKIE['zvcaytpy'])->first()->email;
-        $level = User::where('email',$email)->first('level')->level;
-
         if(!$level == 'Admin'){
             return false;
         }
