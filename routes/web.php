@@ -25,7 +25,6 @@ Route::group(['middleware' => ['buyyer']], function(){
 	Route::get('/payment/{type}/{order_id}','PageController@payment');
 
 	Route::group(['middleware' => 'auth'], function(){
-		Route::post('/logout','AuthController@logout')->name('logout');
 		Route::post('/transaction/delete/{id}','TransactionController@delete');
 		Route::get('/transaction','PageController@transaction');
 		Route::post('/account','AccountController@update');
@@ -33,6 +32,9 @@ Route::group(['middleware' => ['buyyer']], function(){
 	});
 });
 
+Route::group(['middleware' => 'auth'], function(){
+	Route::post('/logout','AuthController@logout')->name('logout');
+});
 
 Route::group(['middleware' => ['auth','admin']], function(){
 	Route::redirect('/admin','admin/dashboard');

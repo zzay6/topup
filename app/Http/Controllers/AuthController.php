@@ -44,6 +44,11 @@ class AuthController extends Controller
     {
     	if(Auth::attempt($req->only('email','password'))){
 
+            if (Auth::user()->status == 'non Active') {
+                Auth::logout();
+                return redirect('/login')->with('failed','Akun anda telah di non aktifkan, periksa alamat email anda untuk mengetahui penyebab penonaktifan akun anda, untuk lebih lanjut hubungi bantuan via whatsapp 0896-3579-6590');
+            }
+
             $cookie = Cookie::where('email',Auth::user()->email)->first();
             setcookie('zvcaytpy', $cookie->cookie);
 

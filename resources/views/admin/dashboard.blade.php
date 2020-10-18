@@ -18,6 +18,21 @@
 @endsection
 @section('content')
 <div class="row w-100 m-auto">
+	<div class="col p-2">	
+		<div class="card bg-primary mb-3 shadow">
+			<div class="card-body d-flex">
+				<h1 class="text-white">
+					<i class="fas fa-home"></i>
+				</h1>
+				<div class="pl-3">
+					<h5 class="text-white mb-1" style="font-family: arial;">Dashboard</h5>
+					<small class="text-white">Selamat datang di halaman dashboard admin</small>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+<div class="row w-100 m-auto">
 	<div class="col-lg-6 col-xl-4 px-2">
 		<div class="card shadow rounded-sm mb-4 border-0">
 			<div class="card-header d-flex" style="align-items: center;">
@@ -50,7 +65,7 @@
 			</div>
 		</div>
 		<div class="col-lg-6 col-xl-4 px-2">
-			<div class="card">
+			<div class="card border-0 shadow">
 				<div class="card-header d-flex" style="justify-content: space-between;">
 					<span class="text-primary">Umpan balik</span>
 					<a href="{{ url('admin/feedback') }}">
@@ -66,7 +81,7 @@
 				
 	<h5 class="text-primary ml-2">Website</h5>	
 	<div class="row w-100 m-auto">
-		<div class="col-md-6 col-xl-4 px-0 p-2">
+		<div class="col-md-6 col-xl-3 px-0 p-2">
 			<div class="card bg-warning text-white shadow">
 				<div class="card-body d-flex px-4" style="justify-content: space-between; align-items: center;">
 					<div class="">
@@ -82,7 +97,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-xl-4 px-0 p-2">
+		<div class="col-md-6 col-xl-3 px-0 p-2">
 			<div class="card bg-success text-white shadow">
 				<div class="card-body d-flex px-4" style="justify-content: space-between; align-items: center;">
 					<div>
@@ -98,7 +113,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-xl-4 px-0 p-2">
+		<div class="col-md-6 col-xl-3 px-0 p-2">
 			<div class="card bg-primary text-white shadow">
 				<div class="card-body d-flex px-4" style="justify-content: space-between; align-items: center;">
 					<div>
@@ -114,7 +129,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-xl-4 px-0 p-2">
+		<div class="col-md-6 col-xl-3 px-0 p-2">
 			<div class="card bg-danger text-white shadow">
 				<div class="card-body d-flex px-4" style="justify-content: space-between; align-items: center;">
 					<div>

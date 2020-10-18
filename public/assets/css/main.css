@@ -9,6 +9,13 @@
 	font-size: 20px;
 }
 
+.navbar .dropdown-menu {
+	position: fixed;
+	top: 50px;
+	right: 10px!important;
+	width: 200px;
+}
+
 .sidebar {
 	width: 240px;
 	height: 100vh;
@@ -35,14 +42,13 @@
 	font-size: 13px;
 	text-decoration: none!important;
 	display: flex;
-	opacity: 0.7;
 	font-weight: 500;
 	font-family: sans-serif;
 	align-items: center;
 }
 
 .sidebar-title {
-	font-size: 16px;
+	font-size: 14px;
 	padding-left: 10px;
 }
 
@@ -71,8 +77,6 @@
 }
 
 .content-body {
-	position: relative;
-	top: -200px;
 }
 
 
@@ -86,6 +90,10 @@
 	::-webkit-scrollbar-thumb {
 		background: #999;
 		border-radius: 7px;
+	}
+
+	.navbar .btn-group, .navbar .dropdown-menu {
+		display: none!important;
 	}
 
 	.sidebar {

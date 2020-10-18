@@ -16,8 +16,10 @@ class Buyyer
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->level == 'Admin'){
-            return redirect('admin');
+        if(Auth::check()){    
+            if(Auth::user()->level == 'Admin'){
+                return redirect('admin');
+            }
         }
 
         return $next($request);
