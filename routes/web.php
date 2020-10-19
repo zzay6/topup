@@ -32,6 +32,9 @@ Route::group(['middleware' => ['buyyer']], function(){
 	});
 });
 
+Route::get('password/reset','PasswordController@index');
+Route::get('password/update','PasswordController@update')->name('password.update');
+
 Route::group(['middleware' => 'auth'], function(){
 	Route::post('/logout','AuthController@logout')->name('logout');
 });

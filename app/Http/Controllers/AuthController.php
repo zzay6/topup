@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use \App\User;
+use App\User;
+use App\PasswordRests;
 use App\Models\Aktifity;
 use App\Models\Cookie;
 
@@ -35,6 +36,11 @@ class AuthController extends Controller
             Cookie::create([
                 'cookie' => hash('sha256', $req->email),
                 'email' => $req->email
+            ]);
+
+            PasswordRests::create([
+                'email' => $req->email,
+                'token' => hash('sha256', $req->email).md5($req->password).md5($req->name)
             ]);
 
             Aktifity::create([
