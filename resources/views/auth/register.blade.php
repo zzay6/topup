@@ -56,20 +56,16 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Konfirmasi kata sandi') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                <button type="button" class="btn btn-primary btn-submit">
+                                    {{ __('Daftar') }}
                                 </button>
                             </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <span class="text-secondary">Sudah punya akun?</span>
+                            <a href="{{ url('login') }}">Masuk disini!</a>
                         </div>
                     </form>
                 </div>
@@ -77,4 +73,46 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $('.btn-submit').click(function(){
+
+        $.ajax({
+            url: $('form').attr('action'),
+            type: $('form').attr('method'),
+            dataType: 'json',
+            data: {
+                '_token' : $('meta[name="csrf-token"]').attr('content'),
+                'email' : $('#email').val(),
+                'name' : $('#name').val(),
+                'password' : $('#password').val()
+            },
+            success : function(result){
+                if(result.status == 'failed'){
+
+                    swal({
+                        title: 'Pendaftaran gagal',
+                        text: result.message,
+                        icon: 'warning',
+                        button: false,
+                        timer: 3000
+                    });
+
+                } else {
+
+                    swal({
+                        title: 'Hai, pengguna baru',
+                        text: result.message,
+                        icon: 'success',
+                        button: false,
+                        timer: 3000
+                    }).then((value) => {
+                        window.location.href = 'login';
+                    });
+
+                }
+            }
+        });
+
+    });
+</script>
 @endsection

@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center mt-4">
         <div class="col-md-7">
-            @if(session('failed'))
-                <div class="alert alert-danger">Login gagal, {{ session('failed') }}</div>
-            @endif
+            <div class="message">
+                
+            </div>
         </div>
         <div class="col-md-7">
             <div class="card border-0 shadow-sm">
@@ -16,7 +16,7 @@
                         <span style="font-size: 0.8em" class="ml-2">Masuk</span>
                     </h4>
                     <hr>
-                    <form method="POST" action="{{ route('login') }}" class="mt-4">
+                    <form method="POST" action="{{ route('login') }}" class="mt-4" id="form">
                         @csrf
 
                         <div class="form-group row">
@@ -47,30 +47,21 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked' : '' }}">
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary btn-submit">
+                                <div class="mb-3">
+                                    <a href="{{ url('password/reset') }}">Lupa kata sandi?</a>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-submit">
                                     {{ __('Login') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
                             </div>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <span class="text-secondary">Belum punya akun?</span>
+                            <a href="{{ url('register') }}">Daftar disini!</a>
                         </div>
                     </form>
                 </div>
@@ -81,15 +72,31 @@
 <script type="text/javascript">
     $('.btn-submit').on('click', function(){
         $.ajax({
-            url:'{{ url("api/login") }}',
+            url:'{{ url("login") }}',
             type:'post',
             dataType:'json',
+            cache:false,
             data:{
-                'email' : $('#email'),
-                'password' : $('#password')
+                'email' : $('#email').val(),
+                'password' : $('#password').val(),
+                '_token' : $('meta[name="csrf-token"]').attr('content')
             },
             success : function(result){
-                alert(result);
+                if(result.status == 'failed'){
+                    $('.message').html(`
+                        <div class="alert alert-danger">`+ result.message +`</div>
+                    `);
+                } else {
+                    swal({
+                        title:'Selamat datang',
+                        text:result.message,
+                        icon:'success',
+                        button:false,
+                        timer:2000
+                    }).then((value) => {
+                        window.location.href = '';
+                    });
+                }
             }
         });
     });
