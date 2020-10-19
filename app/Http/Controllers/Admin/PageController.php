@@ -8,6 +8,7 @@ use App\Models\Produk;
 use App\Models\Pegawai;
 use App\Models\Aktifity;
 use App\Models\Transactions;
+use App\Models\Logs;
 use App\User;
 
 class PageController extends Controller
@@ -39,7 +40,8 @@ class PageController extends Controller
     public function user()
     {
         $user = User::orderBy('id','desc')->get();
-        return view('admin.user', compact(['user']));
+        $result = User::all()->count();
+        return view('admin.user', compact(['user','result']));
     }
 
 
@@ -48,5 +50,15 @@ class PageController extends Controller
         $product = Produk::orderBy('id','desc')->get();
 
         return view('admin.product', compact(['product']));
+    }
+
+    public function loggingHttp()
+    {
+        return view('admin/logging/http');
+    }
+
+    public function getHttp()
+    {
+        return Logs::orderBy('id','desc')->get();
     }
 }

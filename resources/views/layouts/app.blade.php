@@ -74,36 +74,32 @@
 					</a>
 				</li>
 			</ul>
-			<div class="d-flex">
-			@guest
+			<div class="d-flex" style="align-items: center;">
+				@guest
 				<div class="user-profile mr-4">
-	        <li class="nav-item mr-2">
-	          <a class="nav-link btn btn-primary" href="{{ route('login') }}">{{ __('Masuk') }}</a>
-	        </li>
-	        @if (Route::has('register'))
-	        <li class="nav-item">
-	          <a class="nav-link btn btn-primary" href="{{ route('register') }}">{{ __('Daftar') }}</a>
-	        </li>
-	        @endif
+			        <li class="nav-item mr-2">
+			          <a class="nav-link btn btn-primary" href="{{ route('login') }}">{{ __('Masuk') }}</a>
+			        </li>
+			        @if (Route::has('register'))
+			        <li class="nav-item">
+			          <a class="nav-link btn btn-primary" href="{{ route('register') }}">{{ __('Daftar') }}</a>
+			        </li>
+			        @endif
 				</div>
-      @else
-      	<div class="user-profile mr-4">
-	        <li class="nav-item mr-2">
-	          <a class="nav-link btn btn-primary">{{ substr(Auth::user()->name, 0, 5) }}</a>
-	        </li>
-	        <li class="nav-item">
-	        	<form class="d-inline" action="{{ route('logout') }}" method="post">
-	        		@csrf
-	          	<button class="nav-link btn btn-danger">{{ __('Keluar') }}</button>
-	        	</form>
-	        </li>
-      	</div>
-      @endguest
-				<div class="list-toggle rounded ml-3 sidebar-toggle">
-					<span class="bg-primary toggle"></span>
-					<span class="bg-primary toggle"></span>
-					<span class="bg-primary toggle"></span>
-				</div>
+      			@else
+		      	<div class="user-profile mr-4">
+			        <li class="nav-item mr-2">
+			          <a class="nav-link btn btn-primary">{{ substr(Auth::user()->name, 0, 5) }}</a>
+			        </li>
+			        <li class="nav-item">
+			        	<form class="d-inline" action="{{ route('logout') }}" method="post">
+			        		@csrf
+			          	<button class="nav-link btn btn-danger">{{ __('Keluar') }}</button>
+			        	</form>
+			        </li>
+		      	</div>
+		      	@endguest
+				<i class="text-primary fas fa-bars ml-4 sidebar-toggle" style="font-size: 20px;"></i>
 
 				
 
@@ -112,7 +108,7 @@
 
 
 
-		<div class="p-2 sidebar-menu bg-primary">
+		<div class="p-2 sidebar-menu shadow bg-white">
 			<div class="cross-toggle rounded ml-2 bg-danger sidebar-toggle">
 				<span class="bg-white toggle"></span>
 				<span class="bg-white toggle"></span>
@@ -209,7 +205,7 @@
 
 
 			$('.sidebar-toggle').click(function(){
-					$('.sidebar-menu').toggleClass('slide');
+				$('.sidebar-menu').toggleClass('slide');
 			});
 
 			

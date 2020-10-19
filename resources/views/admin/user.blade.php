@@ -1,6 +1,26 @@
 @extends('layouts.main')
 @section('title','Pengguna')
 @section('content')
+<div class="row w-100 m-auto">
+	<div class="col-md-6 col-lg-4 px-0 p-1">
+		
+		<div class="card bg-primary mb-3 shadow">
+			<div class="card-body">
+				<div class="text-white d-flex">
+					<span>
+					Pengguna ditemukan <br>
+					<h2>{{ $result }}</h2>
+					</span>
+					<h1 class="ml-auto" style="font-size: 3em">
+						<i class="fas fa-user"></i>
+					</h1>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</div>
+
 <div class="card border-0 shadow">
 	<div class="card-header">
 		<h6 class="text-primary mb-0">
@@ -84,7 +104,4 @@
 			});
 	})
 </script>
-@endsection
-@section('config')
-<link rel="stylesheet" type="text/css" href="{{ url('/assets/css/user.css') }}">
 @endsection

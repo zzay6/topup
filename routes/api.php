@@ -30,4 +30,5 @@ Route::group(['middleware' => ['adminCookie']], function(){
 	Route::post('/user/get','Admin\UserController@get');
 	Route::post('/product/get','ProductController@product');
 	Route::post('/deleteitem','ProductController@deleteItem');
+	Route::get('/http/get','Admin\PageController@getHttp');
 });

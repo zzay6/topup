@@ -55,19 +55,22 @@
 			<h6 class="navbar-brand mb-0 text-primary">TopupYuk</h6>
 			<div class="ml-auto">
 				<div class="navbar-nav d-flex" style="justify-content: flex-end;">
-
+					
 					<!-- Example split danger button -->
 					<div class="btn-group">
 					  <button type="button" class="btn btn-white">{{ Auth::user()->name }}</button>
 					  <button type="button" class="btn btn-white dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					  </button>
 					  <div class="dropdown-menu ml-auto shadow">
-							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item text-secondary" href="#">
+								<i class="far fa-bell mr-2"></i>
+								Notifikasi
+							</a>
 							<div class="dropdown-divider"></div>
 							<form action="{{ url('logout') }}" method="post">
 								@csrf
 								<button class="dropdown-item text-secondary">
-									<i class="fas fa-sign-out-alt"></i>
+									<i class="fas fa-sign-out-alt mr-2"></i>
 									Keluar
 								</button>
 							</form>

@@ -49,4 +49,6 @@ Route::group(['middleware' => ['auth','admin']], function(){
 	Route::delete('/admin/product/{product}/delete','ProductController@delete');
 	Route::get('/admin/product/{id}/view','ProductController@view');
 	Route::put('/admin/update/{id}','ProductController@updateItem');
+	Route::get('/admin/logging/http','Admin\PageController@loggingHttp');
+	Route::get('/http/get','Admin\PageController@getHttp');
 });

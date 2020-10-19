@@ -51,49 +51,6 @@ li {
 	text-align: center;
 }
 
-.list-toggle {
-	display: grid;
-	width: 42px;
-	height: 100%;
-	padding: 10px;
-	grid-template-columns: 1fr;
-	grid-gap: 6px;
-	cursor: pointer;
-}
-
-.toggle {
-	display: block;
-	padding: 1.2px;
-	width: 100%;
-}
-
-.list-toggle:hover {
-	background: rgb(0, 0, 0, 0.01);
-}
-
-.cross-toggle {
-	width: 30px;
-	height: 30px;
-	display: block;
-	text-align: center;
-	padding-top: 17px;
-	cursor: pointer;
-	position: relative;
-	left: -50px;
-}
-
-.cross-toggle .toggle {
-	width: 23px; padding: 1px;
-}
-
-.cross-toggle .toggle:nth-child(1) {
-	transform: rotate(45deg) translate(1px, -4px);
-}
-
-.cross-toggle .toggle:nth-child(2) {
-	transform: rotate(-45deg) translate(5px, 0px);
-}
-
 .sidebar-menu {
 	position: fixed;
 	right: -100%;

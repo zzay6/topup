@@ -44,7 +44,7 @@
 
 				@foreach($aktifity as $a)
 				<div class="d-flex" style="justify-content">
-					<div class="d-flex mr-3" style="align-items: center;">
+					<div class="d-flex mr-3 pt-2" style="">
 						@if($a->subjek == 'Pengguna baru')
 						<div class="rounded-circle bg-primary" style="width: 10px; height: 10px;"></div>
 						@elseif($a->subjek == 'Transaksi baru')
@@ -58,7 +58,7 @@
 						<small class="text-secondary" style="font-size: 11px;">pada : {{ $a->created_at }}</small>
 					</div>
 				</div>
-				<div class="mb-2"></div>
+				<div class="mb-3"></div>
 				@endforeach
 									
 				</div>
