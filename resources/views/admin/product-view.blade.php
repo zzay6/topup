@@ -16,7 +16,7 @@
 			  	<h6 class="text-dark mb-0">{{ $product->nama }}</h6>
 			  </li>
 			  <li class="list-group-item">Terjual : {{ $selled }}</li>
-			  <li class="list-group-item">Pengunjung : {{ $visitor }}</li>
+			  <li class="list-group-item">Pengunjung : {{ $product->visitor }}</li>
 			  <li class="list-group-item">Dibuat pada : {{ $product->created_at }}</li>
 			</ul>
 

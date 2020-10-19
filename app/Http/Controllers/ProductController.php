@@ -92,15 +92,16 @@ class ProductController extends Controller
         $url = url('games/'.$id);
         
         $product = Produk::where('pulsa_op',$id)->first();
-        $visitor = Logs::where('url',$url)->count();
         $productName = $product->nama;
+        
         $selled = Transactions::where([
             'provider' => $productName,
             'status' => 'success'
         ])->count();
+
         $items = Items::where('pulsa_op',$id)->get();
 
-        return view('admin.product-view', compact(['product','visitor','selled','items']));
+        return view('admin.product-view', compact(['product','selled','items']));
     }
 
 
