@@ -37,11 +37,7 @@ class UserController extends Controller
 
 
     public function get(Request $req)
-    {
-        if(!$level == 'Admin'){
-            return false;
-        }
-        
+    {   
         if(empty($req->key)){
             $data = User::orderBy('id','desc')->get();
             return response($data);

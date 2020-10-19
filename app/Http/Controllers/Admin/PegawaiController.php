@@ -37,15 +37,7 @@ class PegawaiController extends Controller
 
 
     public function pegawaiGet(Request $req)
-    {
-        $email = Cookie::where('cookie',$_COOKIE['zvcaytpy'])->first()->email;
-        $level = User::where('email',$email)->first('level')->level;
-
-        if(!$level == 'Admin'){
-            return false;
-        }
-
-        
+    {   
     	if ($req->key == '') {
     		$pegawai = Pegawai::all();
     	} else {

@@ -42,6 +42,7 @@ class AuthController extends Controller
 
     public function login(Request $req)
     {
+        //return response(json_encode(['status','Success']));
     	if(Auth::attempt($req->only('email','password'))){
 
             if (Auth::user()->status == 'non Active') {
@@ -56,6 +57,7 @@ class AuthController extends Controller
     		if(Auth::user()->level == 'Admin'){
                 return redirect('admin');
             }
+
 
             return redirect('/');
         }
