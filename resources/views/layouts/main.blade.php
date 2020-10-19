@@ -38,7 +38,7 @@
 </head>
 
 <script src="{{ url('/assets/js/jquery-3.4.1.js') }}"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{{ url('assets/js/dataTables.js') }}"></script>
 
 <body class="bg-light">
 

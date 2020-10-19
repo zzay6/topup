@@ -21,7 +21,6 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Http\Middleware\Logging::class,
     ];
 
     /**
@@ -67,5 +66,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\Admin::class,
         'adminCookie' => \App\Http\Middleware\AdminCookie::class,
         'buyyer' => \App\Http\Middleware\Buyyer::class,
+        'visitor' => \App\Http\Middleware\ProductVisitor::class,
     ];
 }

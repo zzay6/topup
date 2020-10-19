@@ -55,6 +55,13 @@ class PageController extends Controller
 
     public function show($nama)
     {
+        $visitor = Produk::where('pulsa_op',$nama)->first('visitor')->visitor;
+        $visitor = $visitor + 1;
+
+        Produk::where('pulsa_op',$nama)->update([
+            'visitor' => $visitor
+        ]);
+
         $produk = Produk::where('pulsa_op',$nama)->first();
         return view('view', ['produk' => $produk]);
     }

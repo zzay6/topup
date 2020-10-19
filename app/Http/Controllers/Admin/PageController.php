@@ -56,9 +56,4 @@ class PageController extends Controller
     {
         return view('admin/logging/http');
     }
-
-    public function getHttp()
-    {
-        return Logs::orderBy('id','desc')->get();
-    }
 }

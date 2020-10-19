@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use \App\Models\Logs;
 
-class Logging
+class ProductVisitor
 {
     /**
      * Handle an incoming request.
@@ -16,16 +15,6 @@ class Logging
      */
     public function handle($request, Closure $next)
     {
-        $url = $request->url();
-        $method = $request->method();
-
-        Logs::create([
-            'url' => $url,
-            'method' => $method,
-            'visitor' => $request->ip(),
-            'status' => 200
-        ]);
-
         return $next($request);
     }
 }

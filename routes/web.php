@@ -21,7 +21,7 @@ Route::group(['middleware' => ['buyyer']], function(){
 	Route::get('/login','PageController@login')->name('login');
 	Route::get('/', 'PageController@home');
 	Route::get('/search','PageController@search');
-	Route::get('/games/{nama}','PageController@show');
+	Route::get('/games/{nama}','PageController@show')->middleware('visitor');
 	Route::get('/payment/{type}/{order_id}','PageController@payment');
 
 	Route::group(['middleware' => 'auth'], function(){
@@ -50,5 +50,4 @@ Route::group(['middleware' => ['auth','admin']], function(){
 	Route::get('/admin/product/{id}/view','ProductController@view');
 	Route::put('/admin/update/{id}','ProductController@updateItem');
 	Route::get('/admin/logging/http','Admin\PageController@loggingHttp');
-	Route::get('/http/get','Admin\PageController@getHttp');
 });

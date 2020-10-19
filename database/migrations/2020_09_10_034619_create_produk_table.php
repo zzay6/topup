@@ -19,6 +19,7 @@ class CreateProdukTable extends Migration
             $table->string('nama');
             $table->string('developer');
             $table->string('pulsa_op');
+            $table->string('visitor');
             $table->timestamps();
         });
     }
