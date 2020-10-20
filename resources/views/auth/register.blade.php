@@ -4,10 +4,10 @@
 <style type="text/css">
     .btn-show-input, .btn-hide-input {
         position: absolute;
-        right: 10px;
         font-size: 17px;
         cursor: pointer;
     }
+
 </style>
 @endsection
 @section('content')
