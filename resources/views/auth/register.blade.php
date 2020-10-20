@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section('title','Daftar - TopupYuk')
+@section('config')
+<style type="text/css">
+    .btn-show-input, .btn-hide-input {
+        position: absolute;
+        right: 10px;
+        font-size: 17px;
+        cursor: pointer;
+    }
+</style>
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center mt-4">
@@ -46,8 +56,13 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Kata sandi') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                                <div class="input-group" style="align-items: center;">
+                                    
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror rounded-sm" name="password" required autocomplete="new-password">
+                                    <i class="btn-show-input far fa-eye text-primary p-2"></i>
+                                    <i class="btn-hide-input far fa-eye-slash text-primary p-2"></i>
+                                
+                                </div>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -74,6 +89,19 @@
     </div>
 </div>
 <script type="text/javascript">
+    $('.btn-hide-input').hide();
+    $('.btn-show-input').click(function(){
+        $('#password').attr('type','text');
+        $(this).hide();
+        $('.btn-hide-input').show()
+    });
+
+    $('.btn-hide-input').click(function(){
+        $('#password').attr('type','password');
+        $(this).hide();
+        $('.btn-show-input').show()
+    });
+
     $('.btn-submit').click(function(){
 
         $.ajax({
