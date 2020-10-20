@@ -33,7 +33,9 @@ Route::get('/register','PageController@register')->name('register');
 Route::post('/login','AuthController@login');
 Route::get('/login','PageController@login')->name('login');
 Route::get('password/remember','PasswordController@index')->name('password.email');
-Route::post('password/remember','PasswordController@store')->name('password.email');
+Route::post('password/remember','PasswordController@store');
+Route::get('password/reset/{token}','PasswordController@edit');
+Route::post('password/reset/{token}','PasswordController@update')->name('password.update');
 
 Route::group(['middleware' => 'auth'], function(){
 	Route::post('/logout','AuthController@logout')->name('logout');

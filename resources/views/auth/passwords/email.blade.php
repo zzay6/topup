@@ -35,7 +35,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="button" class="btn btn-primary btn-submit">
+                                <button type="button" class="btn btn-primary btn-submit text-white">
                                     {{ __('Kirim link') }}
                                 </button>
                             </div>
@@ -48,6 +48,9 @@
 </div>
 <script type="text/javascript">
     $('.btn-submit').on('click', function(){
+        $(this).html('Mengirim...');
+        $(this).removeClass('btn-primary');
+        $(this).addClass('btn-warning');
         $.ajax({
             url:'{{ url("password/remember") }}',
             type:'post',
@@ -58,22 +61,28 @@
                 '_token' : $('meta[name="csrf-token"]').attr('content')
             },
             success : function(result){
-                console.log(result);
-                // if(result.status == 'failed'){
-                //     $('.message').html(`
-                //         <div class="alert alert-danger">`+ result.message +`</div>
-                //     `);
-                // } else {
-                //     swal({
-                //         title:'Selamat datang',
-                //         text:result.message,
-                //         icon:'success',
-                //         button:false,
-                //         timer:2000
-                //     }).then((value) => {
-                //         window.location.href = '';
-                //     });
-                // }
+                
+                if(result.status == 'success'){
+
+                    $('.message').html(`
+                        <div class="alert alert-success">`+ result.message +`</div>
+                    `);
+                    $('.btn-submit').html('Link dikirim');
+                    $('.btn-submit').removeClass('btn-warning');
+                    $('.btn-submit').addClass('btn-success');
+
+                } else {                
+
+
+                    $('.btn-submit').html('Kirim link');
+                    $('.btn-submit').removeClass('btn-warning');
+                    $('.btn-submit').addClass('btn-primary');
+
+                    $('.message').html(`
+                        <div class="alert alert-danger">`+ result.message +`</div>
+                    `);
+
+                }
             }
         });
     });

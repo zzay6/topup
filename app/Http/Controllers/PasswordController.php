@@ -75,9 +75,10 @@ class PasswordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($token)
     {
-        //
+        $token = PasswordReset::where('token',$token)->firstOrFail()->token;
+        return view('auth.passwords.reset', compact(['token']));
     }
 
     /**
@@ -87,9 +88,17 @@ class PasswordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $token)
     {
-        //
+        $email = PasswordReset::where('token',$token)->first('email')->email;
+        User::where('email',$email)->update([
+            'password' => bcrypt($request->password)
+        ]);
+
+        return response(json_encode([
+            'status' => 'success',
+            'message' => 'Kata sandi berhasil di ubah'
+        ]));
     }
 
     /**
