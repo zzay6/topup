@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
+use \App\PasswordReset;
 
 class PasswordController extends Controller
 {
+
+    public $code;
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,7 @@ class PasswordController extends Controller
      */
     public function index()
     {
-        return view('auth.passwords.reset');
+        return view('auth.passwords.email');
     }
 
     /**
@@ -34,7 +39,23 @@ class PasswordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::where('email',$request->email);
+        
+        if($user->count() < 1 ){
+
+            return response(json_encode([
+                'status' => 'failed',
+                'message' => 'Alamat e-mail tidak ditemukan, harap periksa kembali alamat email anda'
+            ]));
+
+        } else {
+
+            return response(json_encode([
+                'status' => 'success',
+                'message' => 'Link berhasil dikirim melalui alamat e-mail anda'
+            ]));
+
+        }
     }
 
     /**

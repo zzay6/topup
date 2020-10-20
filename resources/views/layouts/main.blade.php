@@ -58,7 +58,7 @@
 					
 					<!-- Example split danger button -->
 					<div class="btn-group">
-					  <button type="button" class="btn btn-white">{{ Auth::user()->name }}</button>
+					  <button type="button" class="btn btn-white">{{ 'Auth::user()->name' }}</button>
 					  <button type="button" class="btn btn-white dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					  </button>
 					  <div class="dropdown-menu ml-auto shadow">

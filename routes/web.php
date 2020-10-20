@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware' => ['buyyer']], function(){	
-	Route::post('/register','AuthController@register');
-	Route::get('/register','PageController@register')->name('register');
-	Route::post('/login','AuthController@login');
-	Route::get('/login','PageController@login')->name('login');
 	Route::get('/', 'PageController@home');
 	Route::get('/search','PageController@search');
 	Route::get('/games/{nama}','PageController@show')->middleware('visitor');
@@ -32,14 +28,18 @@ Route::group(['middleware' => ['buyyer']], function(){
 	});
 });
 
-Route::get('password/reset','PasswordController@index');
-Route::get('password/update','PasswordController@update')->name('password.update');
+Route::post('/register','AuthController@register');
+Route::get('/register','PageController@register')->name('register');
+Route::post('/login','AuthController@login');
+Route::get('/login','PageController@login')->name('login');
+Route::get('password/remember','PasswordController@index')->name('password.email');
+Route::post('password/remember','PasswordController@store')->name('password.email');
 
 Route::group(['middleware' => 'auth'], function(){
 	Route::post('/logout','AuthController@logout')->name('logout');
 });
 
-Route::group(['middleware' => ['auth','admin']], function(){
+// Route::group(['middleware' => ['auth','admin']], function(){
 	Route::redirect('/admin','admin/dashboard');
 	Route::get('/admin/dashboard','Admin\PageController@dashboard');
 	Route::get('/admin/pegawai','Admin\PageController@pegawai');
@@ -53,4 +53,4 @@ Route::group(['middleware' => ['auth','admin']], function(){
 	Route::get('/admin/product/{id}/view','ProductController@view');
 	Route::put('/admin/update/{id}','ProductController@updateItem');
 	Route::get('/admin/logging/http','Admin\PageController@loggingHttp');
-});
+// });
