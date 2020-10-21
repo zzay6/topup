@@ -6,12 +6,11 @@ use Illuminate\Http\Request;
 use Auth;
 use Mail;
 use App\User;
-use \App\PasswordReset;
+use App\PasswordReset;
+use App\Mail\SendLinkForResetPassword;
 
 class PasswordController extends Controller
 {
-
-    public $code;
     /**
      * Display a listing of the resource.
      *
@@ -52,11 +51,10 @@ class PasswordController extends Controller
         } else {
 
             $user = $user->first();
+
             $token = PasswordReset::where('email',$request->email)->first()->token;
-            Mail::raw(url('password/reset').'/'.$token, function($message) use($user) {
-                $message->to($user->email, $user->name);
-                $message->subject('Ubah kata sandi');
-            });
+
+            Mail::to($request->email)->send(new SendLinkForResetPassword);
 
             return response(json_encode([
                 'status' => 'success',
