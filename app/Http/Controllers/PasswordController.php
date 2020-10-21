@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Mail;
 use App\User;
 use \App\PasswordReset;
 
@@ -50,6 +51,12 @@ class PasswordController extends Controller
 
         } else {
 
+            $token = PasswordReset::where('email',$request->email)->first()->token;
+            Mail::raw(url('password/reset').'/'.$token, function($message){
+                $message->to('user@gmail.com');
+                $message->subject('Ubah kata sandi');
+            });
+
             return response(json_encode([
                 'status' => 'success',
                 'message' => 'Link berhasil dikirim melalui alamat e-mail anda'
@@ -90,7 +97,6 @@ class PasswordController extends Controller
      */
     public function update(Request $request, $token)
     {
-        m
         $email = PasswordReset::where('token',$token)->first('email')->email;
         User::where('email',$email)->update([
             'password' => bcrypt($request->password)
