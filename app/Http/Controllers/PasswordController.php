@@ -51,9 +51,10 @@ class PasswordController extends Controller
 
         } else {
 
+            $user = $user->first();
             $token = PasswordReset::where('email',$request->email)->first()->token;
-            Mail::raw(url('password/reset').'/'.$token, function($message){
-                $message->to('user@gmail.com');
+            Mail::raw(url('password/reset').'/'.$token, function($message) use($user) {
+                $message->to($user->email, $user->name);
                 $message->subject('Ubah kata sandi');
             });
 
