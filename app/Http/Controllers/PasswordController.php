@@ -51,10 +51,10 @@ class PasswordController extends Controller
         } else {
 
             $user = $user->first();
-
             $token = PasswordReset::where('email',$request->email)->first()->token;
+            $url = url('/password/reset').'/'.$token;
 
-            Mail::to($request->email)->send(new SendLinkForResetPassword);
+            Mail::to($request->email)->send(new SendLinkForResetPassword($url, $user));
 
             return response(json_encode([
                 'status' => 'success',

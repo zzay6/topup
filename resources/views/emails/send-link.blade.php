@@ -1,13 +1,18 @@
 @component('mail::message')
-Permintaan untuk mengganti kata sandi
+<div style="width: 100%">
+<h2>Permintaan untuk mengganti kata sandi</h2>
 
-Halo,
+Halo {{ $user->name }},<br>
 link untuk mengganti kata sandi akun mu telah siap
-
-@component('mail::button', ['url' => 'https://www.youtube.com'])
-Link Youtube
+<p>
+	Jangan berikan link ini kepada siapapun(link ini bersifat rahasia)
+</p>
+<a href="{{ $url }}">{{ $url }}</a>
+@component('mail::button', ['url' => $url])
+Klik disini untuk mengganti kata sandi
 @endcomponent
 
-Thanks,<br>
+Terima kasih,<br>
 {{ config('app.name') }}
+</div>
 @endcomponent

@@ -11,14 +11,16 @@ class SendLinkForResetPassword extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $url,$user;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($url, $user)
     {
-        //
+        $this->url = $url;
+        $this->user = $user;
     }
 
     /**
@@ -28,6 +30,6 @@ class SendLinkForResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails/send-link');
+        return $this->markdown('emails/send-link', ['url' => $this->url, 'user' => $this->user]);
     }
 }
