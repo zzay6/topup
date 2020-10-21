@@ -51,6 +51,10 @@
 						<div class="rounded-circle bg-warning" style="width: 10px; height: 10px;"></div>
 						@elseif($a->subjek == 'Transaksi berhasil')
 						<div class="rounded-circle bg-success" style="width: 10px; height: 10px;"></div>
+						@elseif($a->subjek == 'Reset kata sandi')
+						<div class="rounded-circle bg-danger" style="width: 10px; height: 10px;"></div>
+						@elseif($a->subjek == 'Perubahan kata sandi')
+						<div class="rounded-circle bg-success" style="width: 10px; height: 10px;"></div>
 						@endif
 					</div>
 					<div class="text-secondary">

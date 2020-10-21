@@ -8,6 +8,7 @@ use Mail;
 use App\User;
 use App\PasswordReset;
 use App\Mail\SendLinkForResetPassword;
+use App\Models\Aktifity;
 
 class PasswordController extends Controller
 {
@@ -56,6 +57,12 @@ class PasswordController extends Controller
 
             Mail::to($request->email)->send(new SendLinkForResetPassword($url, $user));
 
+            Aktifity::create([
+                'subjek' => 'Reset kata sandi',
+                'object' => $request->email,
+                'content' => 'Melakukan permintaan perubahan kata sandi'
+            ]);
+
             return response(json_encode([
                 'status' => 'success',
                 'message' => 'Link berhasil dikirim melalui alamat e-mail anda'
@@ -99,6 +106,12 @@ class PasswordController extends Controller
         $email = PasswordReset::where('token',$token)->first('email')->email;
         User::where('email',$email)->update([
             'password' => bcrypt($request->password)
+        ]);
+
+        Aktifity::create([
+            'subjek' => 'Perubahan kata sandi',
+            'object' => $email,
+            'content' => 'Telah melakukan perubahan kata sandi'
         ]);
 
         return response(json_encode([
