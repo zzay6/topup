@@ -90,6 +90,7 @@ class PasswordController extends Controller
      */
     public function update(Request $request, $token)
     {
+        m
         $email = PasswordReset::where('token',$token)->first('email')->email;
         User::where('email',$email)->update([
             'password' => bcrypt($request->password)
