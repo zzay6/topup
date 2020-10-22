@@ -54,7 +54,7 @@
                                     <a href="{{ url('password/remember') }}">Lupa kata sandi?</a>
                                 </div>
                                 <button type="button" class="btn btn-primary btn-submit">
-                                    {{ __('Login') }}
+                                    {{ __('Masuk') }}
                                 </button>
                             </div>
                         </div>
@@ -71,6 +71,8 @@
 </div>
 <script type="text/javascript">
     $('.btn-submit').on('click', function(){
+        $(this).html('memproses...');
+        $('.message').html('');
         $.ajax({
             url:'{{ url("login") }}',
             type:'post',
@@ -82,6 +84,7 @@
                 '_token' : $('meta[name="csrf-token"]').attr('content')
             },
             success : function(result){
+                $('.btn-submit').html('Masuk');
                 if(result.status == 'failed'){
                     $('.message').html(`
                         <div class="alert alert-danger">`+ result.message +`</div>

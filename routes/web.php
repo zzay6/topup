@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::post('/logout','AuthController@logout')->name('logout');
 });
 
-// Route::group(['middleware' => ['auth','admin']], function(){
+Route::group(['middleware' => ['auth','admin']], function(){
 	Route::redirect('/admin','admin/dashboard');
 	Route::get('/admin/dashboard','Admin\PageController@dashboard');
 	Route::get('/admin/pegawai','Admin\PageController@pegawai');
@@ -55,4 +55,5 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/admin/product/{id}/view','ProductController@view');
 	Route::put('/admin/update/{id}','ProductController@updateItem');
 	Route::get('/admin/logging/http','Admin\PageController@loggingHttp');
-// });
+	Route::get('/admin/voucher','Admin\VoucherController@index');
+});
