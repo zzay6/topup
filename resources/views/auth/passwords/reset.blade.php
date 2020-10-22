@@ -67,7 +67,7 @@
                 if(result.status == 'success'){
 
                     swal({
-                        title: 'Kata sandi berhasi; diubah',
+                        title: result.message,
                         text: result.message,
                         icon: 'success',
                         button: false,
