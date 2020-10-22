@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+Route::post('/login','AuthController@login');
 Route::post('/getitems', 'ProductController@getItems');
 Route::post('/getitem', 'ProductController@getItem');
 Route::post('/checkgameid','RestapiController@checkGameId');

@@ -36,10 +36,6 @@ class ProductController extends Controller
 
     public function product(Request $req)
     {
-
-        if(!$level == 'Admin'){
-            return false;
-        }
         
         return Produk::where('nama','LIKE','%'.$req->key.'%')->orderBy('id','desc')->get();
     }

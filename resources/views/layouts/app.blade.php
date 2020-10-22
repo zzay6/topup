@@ -8,6 +8,7 @@
 		<meta name="description" content="TopupYuk merupakan platform sebagai tempat topup game populer yang tepat. Buktian seberapa gamer anda, dengan mengikuti beberapa event yang akan dilaksanakan oleh pihak TopupYuk">
 		<meta name="copyright" content="&copy; {{ date('Y') }} by TopupYuk">
 		<meta name="theme-color" content="#007bff">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<meta name="title" content="@yield('title')">
 
 
@@ -38,6 +39,7 @@
 
 	<script src="{{ url('/asset/fontawesome/js/all.js') }}"></script>
 	<script src="{{ url('/assets/js/jquery-3.4.1.js') }}"></script>
+	<script src="{{ url('/assets/js/sweetalert.js') }}"></script>
 	@yield('config')
 
 	<body class="bg-light" id="top">
