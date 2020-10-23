@@ -63,51 +63,7 @@
 					},
 					success : function(result){
 						  console.log(result);
-						  const response = document.querySelector('.response');
-						  if(result.status == 'Berhasil'){
-
-								response.innerHTML = 	`
-										  <div class="bg-white rounded-sm p-3 shadow-sm">
-												<h6 class="border-bottom mx-2 mb-2 pb-2">Laporan transaksi</h6>
-												<div class="alert alert-success">
-													<span class="">Pembelian untuk <h6 class="d-inline">`+ result.data.item+' '+ result.data.provider +`</h6> Berhasil di lakukan</span>
-												</div>
-												<div class="mt-1 bg-light p-2 border rounded-sm">
-													<div class="text-dark mb-2">
-														<span>Denomisasi :</span>
-														<h6>`+ result.data.item +`</h6>
-													</div>
-													<div class="text-dark mb-2">
-														<span>Provider :</span>
-														<h6>`+ result.data.provider +`</h6>
-													</div>
-													<div class="text-dark mb-2">
-														<span>Nama pemain :</span>
-														<h6>`+ result.data.nickname +`</h6>
-													</div>
-													<div class="row border-top w-100 mx-2 m-auto">
-														<div class="col-6 text-center">
-															<span>Harga total</span>
-															<h6>Rp `+ result.data.harga +`</h6>
-														</div>
-														<div class="col-6 text-center">
-															<span>Sisa voucher</span>
-															<h6>Rp `+ result.data.saldo_voucher +`</h6>
-														</div>
-													</div>
-												</div>
-												<a href="{{ url('/') }}" class="badge badge-info mt-1 px-3 py-2">Beranda</a>
-											</div>
-								`;
-						  } else if(result.status == 'Gagal'){
-							  response.innerHTML = `
-								<div class="bg-white p-3 rounded-sm shadow-sm">
-									<h6 class="border-bottom mx-2 mb-2 pb-2">Laporan transaksi</h6>
-									<div class="alert alert-danger">`+ result.message +`</div>
-									<a href="{{ url('/') }}" class="badge badge-info mt-1 px-3 py-2">Beranda</a>
-								</div>
-							  `;
-						  }
+						  
 					}
 			});
 	}

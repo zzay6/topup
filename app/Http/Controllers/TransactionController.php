@@ -72,4 +72,10 @@ class TransactionController extends Controller
     	Transactions::where('order_id',$id)->delete();
     	return redirect('/transaction');
     }
+
+
+    public function update($id, $status)
+    {
+
+    }
 }

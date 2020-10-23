@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Api\TopupController; // This controller for Call Topup Functions
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\Transactions;
@@ -48,15 +49,14 @@ class PaymentController extends Controller
         			'saldo' => $balance
         		]);
 
-        		$transaction->update([
-        			'status' => 'success'
-        		]);
-
                 Aktifity::create([
                     'subjek' => 'Transaksi berhasil',
                     'object' => $transactionGet->order_id,
-                    'content' => 'Transaksi selesai'
+                    'content' => 'Transaksi di proses'
                 ]);
+
+                $topup = new TopupController;
+                return $topup->SendRequest($transactionGet->order_id);
 
         		$response = [
             	   	'status' => 'Berhasil',
