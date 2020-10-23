@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Transactions;
 use App\Models\Aktifity;
-// use App\Http\Controllers\Transactions;
+use App\Models\Voucher;
 
 class TopupController extends Controller
 {
@@ -60,23 +60,40 @@ class TopupController extends Controller
 
 		}
 
+		Transactions::where('order_id',$id)->update([
+			'status' => $response['data']['message']
+		]);
+
 		return response($data);
     }
 
 
     public function callback(Request $req)
     {
-    	$data = $req->data;
-    	return $data;
+    	$data = json_encode($req->data);
+    	$data = json_decode($data, true);
+
+    	$transaction = Transactions::where('order_id',$data['ref_id']);
+    	$transaction->update([
+    		'status' => $data['message']
+    	]);
 
 
-    	// $transaction = new Transactions;
-    	// $transaction->update($req->data->ref_id, $req->data->message);
+    	if ($data['status'] == 2) {
+    		$kode = $transaction->first()->kode;
+    		$voucher = Voucher::where('voucher',$kode);
 
-    	// Aktifity::create([
-     //        'subjek' => 'Transaksi berhasil',
-     //        'object' => $transactionGet->order_id,
-     //        'content' => 'Transaksi di proses'
-     //    ]); 
+    		$balance = $transaction->first()->harga + $voucher->first()->saldo;
+
+    		$voucher->update([
+    			'saldo' => $balance
+    		]);
+    	}
+
+    	Aktifity::create([
+            'subjek' => 'Transaksi berhasil',
+            'object' => $data['ref_id'],
+            'content' => 'Transaksi di proses'
+        ]); 
     }
 }

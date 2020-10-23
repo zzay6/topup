@@ -26,6 +26,7 @@ class CreateTransaksiTable extends Migration
             $table->string('nominal');
             $table->decimal('harga');
             $table->string('pembayaran');
+            $table->string('kode')->nullable();
             $table->string('status');
             $table->timestamps();
         });

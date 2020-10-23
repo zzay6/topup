@@ -55,6 +55,8 @@ class PaymentController extends Controller
                     'content' => 'Transaksi di proses'
                 ]);
 
+                $transactionGet->update(['kode' => $req->voucher]);
+
                 $topup = new TopupController;
                 return $topup->SendRequest($transactionGet->order_id);
 
