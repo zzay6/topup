@@ -17,7 +17,7 @@
 					<form>
 						<div class="input-group">
 							<input type="" name="" class="form-control rounded-sm mr-1 form-control-id">
-							<button class="btn btn-primary btn-checkgameid" type="button">Ok</button>
+							<button class="btn btn-primary btn-checkgameid" type="button" data-toggle="modal" data-target="#exampleModal">Ok</button>
 						</div>
 					</form>
 					<div class="player"></div>
@@ -30,9 +30,9 @@
 				</i>
 				<div class="row">
 					<div class="col-12 px-0 p-1">
-						<div class="card payment" onclick="payment('voucher')">
+						<div class="card payment text-primary" onclick="payment('voucher')">
 							<div class="card-body">
-								<h6 class="text-primary mb-0 card-title">Voucher</h6>
+								<h6 class="mb-0 card-title">Voucher</h6>
 							</div>
 						</div>
 					</div>
@@ -63,6 +63,22 @@
 		</div>
 	</div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content m-auto">
+      <div class="modal-body text-center">
+        <div class="spinner-border text-primary" role="status">
+				  <span class="sr-only">Loading...</span>
+				</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <script type="text/javascript">
 
 	$('.btn-checkgameid').click(function(){
@@ -74,15 +90,34 @@
 							'player_id' : $('.form-control-id').val()
 					},
 					success : function(result) {
-							$('.player').html(`
-									<div class="alert alert-info rounded-0 p-2 mt-2" style="width: auto; max-width: 400px;">
-										<small class="text-info">ID pemain   : `+ result.player_id +`</small>
-										<br>
-										<small class="text-info">Nama pemain : <span class="nickname">`+ result.nickname +`</span></small>
+							$('.modal-content').html(`
+									<div class="modal-header">
+										Pemain
 									</div>
+									<div class="modal-body">
+										<table>
+											<tr>
+												<td class="pr-3">Nama pemain </td>
+												<td>: `+ result.nickname +`</td>
+											</tr>
+											<tr>
+												<td class="pr-3">ID pemain </td>
+												<td>: `+ result.player_id +`</td>
+											</tr>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+									</div>	
 							`);
 					}
 			});
+	});
+
+	$('.payment').click(function(){
+			$(this).addClass('bg-info');
+			$(this).removeClass('text-primary');
+			$(this).addClass('text-white');
 	});
 
 	var paymentChannel;
