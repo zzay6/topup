@@ -50,7 +50,10 @@
 				</div>
 				<div class="denomisasi row w-100 m-auto">
 				</div>
-				<input class="form-control form-control-email" name="email">
+				<div class="my-3 px-1">
+					<label class="text-secondary">Email : </label>
+					<input class="form-control form-control-email" name="email">
+				</div>
 				<div class="my-3">
 					
 					<span class="d-flex" style="align-items: flex-end; height: 25px;">
@@ -123,6 +126,11 @@
 	var paymentChannel;
 	function payment(channel){
 			paymentChannel = channel;
+			$('.denomisasi').html(`<h6 class="text-center col">
+				<div class="spinner-border text-primary my-4" role="status">
+				  <span class="sr-only">Loading...</span>
+				</div>
+			</h6>`);
 			$.ajax({
 					url:'{{ url("api/getitems") }}',
 					type:'post',
@@ -132,6 +140,7 @@
 							'channel' : channel
 					},
 					success : function(result){
+							$('.alert-info').hide();
 							$('.denomisasi').html('');
 							$.each(result, function(i, data){
 									$('.denomisasi').append(`
