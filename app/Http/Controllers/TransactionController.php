@@ -11,12 +11,41 @@ use \App\Models\Aktifity;
 use App\Models\Cookie;
 use \App\User;
 use AktifityLog;
+use Validator;
 
 class TransactionController extends Controller
 {
 	public function create(Request $req)
 	{
-		$item = Items::where('id',$req->item)->first();
+		
+        $data = $req->all();
+        $rules = [
+            'player_id' => 'required',
+            'payment' => 'required',
+            'item' => 'required',
+            'email' => 'required'
+        ];
+
+        $validate = Validator::make($data, $rules);
+
+        if ($validate->fails()) {
+
+            $status = 'failed';
+            $player_id = $validate->messages()->first('player_id');
+            $payment = $validate->messages()->first('payment');
+            $item = $validate->messages()->first('item');
+            $email = $validate->messages()->first('email');
+
+            return response(json_encode(compact([
+                'player_id',
+                'payment',
+                'item',
+                'email',
+                'status'
+            ])));
+        }
+
+        $item = Items::where('id',$req->item)->first();
     	$product = Produk::where('pulsa_op',$item->pulsa_op)->first();
 
     	$transaction = Transactions::max('id');
@@ -52,10 +81,12 @@ class TransactionController extends Controller
         $log = new AktifityController;
         $log->create('New Order',$transactionId);
 
-    	$url = [
-    		'url' => url('/payment/voucher').'/'.$transactionId
-    	];
-    	return response($url);
+    	$response = json_encode([
+            'status' => 'success',
+            'url' => url('payment/voucher').'/'.$transactionId
+        ]);
+
+    	return response($response);
 	}
 
 

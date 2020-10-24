@@ -120,6 +120,12 @@
 	}
 
 	$('.btn-next').click(function(){
+
+			swal({
+					text:'memuat...',
+					button:false
+			});
+
 			$.ajax({
 					url:'{{ url("/api/payment/request") }}',
 					type:'post',
@@ -133,7 +139,38 @@
 							'nickname' : $('.nickname').html()
 					},
 					success : function(result) {
-							window.location.href = result.url;
+							if (result.status == 'success') {
+
+									swal({
+											title:'Berhasil',
+											text:'Anda akan di arahkan ke halaman pembayaran',
+											timer:2000,
+											icon: 'success',
+											button:false
+									}).then((value) => {
+											window.location.href = result.url;
+									});
+							
+							} else {
+
+									if(result.player_id != ''){
+											var message = result.player_id;
+									} else if(result.payment != ''){
+											var message = result.payment;
+									} else if(result.item != ''){
+											var message = result.item;
+									} else if(result.email != ''){
+											var message = result.email;
+									}
+
+									swal({
+											title:'Ada kesalahan',
+											text:message,
+											timer: 3000,
+											icon:'warning'
+									});
+
+							}
 					}
 			});
 	});
