@@ -8,6 +8,7 @@ use App\User;
 use \App\PasswordReset;
 use App\Models\Aktifity;
 use App\Models\Cookie;
+use AktifityLog;
 
 class AuthController extends Controller
 {
@@ -43,11 +44,8 @@ class AuthController extends Controller
                 'token' => hash('sha256', $req->email).md5($req->password).md5($req->name)
             ]);
 
-            Aktifity::create([
-                'subjek' => 'Pengguna baru',
-                'object' => $req->email,
-                'content' => 'Telah mendaftar'
-            ]);
+            $log = new AktifityController;
+            $log->create('New User',$req->email);
 
             return response(json_encode([
                 'status' => 'success',

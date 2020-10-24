@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Transactions;
 use App\Models\Aktifity;
 use App\Models\Voucher;
+use AktifityLog;
 
 class TopupController extends Controller
 {
@@ -90,10 +91,7 @@ class TopupController extends Controller
     		]);
     	}
 
-    	Aktifity::create([
-            'subjek' => 'Transaksi berhasil',
-            'object' => $data['ref_id'],
-            'content' => 'Transaksi di proses'
-        ]); 
+    	$log = new AktifityController;
+        $log->create('success',$data['ref_id']); 
     }
 }

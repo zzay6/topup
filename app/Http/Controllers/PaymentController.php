@@ -10,6 +10,7 @@ use App\Models\Produk;
 use App\Models\Items;
 use App\Models\Aktifity;
 use App\Models\Voucher;
+use AktifityLog;
 
 class PaymentController extends Controller
 {
@@ -49,11 +50,8 @@ class PaymentController extends Controller
         			'saldo' => $balance
         		]);
 
-                Aktifity::create([
-                    'subjek' => 'Transaksi berhasil',
-                    'object' => $transactionGet->order_id,
-                    'content' => 'Transaksi di proses'
-                ]);
+                $log = new AktifityController;
+                $log->create('Payment',$transactionGet->order_id);
 
                 $transactionGet->update(['kode' => $req->voucher]);
 

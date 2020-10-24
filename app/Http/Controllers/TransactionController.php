@@ -10,6 +10,7 @@ use \App\Models\Produk;
 use \App\Models\Aktifity;
 use App\Models\Cookie;
 use \App\User;
+use AktifityLog;
 
 class TransactionController extends Controller
 {
@@ -48,11 +49,8 @@ class TransactionController extends Controller
     		'status' => 'pendding'
     	]);
 
-        Aktifity::create([
-            'subjek' => 'Transaksi baru',
-            'object' => $transactionId,
-            'content' => 'Telah dibuat'
-        ]);
+        $log = new AktifityController;
+        $log->create('New Order',$transactionId);
 
     	$url = [
     		'url' => url('/payment/voucher').'/'.$transactionId
@@ -71,11 +69,5 @@ class TransactionController extends Controller
     {
     	Transactions::where('order_id',$id)->delete();
     	return redirect('/transaction');
-    }
-
-
-    public function update($id, $status)
-    {
-
     }
 }
