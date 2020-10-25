@@ -85,6 +85,7 @@
 <script type="text/javascript">
 
 	$('.btn-checkgameid').click(function(){
+			$(this).addClass('btn-success');
 			$.ajax({
 					url:'{{ url("/api/checkgameid") }}',
 					type:'post',
@@ -93,31 +94,36 @@
 							'player_id' : $('.form-control-id').val()
 					},
 					success : function(result) {
-							$('.modal-content').html(`
-									<div class="modal-header">
-										Pemain
-									</div>
-									<div class="modal-body">
-										<table>
-											<tr>
-												<td class="pr-3">Nama pemain </td>
-												<td>: `+ result.nickname +`</td>
-											</tr>
-											<tr>
-												<td class="pr-3">ID pemain </td>
-												<td>: `+ result.player_id +`</td>
-											</tr>
-										</table>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-									</div>	
-							`);
+							console.log(result);
+							// $(this).html(`<i class="fas fa-check"></i>`);
+							// $('.modal-content').html(`
+							// 		<div class="modal-header">
+							// 			Pemain
+							// 		</div>
+							// 		<div class="modal-body">
+							// 			<table>
+							// 				<tr>
+							// 					<td class="pr-3">Nama pemain </td>
+							// 					<td>: `+ result.nickname +`</td>
+							// 				</tr>
+							// 				<tr>
+							// 					<td class="pr-3">ID pemain </td>
+							// 					<td>: `+ result.player_id +`</td>
+							// 				</tr>
+							// 			</table>
+							// 		</div>
+							// 		<div class="modal-footer">
+							// 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+							// 		</div>	
+							// `);
 					}
 			});
 	});
 
 	$('.payment').click(function(){
+			$('.payment').removeClass('bg-info');
+			$('.payment').addClass('text-white');
+			$('.payment').removeClass('text-primary');
 			$(this).addClass('bg-info');
 			$(this).removeClass('text-primary');
 			$(this).addClass('text-white');
