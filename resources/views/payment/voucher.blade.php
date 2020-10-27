@@ -44,7 +44,7 @@
 				<input type="number" class="form-voucher form-control">
 			</div>
 		</div>
-		<button class="sumbit btn btn-primary" onclick="submitFunction()">Lanjut</button>
+		<button class="submit btn btn-primary" onclick="submitFunction()">Lanjut</button>
 	</div>
 
 	<div class="response mt-3"></div>
@@ -53,6 +53,13 @@
 @section('config')
 <script type="text/javascript">
 	function submitFunction(){
+
+			$('.submit').html(`Lanjut
+				<div class="spinner-border text-white spinner-border-sm ml-2" role="status">
+				  <span class="sr-only">Loading...</span>
+				</div>
+			`);
+
 			$.ajax({
 					url : '{{ url("/api/payment/payment") }}',
 					type : 'post',
@@ -62,7 +69,29 @@
 							'voucher' : $('.form-voucher').val()
 					},
 					success : function(result){
-						  console.log(result);
+						$('.submit').html(`Lanjut`);
+						// console.log(result);
+						if (result.status == 'failed') {
+							
+							swal({
+								title:result.message,
+								text:'Harap coba lagi',
+								icon:'warning',
+								button:'Tutup'
+							});
+						
+						} else if (result.status == 'success') {
+
+							swal({
+								title:result.status,
+								text:result.message,
+								icon:'success',
+								button:'Tutup'
+							}).then((v) => {
+								window.location.href ="/";
+							});
+
+						}
 						  
 					}
 			});

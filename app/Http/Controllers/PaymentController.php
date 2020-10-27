@@ -25,7 +25,7 @@ class PaymentController extends Controller
 
     	if($voucher->doesntExist()){
     		$response = json_encode([
-    			'status' => 'Gagal',
+    			'status' => 'failed',
     			'message' => 'Voucher tidak di temukan'
     		]);
 
@@ -34,7 +34,7 @@ class PaymentController extends Controller
 
             if($voucher->first()->saldo < $transaction->first()->harga){
                 $response = json_encode([
-                    'status' => 'Gagal',
+                    'status' => 'failed',
                     'message' => 'Saldo voucher tidak mencukupi'
                 ]);
 
@@ -57,20 +57,6 @@ class PaymentController extends Controller
 
                 $topup = new TopupController;
                 return $topup->SendRequest($transactionGet->order_id);
-
-        		$response = [
-            	   	'status' => 'Berhasil',
-            	   	'data' => [
-                        'provider' => $transactionGet->provider,
-            	    	'item' => $transactionGet->nominal,
-            	    	'harga' => $transactionGet->harga,
-            	    	'nickname' => $transactionGet->nickname,
-            	    	'saldo_voucher' => $balance
-            	    ],
-            	    'message' => 'Transaksi berhasil'
-            	];
-
-        		return response(json_encode($response));
             }
 
     	}
