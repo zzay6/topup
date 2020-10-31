@@ -69,7 +69,7 @@ class AuthController extends Controller
             }
 
             $cookie = Cookie::where('email',Auth::user()->email)->first();
-            setcookie('zvcaytpy', $cookie->cookie);
+            setcookie('cookie', $cookie->cookie);
 
 
             return response(json_encode([
