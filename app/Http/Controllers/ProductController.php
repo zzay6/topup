@@ -59,13 +59,14 @@ class ProductController extends Controller
         }
 
         $imgName = hash('sha256', uniqid()).'.'.$img->extension();
-        $img->storeAs('public/images/products',$imgName);
+        $img->storeAs('public/products_img/',$imgName);
 
         Produk::create([
             'gambar' => $imgName,
             'nama' => $req->product_name,
             'developer' => $req->developer,
-            'pulsa_op' => $req->product_code
+            'pulsa_op' => $req->product_code,
+            'visitor' => 0
         ]);
 
         if (!empty($req->item_name)) {

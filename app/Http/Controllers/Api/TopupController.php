@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Transactions;
 use App\Models\Aktifity;
 use App\Models\Voucher;
+use App\Mail\TopupInfo;
 use AktifityLog;
+use Mail;
 
 class TopupController extends Controller
 {
@@ -66,5 +68,34 @@ class TopupController extends Controller
 		]);
 
 		return response($data);
+    }
+
+
+    public function callback(Request $req)
+    {
+    	$data = json_encode($req->data);
+    	$data = json_decode($data, true);
+
+    	$transaction = Transactions::where('order_id',$data['ref_id']);
+    	$transaction->update([
+    		'status' => $data['message']
+    	]);
+
+
+    	if ($data['status'] == 2) {
+    		$kode = $transaction->first()->kode;
+    		$voucher = Voucher::where('voucher',$kode);
+
+    		$balance = $transaction->first()->harga + $voucher->first()->saldo;
+
+    		$voucher->update([
+    			'saldo' => $balance
+    		]);
+    	}
+
+    	// $log = new AktifityController;
+     //    $log->create('success',$data['ref_id']); 
+
+        return url()->full();
     }
 }

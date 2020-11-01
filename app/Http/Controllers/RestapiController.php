@@ -40,7 +40,9 @@ class RestapiController extends Controller
     		]);
     	}
 
-    	$log = new AktifityController;
-        $log->create('success',$data['ref_id']); 
+    	// $log = new AktifityController;
+     //    $log->create('success',$data['ref_id']); 
+
+        return $req->url()->previous();
     }
 }

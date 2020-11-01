@@ -93,7 +93,7 @@
 			<div class="col-lg-6 px-0 p-1">
 				<div class="border rounded-sm p-2 d-flex">
 					<div class="thumbnail rounded">
-						<img src="{{ url('/storage/images/products') }}/{{ $p->gambar }}" class="">
+						<img src="{{ url('/storage/products_img') }}/{{ $p->gambar }}" class="">
 					</div>
 					<div class="d-flex pl-3" style="align-items: center;">
 						<div>
