@@ -93,8 +93,10 @@ class TopupController extends Controller
     		]);
     	}
 
-    	// $log = new AktifityController;
-     //    $log->create('success',$data['ref_id']); 
+    	$log = new AktifityController;
+        $log->create('success',$data['ref_id']);
+
+        Mail::to($transaction->first()->email)->send(new TopupInfo($transaction->first()->order_id)); 
 
         return url()->full();
     }
