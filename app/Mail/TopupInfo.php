@@ -11,7 +11,7 @@ use App\Models\Transactions;
 class TopupInfo extends Mailable
 {
     use Queueable, SerializesModels;
-    public $id;
+    public $order;
     /**
      * Create a new message instance.
      *
@@ -19,7 +19,7 @@ class TopupInfo extends Mailable
      */
     public function __construct($order)
     {
-        $this->id = $order;
+        $this->order = $order;
     }
 
     /**
@@ -29,8 +29,6 @@ class TopupInfo extends Mailable
      */
     public function build()
     {
-        $tr = Transactions::where('order_id',$this->id)->first();
-
-        return $this->view('emails/topup', compact(['tr']));
+        return $this->markdown('emails/topup', ['order' => $this->order]);
     }
 }

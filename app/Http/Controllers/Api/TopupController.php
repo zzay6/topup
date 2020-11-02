@@ -101,6 +101,6 @@ class TopupController extends Controller
 
         }
 
-        return "berhasil";
+        Mail::to($trg->email)->send(new TopupInfo($trg));
     }
 }
