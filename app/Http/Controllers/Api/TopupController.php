@@ -76,28 +76,31 @@ class TopupController extends Controller
     	$data = json_encode($req->data);
     	$data = json_decode($data, true);
 
-    	$transaction = Transactions::where('order_id',$data['ref_id']);
-    	$transaction->update([
-    		'status' => $data['message']
-    	]);
+    	$tr = Transactions::where([
+            'order_id' => $data['ref_id']
+        ]); // ->firstOrFail();
 
+        // return $tr->firstOrFail();
 
-    	if ($data['status'] == 2) {
-    		$kode = $transaction->first()->kode;
-    		$voucher = Voucher::where('voucher',$kode);
+        $trg = $tr->firstOrFail();
+        $tr->update([
+            'status' => $data['message']
+        ]);
 
-    		$balance = $transaction->first()->harga + $voucher->first()->saldo;
+        if($data['status'] == "2"){
 
-    		$voucher->update([
-    			'saldo' => $balance
-    		]);
-    	}
+            $vc = Voucher::where([
+                'voucher' => $trg->kode
+            ]);
 
-    	$log = new AktifityController;
-        $log->create('success',$data['ref_id']);
+            $bl = $vc->firstOrFail('saldo')->saldo;
+            $bl = $trg->harga + $bl;
+            $vc->update([
+                'saldo' => $bl
+            ]);
 
-        Mail::to($transaction->first()->email)->send(new TopupInfo($transaction->first()->order_id)); 
+        }
 
-        return url()->full();
+        return "berhasil";
     }
 }
