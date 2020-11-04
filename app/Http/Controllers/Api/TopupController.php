@@ -23,7 +23,7 @@ class TopupController extends Controller
 
     	$order = Transactions::where('order_id',$id)->first();
     	$code = $order->pulsa_code;
-    	$ref_id = $order->order_id;
+    	$ref_id = $order->hash;
     	$hp = $order->player_id;
 
     	$json = json_encode([
@@ -77,12 +77,12 @@ class TopupController extends Controller
     	$data = json_decode($data, true);
 
     	$tr = Transactions::where([
-            'order_id' => $data['ref_id']
-        ]); // ->firstOrFail();
+            'hash' => $data['ref_id']
+        ]);
 
         // return $tr->firstOrFail();
 
-        $trg = $tr->firstOrFail();
+        $trg = $tr->first();
         $tr->update([
             'status' => $data['message']
         ]);

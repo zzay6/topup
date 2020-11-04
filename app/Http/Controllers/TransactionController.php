@@ -51,6 +51,7 @@ class TransactionController extends Controller
     	$transaction = Transactions::max('id');
 
     	$transactionId = 'TY'.sprintf('%08s', $transaction + 1);
+        $order_id = hash('sha256', $transactionId.date('d'));
 
         if (isset($_COOKIE['zvcaytpy'])) {
             $auth = Cookie::where([
@@ -75,11 +76,12 @@ class TransactionController extends Controller
     		'nominal' => $item->pulsa_nominal,
     		'harga' => $item->pulsa_price,
     		'pembayaran' => $req->payment,
-    		'status' => 'pendding'
+    		'status' => 'pendding',
+            'hash' => $order_id
     	]);
 
         $log = new AktifityController;
-        $log->create('New Order',$transactionId);
+        $log->create('New Order', $transactionId);
 
     	$response = json_encode([
             'status' => 'success',
