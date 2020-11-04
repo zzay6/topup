@@ -24,6 +24,8 @@ Route::post('/getitem', 'ProductController@getItem');
 Route::post('/checkgameid','RestapiController@checkGameId');
 Route::post('/payment/request','TransactionController@create');
 Route::post('/payment/payment','PaymentController@payment');
+
+// Route celah hack
 Route::post('/topup/mobilepulsa','Api\TopupController@callback');
 
 Route::group(['middleware' => ['adminCookie']], function(){
