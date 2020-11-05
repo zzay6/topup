@@ -51,7 +51,18 @@ class TransactionController extends Controller
     	$transaction = Transactions::max('id');
 
     	$transactionId = 'TY'.sprintf('%08s', $transaction + 1);
-        $order_id = hash('sha256', $transactionId.date('d'));
+
+
+        function getHash($oi){
+            $un = uniqid();
+            return hash('sha256', $un.$oi);
+        }
+
+        $order_id = getHash($transactionId);
+
+        if(Transactions::where('hash',$order_id)->count() > 0){
+            $order_id = getHash();
+        }
 
         if (isset($_COOKIE['zvcaytpy'])) {
             $auth = Cookie::where([
